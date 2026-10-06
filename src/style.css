@@ -2652,3 +2652,10 @@ html.touch-ui .rl-entry-name { font-size: 10.5px; }
 .set-music-pick { flex: none; white-space: nowrap; }
 .set-music-clear { flex: none; padding: 0 7px; }
 
+/* ---- Cài đặt: số phiên bản + nút tải app (người dùng 2026-10-06) */
+.set-app { display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 4px; }
+.set-ver { color: var(--dim); font-size: 12px; font-variant-numeric: tabular-nums; }
+.set-dl-group { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.set-dl-head { color: var(--dim); font-size: 12px; margin-right: 2px; }
+a.set-dl { text-decoration: none; color: var(--text); }
+

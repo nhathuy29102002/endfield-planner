@@ -1,4 +1,8 @@
 import { defineConfig } from 'vite';
+import { readFileSync } from 'node:fs';
+
+/** Số phiên bản từ package.json ⇒ `__APP_VERSION__` (`src/buildFlags.ts`). */
+const version = (JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')) as { version: string }).version;
 
 /**
  * Nhập mã bản vẽ của game (`EFO0…`): EnKAD tra mã qua `/endfield/aic/api/efbp` nhưng không mở CORS,
@@ -15,6 +19,7 @@ const efbpProxy = {
 
 export default defineConfig({
   base: './',
+  define: { __APP_VERSION__: JSON.stringify(version) },
   build: { target: 'es2022', outDir: 'dist' },
   server: { proxy: efbpProxy },
   preview: { proxy: efbpProxy },

@@ -2,6 +2,8 @@ import { LOCALES, lang, setLang, tr } from '../i18n';
 import { el } from './dom';
 import { applyTheme, currentTheme, type Theme } from './theme';
 import { prefs, setPref } from './prefs';
+import { APP_VERSION, DOWNLOAD, RELEASES_URL } from '../buildFlags';
+import { isNativeApp } from '../platform';
 
 const GEAR =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
@@ -132,6 +134,31 @@ export function mountSettings(root: HTMLElement, onTheme: () => void, extraRows?
     return el('div', { class: 'set-row' }, wrap);
   };
 
+  /**
+   * Dòng cuối: **số phiên bản** + (chỉ bản web) **nút tải app** Windows / Android (người dùng 2026-10-06). File lấy từ
+   * bản phát hành mới nhất trên GitHub (`buildFlags.ts` `DOWNLOAD`). Trong exe / apk chỉ hiện số phiên bản.
+   */
+  const appRow = (): HTMLElement => {
+    const inApp = '__TAURI_INTERNALS__' in window || isNativeApp();
+    const link = (href: string, label: string, title: string): HTMLElement =>
+      el('a', { class: 'tool small set-dl', href, target: '_blank', rel: 'noopener', title }, label);
+    return el(
+      'div',
+      { class: 'set-row set-app' },
+      el('span', { class: 'set-ver', title: tr('Phiên bản') }, `v${APP_VERSION}`),
+      inApp
+        ? null
+        : el(
+            'span',
+            { class: 'set-dl-group' },
+            el('span', { class: 'set-dl-head' }, tr('Tải app:')),
+            link(DOWNLOAD.windows, 'Windows', tr('Tải bộ cài Windows (.exe) bản mới nhất')),
+            link(DOWNLOAD.android, 'Android', tr('Tải app Android (.apk) bản mới nhất')),
+            link(RELEASES_URL, '↗', tr('Trang các bản phát hành trên GitHub')),
+          ),
+    );
+  };
+
   const open = (): void => {
     panel = el(
       'div',
@@ -145,6 +172,7 @@ export function mountSettings(root: HTMLElement, onTheme: () => void, extraRows?
       check(tr('Con trỏ ô'), tr('Bật: rê chuột tới ô nào trên Map thì hiện khung ô đó. Tắt: không hiện gì'), prefs().pointer, (v) => setPref('pointer', v)),
       // bản điện thoại: nhạc nền, hiện tên máy, kiểm tra tầm điện chuyển vào đây (người dùng 2026-10-05)
       ...(extraRows?.() ?? []),
+      appRow(),
     );
     const r = gear.getBoundingClientRect();
     panel.style.right = `${Math.round(window.innerWidth - r.right)}px`;

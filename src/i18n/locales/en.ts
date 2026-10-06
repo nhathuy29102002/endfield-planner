@@ -1814,5 +1814,15 @@ export const en: Locale = {
       'None yet — pick your own MP3 file',
     'File nhạc chỉ lưu trong trình duyệt / app trên máy này, không gửi đi đâu':
       'The music file is only stored in this browser / app on this device, never uploaded',
+    'Phiên bản':
+      'Version',
+    'Tải app:':
+      'Get the app:',
+    'Tải bộ cài Windows (.exe) bản mới nhất':
+      'Download the latest Windows installer (.exe)',
+    'Tải app Android (.apk) bản mới nhất':
+      'Download the latest Android app (.apk)',
+    'Trang các bản phát hành trên GitHub':
+      'Releases page on GitHub',
   },
 };
