@@ -1,0 +1,1697 @@
+{
+  "generatedAt": "2026-09-26T04:55:01.818Z",
+  "source": "EnKAD beta data bundle (beta.enka.network/endfield/aic)",
+  "items": [
+    {
+      "id": "item_activity_copper_poly",
+      "name": "Xiranite-Đồng Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_copper_poly",
+      "nameVi": "Xiranite-Đồng Nguyên Mẫu",
+      "nameEn": "Proto Xiran-Cuprium"
+    },
+    {
+      "id": "item_activity_copper_poly_cmpt",
+      "name": "Mảnh Xiranite-Đồng Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_copper_poly_cmpt",
+      "nameVi": "Mảnh Xiranite-Đồng Nguyên Mẫu",
+      "nameEn": "Proto Xiran-Cuprium Part"
+    },
+    {
+      "id": "item_activity_copper_poly_gas",
+      "name": "Khí Xiranite-Đồng Nguyên Mẫu",
+      "phase": "liquid",
+      "icon": "item_activity_copper_poly_gas",
+      "nameVi": "Khí Xiranite-Đồng Nguyên Mẫu",
+      "nameEn": "Proto Xiran-Cuprium Gas"
+    },
+    {
+      "id": "item_activity_copper_poly_tool",
+      "name": "Khung Xiranite-Đồng Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_copper_poly_tool",
+      "nameVi": "Khung Xiranite-Đồng Nguyên Mẫu",
+      "nameEn": "Proto Xiran-Cuprium Frame"
+    },
+    {
+      "id": "item_activity_copper_xiranite_tool",
+      "name": "Khung Đồng Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_copper_xiranite_tool",
+      "nameVi": "Khung Đồng Nguyên Mẫu",
+      "nameEn": "Proto Cuprium Frame"
+    },
+    {
+      "id": "item_activity_xiranite_bottle",
+      "name": "Lọ Xiranite Thử Nghiệm",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_bottle",
+      "nameVi": "Lọ Xiranite Thử Nghiệm",
+      "nameEn": "Experimental Xiranite Bottle"
+    },
+    {
+      "id": "item_activity_xiranite_box",
+      "name": "Vỏ Chubby Lung Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_box",
+      "nameVi": "Vỏ Chubby Lung Nguyên Mẫu",
+      "nameEn": "Proto Chubby Lung Shell"
+    },
+    {
+      "id": "item_activity_xiranite_cmpt",
+      "name": "Mảnh Xiranite Thử Nghiệm",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_cmpt",
+      "nameVi": "Mảnh Xiranite Thử Nghiệm",
+      "nameEn": "Experimental Xiranite Part"
+    },
+    {
+      "id": "item_activity_xiranite_enr_bottle",
+      "name": "Lọ Xiranite Hạng Nặng Thử Nghiệm",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_bottle",
+      "nameVi": "Lọ Xiranite Hạng Nặng Thử Nghiệm",
+      "nameEn": "Experimental Heavy Xiranite Bottle"
+    },
+    {
+      "id": "item_activity_xiranite_enr_box",
+      "name": "Vỏ Nặng Chubby Lung Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_box",
+      "nameVi": "Vỏ Nặng Chubby Lung Nguyên Mẫu",
+      "nameEn": "Proto Chubby Lung Heavy Shell"
+    },
+    {
+      "id": "item_activity_xiranite_enr_cmpt",
+      "name": "Mảnh Xiranite Hạng Nặng Thử Nghiệm",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_cmpt",
+      "nameVi": "Mảnh Xiranite Hạng Nặng Thử Nghiệm",
+      "nameEn": "Experimental Heavy Xiranite Part"
+    },
+    {
+      "id": "item_activity_xiranite_enr_hulu",
+      "name": "Quả Bầu Ngọc Xiranite",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_hulu",
+      "nameVi": "Quả Bầu Ngọc Xiranite",
+      "nameEn": "Xiranite Jade Gourd"
+    },
+    {
+      "id": "item_activity_xiranite_enr_lung",
+      "name": "Xiranite Nặng Chubby Lung",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_lung",
+      "nameVi": "Xiranite Nặng Chubby Lung",
+      "nameEn": "Heavy Xiranite Chubby Lung"
+    },
+    {
+      "id": "item_activity_xiranite_enr_nugget",
+      "name": "Xiranite Nặng Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_nugget",
+      "nameVi": "Xiranite Nặng Nguyên Mẫu",
+      "nameEn": "Proto Heavy Xiranite"
+    },
+    {
+      "id": "item_activity_xiranite_enr_tool",
+      "name": "Máy Phun Sắc Xiran Thử Nghiệm",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_enr_tool",
+      "nameVi": "Máy Phun Sắc Xiran Thử Nghiệm",
+      "nameEn": "Experimental Xiran-Hue Atomizer"
+    },
+    {
+      "id": "item_activity_xiranite_hulu",
+      "name": "Quả Bầu Xiranite",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_hulu",
+      "nameVi": "Quả Bầu Xiranite",
+      "nameEn": "Xiranite Gourd"
+    },
+    {
+      "id": "item_activity_xiranite_lung",
+      "name": "Xiranite Chubby Lung",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_lung",
+      "nameVi": "Xiranite Chubby Lung",
+      "nameEn": "Xiranite Chubby Lung"
+    },
+    {
+      "id": "item_activity_xiranite_nugget",
+      "name": "Xiranite Nguyên Mẫu",
+      "phase": "solid",
+      "icon": "item_activity_xiranite_nugget",
+      "nameVi": "Xiranite Nguyên Mẫu",
+      "nameEn": "Proto Xiranite"
+    },
+    {
+      "id": "item_bottled_food_1",
+      "name": "Cam Đóng Hộp [C]",
+      "phase": "solid",
+      "icon": "item_bottled_food_1",
+      "nameVi": "Cam Đóng Hộp [C]",
+      "nameEn": "Canned Citrome [C]"
+    },
+    {
+      "id": "item_bottled_food_2",
+      "name": "Cam Đóng Hộp [B]",
+      "phase": "solid",
+      "icon": "item_bottled_food_2",
+      "nameVi": "Cam Đóng Hộp [B]",
+      "nameEn": "Canned Citrome [B]"
+    },
+    {
+      "id": "item_bottled_food_3",
+      "name": "Cam Đóng Hộp [A]",
+      "phase": "solid",
+      "icon": "item_bottled_food_3",
+      "nameVi": "Cam Đóng Hộp [A]",
+      "nameEn": "Canned Citrome [A]"
+    },
+    {
+      "id": "item_bottled_food_4",
+      "name": "Nước Cỏ Sao Lụa",
+      "phase": "solid",
+      "icon": "item_bottled_food_4",
+      "nameVi": "Nước Cỏ Sao Lụa",
+      "nameEn": "Jincao Drink"
+    },
+    {
+      "id": "item_bottled_food_5",
+      "name": "Trà Cỏ Sao Lụa",
+      "phase": "solid",
+      "icon": "item_bottled_food_5",
+      "nameVi": "Trà Cỏ Sao Lụa",
+      "nameEn": "Jincao Tea"
+    },
+    {
+      "id": "item_bottled_rec_hp_1",
+      "name": "Thuốc Kiều Mạch [C]",
+      "phase": "solid",
+      "icon": "item_bottled_rec_hp_1",
+      "nameVi": "Thuốc Kiều Mạch [C]",
+      "nameEn": "Buck Capsule [C]"
+    },
+    {
+      "id": "item_bottled_rec_hp_2",
+      "name": "Thuốc Kiều Mạch [B]",
+      "phase": "solid",
+      "icon": "item_bottled_rec_hp_2",
+      "nameVi": "Thuốc Kiều Mạch [B]",
+      "nameEn": "Buck Capsule [B]"
+    },
+    {
+      "id": "item_bottled_rec_hp_3",
+      "name": "Thuốc Kiều Mạch [A]",
+      "phase": "solid",
+      "icon": "item_bottled_rec_hp_3",
+      "nameVi": "Thuốc Kiều Mạch [A]",
+      "nameEn": "Buck Capsule [A]"
+    },
+    {
+      "id": "item_bottled_rec_hp_4",
+      "name": "Ống Tiêm Mầm Lá Kim [C]",
+      "phase": "solid",
+      "icon": "item_bottled_rec_hp_4",
+      "nameVi": "Ống Tiêm Mầm Lá Kim [C]",
+      "nameEn": "Yazhen Syringe [C]"
+    },
+    {
+      "id": "item_bottled_rec_hp_5",
+      "name": "Ống Tiêm Mầm Lá Kim [A]",
+      "phase": "solid",
+      "icon": "item_bottled_rec_hp_5",
+      "nameVi": "Ống Tiêm Mầm Lá Kim [A]",
+      "nameEn": "Yazhen Syringe [A]"
+    },
+    {
+      "id": "item_carbon_enr",
+      "name": "Carbon Ổn Định",
+      "phase": "solid",
+      "icon": "item_carbon_enr",
+      "nameVi": "Carbon Ổn Định",
+      "nameEn": "Stabilized Carbon"
+    },
+    {
+      "id": "item_carbon_enr_powder",
+      "name": "Bột Carbon Đặc",
+      "phase": "solid",
+      "icon": "item_carbon_enr_powder",
+      "nameVi": "Bột Carbon Đặc",
+      "nameEn": "Dense Carbon Powder"
+    },
+    {
+      "id": "item_carbon_mtl",
+      "name": "Carbon",
+      "phase": "solid",
+      "icon": "item_carbon_mtl",
+      "nameVi": "Carbon",
+      "nameEn": "Carbon"
+    },
+    {
+      "id": "item_carbon_powder",
+      "name": "Bột Carbon",
+      "phase": "solid",
+      "icon": "item_carbon_powder",
+      "nameVi": "Bột Carbon",
+      "nameEn": "Carbon Powder"
+    },
+    {
+      "id": "item_copper_bottle",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_copper_cmpt",
+      "name": "Mảnh Đồng",
+      "phase": "solid",
+      "icon": "item_copper_cmpt",
+      "nameVi": "Mảnh Đồng",
+      "nameEn": "Cuprium Part"
+    },
+    {
+      "id": "item_copper_enr",
+      "name": "Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr",
+      "nameVi": "Huyết Đồng",
+      "nameEn": "Hetonite"
+    },
+    {
+      "id": "item_copper_enr2",
+      "name": "Nham Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr2",
+      "nameVi": "Nham Đồng",
+      "nameEn": "Pyrrolite"
+    },
+    {
+      "id": "item_copper_enr2_cmpt",
+      "name": "Mảnh Nham Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr2_cmpt",
+      "nameVi": "Mảnh Nham Đồng",
+      "nameEn": "Pyrrolite Part"
+    },
+    {
+      "id": "item_copper_enr_bottle",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_copper_enr_cmpt",
+      "name": "Mảnh Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_cmpt",
+      "nameVi": "Mảnh Huyết Đồng",
+      "nameEn": "Hetonite Part"
+    },
+    {
+      "id": "item_copper_jar",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_copper_nugget",
+      "name": "Đồng",
+      "phase": "solid",
+      "icon": "item_copper_nugget",
+      "nameVi": "Đồng",
+      "nameEn": "Cuprium"
+    },
+    {
+      "id": "item_copper_ore",
+      "name": "Quặng Đồng",
+      "phase": "solid",
+      "icon": "item_copper_ore",
+      "nameVi": "Quặng Đồng",
+      "nameEn": "Cuprium Ore"
+    },
+    {
+      "id": "item_copper_powder",
+      "name": "Bột Đồng",
+      "phase": "solid",
+      "icon": "item_copper_powder",
+      "nameVi": "Bột Đồng",
+      "nameEn": "Cuprium Powder"
+    },
+    {
+      "id": "item_crystal_enr",
+      "name": "Vỏ Originium Ép",
+      "phase": "solid",
+      "icon": "item_crystal_enr",
+      "nameVi": "Vỏ Originium Ép",
+      "nameEn": "Packed Origocrust"
+    },
+    {
+      "id": "item_crystal_enr_powder",
+      "name": "Bột Vỏ Originium Đặc",
+      "phase": "solid",
+      "icon": "item_crystal_enr_powder",
+      "nameVi": "Bột Vỏ Originium Đặc",
+      "nameEn": "Dense Origocrust Powder"
+    },
+    {
+      "id": "item_crystal_powder",
+      "name": "Bột Vỏ Originium",
+      "phase": "solid",
+      "icon": "item_crystal_powder",
+      "nameVi": "Bột Vỏ Originium",
+      "nameEn": "Origocrust Powder"
+    },
+    {
+      "id": "item_crystal_shell",
+      "name": "Vỏ Originium",
+      "phase": "solid",
+      "icon": "item_crystal_shell",
+      "nameVi": "Vỏ Originium",
+      "nameEn": "Origocrust"
+    },
+    {
+      "id": "item_equip_script_1",
+      "name": "Linh Kiện Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_equip_script_1",
+      "nameVi": "Linh Kiện Thạch Anh Tím",
+      "nameEn": "Amethyst Component"
+    },
+    {
+      "id": "item_equip_script_2",
+      "name": "Linh Kiện Sắt",
+      "phase": "solid",
+      "icon": "item_equip_script_2",
+      "nameVi": "Linh Kiện Sắt",
+      "nameEn": "Ferrium Component"
+    },
+    {
+      "id": "item_equip_script_3",
+      "name": "Linh Kiện Cryston",
+      "phase": "solid",
+      "icon": "item_equip_script_3",
+      "nameVi": "Linh Kiện Cryston",
+      "nameEn": "Cryston Component"
+    },
+    {
+      "id": "item_equip_script_4",
+      "name": "Linh Kiện Xiranite",
+      "phase": "solid",
+      "icon": "item_equip_script_4",
+      "nameVi": "Linh Kiện Xiranite",
+      "nameEn": "Xiranite Component"
+    },
+    {
+      "id": "item_equip_script_4_1",
+      "name": "Linh Kiện Đồng",
+      "phase": "solid",
+      "icon": "item_equip_script_4_1",
+      "nameVi": "Linh Kiện Đồng",
+      "nameEn": "Cuprium Component"
+    },
+    {
+      "id": "item_equip_script_4_2",
+      "name": "Linh Kiện Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_equip_script_4_2",
+      "nameVi": "Linh Kiện Huyết Đồng",
+      "nameEn": "Hetonite Component"
+    },
+    {
+      "id": "item_equip_script_4_3",
+      "name": "Linh Kiện Nham Đồng",
+      "phase": "solid",
+      "icon": "item_equip_script_4_3",
+      "nameVi": "Linh Kiện Nham Đồng",
+      "nameEn": "Pyrrolite Component"
+    },
+    {
+      "id": "item_fbottle_copper_acid",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_copper",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_copper_enr",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_grass_1",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_grass_2",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_sewage",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_water",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_xiranite",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_xiranite_enr",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_xiranite_lowpoly",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copper_xiranite_poly",
+      "name": "Lọ Đồng Đỏ",
+      "phase": "solid",
+      "icon": "item_copper_bottle",
+      "nameVi": "Lọ Đồng Đỏ",
+      "nameEn": "Cuprium Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_acid",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_copper",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_copper_enr",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_grass_1",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_grass_2",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_sewage",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_water",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_xiranite",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_xiranite_enr",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_xiranite_lowpoly",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_copperenr_xiranite_poly",
+      "name": "Lọ Huyết Đồng",
+      "phase": "solid",
+      "icon": "item_copper_enr_bottle",
+      "nameVi": "Lọ Huyết Đồng",
+      "nameEn": "Hetonite Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_acid",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_copper",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_copper_enr",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_grass_1",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_grass_2",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_sewage",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_water",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_xiranite",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_xiranite_enr",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_xiranite_lowpoly",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glass_xiranite_poly",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_acid",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_copper",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_copper_enr",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_grass_1",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_grass_2",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_sewage",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_water",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_xiranite",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_xiranite_enr",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_xiranite_lowpoly",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_glassenr_xiranite_poly",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_acid",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_copper",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_copper_enr",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_grass_1",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_grass_2",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_sewage",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_water",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_xiranite",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_xiranite_enr",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_xiranite_lowpoly",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_iron_xiranite_poly",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_acid",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_copper",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_copper_enr",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_grass_1",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_grass_2",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_sewage",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_water",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_xiranite",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_xiranite_enr",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_xiranite_lowpoly",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_ironenr_xiranite_poly",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_fbottle_xiranenr_grass_2",
+      "name": "Lọ Xiranite Hạng Nặng Thử Nghiệm",
+      "phase": "solid",
+      "icon": "item_xiran_enr_bottle",
+      "nameVi": "Lọ Xiranite Hạng Nặng Thử Nghiệm",
+      "nameEn": "Experimental Heavy Xiranite Bottle"
+    },
+    {
+      "id": "item_filter_core",
+      "name": "Lõi Phân Tách",
+      "phase": "solid",
+      "icon": "item_filter_core",
+      "nameVi": "Lõi Phân Tách",
+      "nameEn": "Separator Core"
+    },
+    {
+      "id": "item_gas_acid",
+      "name": "Khí Axit",
+      "phase": "gas",
+      "icon": "item_gas_acid",
+      "producesEnv": "Acid",
+      "nameVi": "Khí Axit",
+      "nameEn": "Acridgen"
+    },
+    {
+      "id": "item_gas_copper",
+      "name": "Khí Đồng",
+      "phase": "gas",
+      "icon": "item_gas_copper",
+      "nameVi": "Khí Đồng",
+      "nameEn": "Cuprium Gas"
+    },
+    {
+      "id": "item_gas_copper_enr",
+      "name": "Khí Huyết Đồng",
+      "phase": "gas",
+      "icon": "item_gas_copper_enr",
+      "nameVi": "Khí Huyết Đồng",
+      "nameEn": "Hetonite Gas"
+    },
+    {
+      "id": "item_gas_copper_enr2",
+      "name": "Khí Nham Đồng",
+      "phase": "gas",
+      "icon": "item_gas_copper_enr2",
+      "nameVi": "Khí Nham Đồng",
+      "nameEn": "Pyrrolite Gas"
+    },
+    {
+      "id": "item_gas_inert",
+      "name": "Khí Trơ",
+      "phase": "gas",
+      "icon": "item_gas_inert",
+      "producesEnv": "Stable",
+      "nameVi": "Khí Trơ",
+      "nameEn": "Inergen"
+    },
+    {
+      "id": "item_gas_water",
+      "name": "Thủy Khí",
+      "phase": "gas",
+      "icon": "item_gas_water",
+      "producesEnv": "Humidity",
+      "nameVi": "Thủy Khí",
+      "nameEn": "Aquagen"
+    },
+    {
+      "id": "item_gas_xiranite",
+      "name": "Khí Xiranite",
+      "phase": "gas",
+      "icon": "item_gas_xiranite",
+      "producesEnv": "Xiranite",
+      "nameVi": "Khí Xiranite",
+      "nameEn": "Xiragen"
+    },
+    {
+      "id": "item_gas_xiranite_enr",
+      "name": "Khí Xiranite Đậm Đặc",
+      "phase": "gas",
+      "icon": "item_gas_xiranite_enr",
+      "producesEnv": "Xiranite",
+      "nameVi": "Khí Xiranite Đậm Đặc",
+      "nameEn": "Heavy Xiragen"
+    },
+    {
+      "id": "item_gasjar_copper_gas_acid",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_copper",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_copper_enr",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_copper_enr2",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_inert",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_water",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_xiranite",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_gasjar_copper_gas_xiranite_enr",
+      "name": "Bình Chứa Đồng",
+      "phase": "solid",
+      "icon": "item_copper_jar",
+      "nameVi": "Bình Chứa Đồng",
+      "nameEn": "Cuprium Canister"
+    },
+    {
+      "id": "item_glass_bottle",
+      "name": "Chai Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_bottle",
+      "nameVi": "Chai Thạch Anh Tím",
+      "nameEn": "Amethyst Bottle"
+    },
+    {
+      "id": "item_glass_cmpt",
+      "name": "Mảnh Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_glass_cmpt",
+      "nameVi": "Mảnh Thạch Anh Tím",
+      "nameEn": "Amethyst Part"
+    },
+    {
+      "id": "item_glass_enr_bottle",
+      "name": "Lọ Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_bottle",
+      "nameVi": "Lọ Cryston",
+      "nameEn": "Cryston Bottle"
+    },
+    {
+      "id": "item_glass_enr_cmpt",
+      "name": "Mảnh Cryston",
+      "phase": "solid",
+      "icon": "item_glass_enr_cmpt",
+      "nameVi": "Mảnh Cryston",
+      "nameEn": "Cryston Part"
+    },
+    {
+      "id": "item_iron_bottle",
+      "name": "Lọ Sắt",
+      "phase": "solid",
+      "icon": "item_iron_bottle",
+      "nameVi": "Lọ Sắt",
+      "nameEn": "Ferrium Bottle"
+    },
+    {
+      "id": "item_iron_cmpt",
+      "name": "Mảnh Sắt",
+      "phase": "solid",
+      "icon": "item_iron_cmpt",
+      "nameVi": "Mảnh Sắt",
+      "nameEn": "Ferrium Part"
+    },
+    {
+      "id": "item_iron_enr",
+      "name": "Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr",
+      "nameVi": "Thép",
+      "nameEn": "Steel"
+    },
+    {
+      "id": "item_iron_enr_bottle",
+      "name": "Lọ Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_bottle",
+      "nameVi": "Lọ Thép",
+      "nameEn": "Steel Bottle"
+    },
+    {
+      "id": "item_iron_enr_cmpt",
+      "name": "Mảnh Thép",
+      "phase": "solid",
+      "icon": "item_iron_enr_cmpt",
+      "nameVi": "Mảnh Thép",
+      "nameEn": "Steel Part"
+    },
+    {
+      "id": "item_iron_enr_powder",
+      "name": "Bột Sắt Đặc",
+      "phase": "solid",
+      "icon": "item_iron_enr_powder",
+      "nameVi": "Bột Sắt Đặc",
+      "nameEn": "Dense Ferrium Powder"
+    },
+    {
+      "id": "item_iron_nugget",
+      "name": "Sắt",
+      "phase": "solid",
+      "icon": "item_iron_nugget",
+      "nameVi": "Sắt",
+      "nameEn": "Ferrium"
+    },
+    {
+      "id": "item_iron_ore",
+      "name": "Quặng Sắt",
+      "phase": "solid",
+      "icon": "item_iron_ore",
+      "nameVi": "Quặng Sắt",
+      "nameEn": "Ferrium Ore"
+    },
+    {
+      "id": "item_iron_powder",
+      "name": "Bột Sắt",
+      "phase": "solid",
+      "icon": "item_iron_powder",
+      "nameVi": "Bột Sắt",
+      "nameEn": "Ferrium Powder"
+    },
+    {
+      "id": "item_liquid_acid",
+      "name": "Axit Lắng Đọng",
+      "phase": "liquid",
+      "icon": "item_liquid_acid",
+      "nameVi": "Axit Lắng Đọng",
+      "nameEn": "Precipitation Acid"
+    },
+    {
+      "id": "item_liquid_copper",
+      "name": "Dung Dịch Đồng",
+      "phase": "liquid",
+      "icon": "item_liquid_copper",
+      "nameVi": "Dung Dịch Đồng",
+      "nameEn": "Cuprium Solution"
+    },
+    {
+      "id": "item_liquid_copper_enr",
+      "name": "Dung Dịch Huyết Đồng",
+      "phase": "liquid",
+      "icon": "item_liquid_copper_enr",
+      "nameVi": "Dung Dịch Huyết Đồng",
+      "nameEn": "Hetonite Solution"
+    },
+    {
+      "id": "item_liquid_plant_grass_1",
+      "name": "Dung Dịch Cỏ Sao Lụa",
+      "phase": "liquid",
+      "icon": "item_liquid_plant_grass_1",
+      "nameVi": "Dung Dịch Cỏ Sao Lụa",
+      "nameEn": "Jincao Solution"
+    },
+    {
+      "id": "item_liquid_plant_grass_2",
+      "name": "Dung Dịch Mầm Lá Kim",
+      "phase": "liquid",
+      "icon": "item_liquid_plant_grass_2",
+      "nameVi": "Dung Dịch Mầm Lá Kim",
+      "nameEn": "Yazhen Solution"
+    },
+    {
+      "id": "item_liquid_sewage",
+      "name": "Nước Thải",
+      "phase": "liquid",
+      "icon": "item_liquid_sewage",
+      "nameVi": "Nước Thải",
+      "nameEn": "Sewage"
+    },
+    {
+      "id": "item_liquid_water",
+      "name": "Nước Sạch",
+      "phase": "liquid",
+      "icon": "item_liquid_water",
+      "nameVi": "Nước Sạch",
+      "nameEn": "Clean Water"
+    },
+    {
+      "id": "item_liquid_xiranite",
+      "name": "Xiranite Lỏng",
+      "phase": "liquid",
+      "icon": "item_liquid_xiranite",
+      "nameVi": "Xiranite Lỏng",
+      "nameEn": "Liquid Xiranite"
+    },
+    {
+      "id": "item_liquid_xiranite_enr",
+      "name": "Xiranite Nặng Hóa Lỏng",
+      "phase": "liquid",
+      "icon": "item_liquid_xiranite_enr",
+      "nameVi": "Xiranite Nặng Hóa Lỏng",
+      "nameEn": "Liquid Heavy Xiranite"
+    },
+    {
+      "id": "item_liquid_xiranite_lowpoly",
+      "name": "Xircon Trơ Thải",
+      "phase": "liquid",
+      "icon": "item_liquid_xiranite_lowpoly",
+      "nameVi": "Xircon Trơ Thải",
+      "nameEn": "Inert Xircon Effluent"
+    },
+    {
+      "id": "item_liquid_xiranite_poly",
+      "name": "Xircon Thải",
+      "phase": "liquid",
+      "icon": "item_liquid_xiranite_poly",
+      "nameVi": "Xircon Thải",
+      "nameEn": "Xircon Effluent"
+    },
+    {
+      "id": "item_muck_feces_1",
+      "name": "Phân Đà Thú",
+      "phase": "solid",
+      "icon": "item_muck_feces_1",
+      "nameVi": "Phân Đà Thú",
+      "nameEn": "Burdo-Muck"
+    },
+    {
+      "id": "item_muck_xiranite_1",
+      "name": "Giàu Dinh Dưỡng",
+      "phase": "solid",
+      "icon": "item_muck_xiranite_1",
+      "nameVi": "Giàu Dinh Dưỡng",
+      "nameEn": "Bumper-Rich"
+    },
+    {
+      "id": "item_originium_enr_powder",
+      "name": "Bột Originium đặc",
+      "phase": "solid",
+      "icon": "item_originium_enr_powder",
+      "nameVi": "Bột Originium đặc",
+      "nameEn": "Dense Originium Powder"
+    },
+    {
+      "id": "item_originium_ore",
+      "name": "Quặng Originium",
+      "phase": "solid",
+      "icon": "item_originium_ore",
+      "fuel": {
+        "power": 50,
+        "seconds": 8
+      },
+      "nameVi": "Quặng Originium",
+      "nameEn": "Originium Ore"
+    },
+    {
+      "id": "item_originium_powder",
+      "name": "Bột Originium",
+      "phase": "solid",
+      "icon": "item_originium_powder",
+      "nameVi": "Bột Originium",
+      "nameEn": "Originium Powder"
+    },
+    {
+      "id": "item_plant_bbflower_1",
+      "name": "Diêm Thảo",
+      "phase": "solid",
+      "icon": "item_plant_bbflower_1",
+      "nameVi": "Diêm Thảo",
+      "nameEn": "Aketine"
+    },
+    {
+      "id": "item_plant_bbflower_powder_1",
+      "name": "Bột Diêm Thảo",
+      "phase": "solid",
+      "icon": "item_plant_bbflower_powder_1",
+      "nameVi": "Bột Diêm Thảo",
+      "nameEn": "Aketine Powder"
+    },
+    {
+      "id": "item_plant_bbflower_seed_1",
+      "name": "Hạt Diêm Thảo",
+      "phase": "solid",
+      "icon": "item_plant_bbflower_seed_1",
+      "nameVi": "Hạt Diêm Thảo",
+      "nameEn": "Aketine Seed"
+    },
+    {
+      "id": "item_plant_grass_1",
+      "name": "Cỏ Sao Lụa",
+      "phase": "solid",
+      "icon": "item_plant_grass_1",
+      "nameVi": "Cỏ Sao Lụa",
+      "nameEn": "Jincao"
+    },
+    {
+      "id": "item_plant_grass_2",
+      "name": "Mầm Lá Kim",
+      "phase": "solid",
+      "icon": "item_plant_grass_2",
+      "nameVi": "Mầm Lá Kim",
+      "nameEn": "Yazhen"
+    },
+    {
+      "id": "item_plant_grass_powder_1",
+      "name": "Bột Cỏ Sao Lụa",
+      "phase": "solid",
+      "icon": "item_plant_grass_powder_1",
+      "nameVi": "Bột Cỏ Sao Lụa",
+      "nameEn": "Jincao Powder"
+    },
+    {
+      "id": "item_plant_grass_powder_2",
+      "name": "Bột Mầm Lá Kim",
+      "phase": "solid",
+      "icon": "item_plant_grass_powder_2",
+      "nameVi": "Bột Mầm Lá Kim",
+      "nameEn": "Yazhen Powder"
+    },
+    {
+      "id": "item_plant_grass_seed_1",
+      "name": "Hạt Cỏ Sao Lụa",
+      "phase": "solid",
+      "icon": "item_plant_grass_seed_1",
+      "nameVi": "Hạt Cỏ Sao Lụa",
+      "nameEn": "Jincao Seed"
+    },
+    {
+      "id": "item_plant_grass_seed_2",
+      "name": "Hạt Mầm Lá Kim",
+      "phase": "solid",
+      "icon": "item_plant_grass_seed_2",
+      "nameVi": "Hạt Mầm Lá Kim",
+      "nameEn": "Yazhen Seeds"
+    },
+    {
+      "id": "item_plant_moss_1",
+      "name": "Hoa Kiều Mạch",
+      "phase": "solid",
+      "icon": "item_plant_moss_1",
+      "nameVi": "Hoa Kiều Mạch",
+      "nameEn": "Buckflower"
+    },
+    {
+      "id": "item_plant_moss_2",
+      "name": "Cam",
+      "phase": "solid",
+      "icon": "item_plant_moss_2",
+      "nameVi": "Cam",
+      "nameEn": "Citrome"
+    },
+    {
+      "id": "item_plant_moss_3",
+      "name": "Lá Cát",
+      "phase": "solid",
+      "icon": "item_plant_moss_3",
+      "nameVi": "Lá Cát",
+      "nameEn": "Sandleaf"
+    },
+    {
+      "id": "item_plant_moss_enr_powder_1",
+      "name": "Bột Hoa Kiều Mạch Nghiền",
+      "phase": "solid",
+      "icon": "item_plant_moss_enr_powder_1",
+      "nameVi": "Bột Hoa Kiều Mạch Nghiền",
+      "nameEn": "Ground Buckflower Powder"
+    },
+    {
+      "id": "item_plant_moss_enr_powder_2",
+      "name": "Bột Cam Nghiền",
+      "phase": "solid",
+      "icon": "item_plant_moss_enr_powder_2",
+      "nameVi": "Bột Cam Nghiền",
+      "nameEn": "Ground Citrome Powder"
+    },
+    {
+      "id": "item_plant_moss_powder_1",
+      "name": "Bột Hoa Kiều Mạch",
+      "phase": "solid",
+      "icon": "item_plant_moss_powder_1",
+      "nameVi": "Bột Hoa Kiều Mạch",
+      "nameEn": "Buckflower Powder"
+    },
+    {
+      "id": "item_plant_moss_powder_2",
+      "name": "Bột Cam",
+      "phase": "solid",
+      "icon": "item_plant_moss_powder_2",
+      "nameVi": "Bột Cam",
+      "nameEn": "Citrome Powder"
+    },
+    {
+      "id": "item_plant_moss_powder_3",
+      "name": "Bột Lá Cát",
+      "phase": "solid",
+      "icon": "item_plant_moss_powder_3",
+      "nameVi": "Bột Lá Cát",
+      "nameEn": "Sandleaf Powder"
+    },
+    {
+      "id": "item_plant_moss_seed_1",
+      "name": "Hạt Hoa Kiều Mạch",
+      "phase": "solid",
+      "icon": "item_plant_moss_seed_1",
+      "nameVi": "Hạt Hoa Kiều Mạch",
+      "nameEn": "Buckflower Seed"
+    },
+    {
+      "id": "item_plant_moss_seed_2",
+      "name": "Hạt Cam",
+      "phase": "solid",
+      "icon": "item_plant_moss_seed_2",
+      "nameVi": "Hạt Cam",
+      "nameEn": "Citrome Seed"
+    },
+    {
+      "id": "item_plant_moss_seed_3",
+      "name": "Hạt Lá Cát",
+      "phase": "solid",
+      "icon": "item_plant_moss_seed_3",
+      "nameVi": "Hạt Lá Cát",
+      "nameEn": "Sandleaf Seed"
+    },
+    {
+      "id": "item_plant_sp_1",
+      "name": "Plant Sp 1",
+      "phase": "solid",
+      "icon": "item_plant_sp_1"
+    },
+    {
+      "id": "item_plant_sp_2",
+      "name": "Plant Sp 2",
+      "phase": "solid",
+      "icon": "item_plant_sp_2"
+    },
+    {
+      "id": "item_plant_sp_3",
+      "name": "Plant Sp 3",
+      "phase": "solid",
+      "icon": "item_plant_sp_3"
+    },
+    {
+      "id": "item_plant_sp_4",
+      "name": "Plant Sp 4",
+      "phase": "solid",
+      "icon": "item_plant_sp_4"
+    },
+    {
+      "id": "item_plant_sp_seed_1",
+      "name": "Plant Sp Seed 1",
+      "phase": "solid",
+      "icon": "item_plant_sp_seed_1"
+    },
+    {
+      "id": "item_plant_sp_seed_2",
+      "name": "Plant Sp Seed 2",
+      "phase": "solid",
+      "icon": "item_plant_sp_seed_2"
+    },
+    {
+      "id": "item_plant_sp_seed_3",
+      "name": "Plant Sp Seed 3",
+      "phase": "solid",
+      "icon": "item_plant_sp_seed_3"
+    },
+    {
+      "id": "item_plant_sp_seed_4",
+      "name": "Plant Sp Seed 4",
+      "phase": "solid",
+      "icon": "item_plant_sp_seed_4"
+    },
+    {
+      "id": "item_plant_tundra_wood",
+      "name": "Plant Tundra Wood",
+      "phase": "solid",
+      "icon": "item_plant_tundra_wood"
+    },
+    {
+      "id": "item_proc_battery_1",
+      "name": "Pin Thung Lũng Dung Lượng Thấp",
+      "phase": "solid",
+      "icon": "item_proc_battery_1",
+      "fuel": {
+        "power": 220,
+        "seconds": 40
+      },
+      "nameVi": "Pin Thung Lũng Dung Lượng Thấp",
+      "nameEn": "LC Valley Battery"
+    },
+    {
+      "id": "item_proc_battery_2",
+      "name": "Pin Thung Lũng Dung Lượng Tiêu Chuẩn",
+      "phase": "solid",
+      "icon": "item_proc_battery_2",
+      "fuel": {
+        "power": 420,
+        "seconds": 40
+      },
+      "nameVi": "Pin Thung Lũng Dung Lượng Tiêu Chuẩn",
+      "nameEn": "SC Valley Battery"
+    },
+    {
+      "id": "item_proc_battery_3",
+      "name": "Pin Thung Lũng Dung Lượng Cao",
+      "phase": "solid",
+      "icon": "item_proc_battery_3",
+      "fuel": {
+        "power": 1100,
+        "seconds": 40
+      },
+      "nameVi": "Pin Thung Lũng Dung Lượng Cao",
+      "nameEn": "HC Valley Battery"
+    },
+    {
+      "id": "item_proc_battery_4",
+      "name": "Pin Võ Lăng Dung Lượng Thấp",
+      "phase": "solid",
+      "icon": "item_proc_battery_4",
+      "fuel": {
+        "power": 1600,
+        "seconds": 40
+      },
+      "nameVi": "Pin Võ Lăng Dung Lượng Thấp",
+      "nameEn": "LC Wuling Battery"
+    },
+    {
+      "id": "item_proc_battery_5",
+      "name": "Pin Võ Lăng Dung Lượng Tiêu Chuẩn",
+      "phase": "solid",
+      "icon": "item_proc_battery_5",
+      "fuel": {
+        "power": 3200,
+        "seconds": 40
+      },
+      "nameVi": "Pin Võ Lăng Dung Lượng Tiêu Chuẩn",
+      "nameEn": "SC Wuling Battery"
+    },
+    {
+      "id": "item_proc_bomb_1",
+      "name": "Thuốc Nổ Công Nghiệp",
+      "phase": "solid",
+      "icon": "item_proc_bomb_1",
+      "nameVi": "Thuốc Nổ Công Nghiệp",
+      "nameEn": "Industrial Explosive"
+    },
+    {
+      "id": "item_quartz_enr",
+      "name": "Sợi Cryston",
+      "phase": "solid",
+      "icon": "item_quartz_enr",
+      "nameVi": "Sợi Cryston",
+      "nameEn": "Cryston Fiber"
+    },
+    {
+      "id": "item_quartz_enr_powder",
+      "name": "Bột Cryston",
+      "phase": "solid",
+      "icon": "item_quartz_enr_powder",
+      "nameVi": "Bột Cryston",
+      "nameEn": "Cryston Powder"
+    },
+    {
+      "id": "item_quartz_glass",
+      "name": "Sợi Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_quartz_glass",
+      "nameVi": "Sợi Thạch Anh Tím",
+      "nameEn": "Amethyst Fiber"
+    },
+    {
+      "id": "item_quartz_powder",
+      "name": "Bột Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_quartz_powder",
+      "nameVi": "Bột Thạch Anh Tím",
+      "nameEn": "Amethyst Powder"
+    },
+    {
+      "id": "item_quartz_sand",
+      "name": "Quặng Thạch Anh Tím",
+      "phase": "solid",
+      "icon": "item_quartz_sand",
+      "nameVi": "Quặng Thạch Anh Tím",
+      "nameEn": "Amethyst Ore"
+    },
+    {
+      "id": "item_xiranite_enr_powder",
+      "name": "Xiranite Nặng",
+      "phase": "solid",
+      "icon": "item_xiranite_enr_powder",
+      "nameVi": "Xiranite Nặng",
+      "nameEn": "Heavy Xiranite"
+    },
+    {
+      "id": "item_xiranite_poly",
+      "name": "Xircon",
+      "phase": "solid",
+      "icon": "item_xiranite_poly",
+      "nameVi": "Xircon",
+      "nameEn": "Xircon"
+    },
+    {
+      "id": "item_xiranite_powder",
+      "name": "Xiranite",
+      "phase": "solid",
+      "icon": "item_xiranite_powder",
+      "nameVi": "Xiranite",
+      "nameEn": "Xiranite"
+    }
+  ]
+}

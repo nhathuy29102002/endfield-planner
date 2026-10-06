@@ -1,0 +1,2960 @@
+{
+ "format": "efp-library",
+ "version": 1,
+ "blueprints": [
+  {
+   "id": "bp-mum2rva7-ns8d3",
+   "name": "Full wlsc map",
+   "icon": "item_proc_battery_5",
+   "kind": "map",
+   "created": 1790649995551,
+   "preview": "data:image/jpeg;base64,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",
+   "map": {
+    "blueprint": {
+     "version": 2,
+     "name": "Bản vẽ mẫu — tổng tuyến kho hàng, môi trường xúc tác, ống ngầm, trạm điện",
+     "area": {
+      "w": 70,
+      "d": 70
+     },
+     "machines": [
+      {
+       "uid": 1,
+       "machineId": "power_diffuser_1",
+       "x": 42,
+       "z": 35,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 2,
+       "machineId": "power_diffuser_1",
+       "x": 4,
+       "z": 26,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 3,
+       "machineId": "log_hongs_bus",
+       "x": 36,
+       "z": 47,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 4,
+       "machineId": "log_hongs_bus_source",
+       "x": 44,
+       "z": 47,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 5,
+       "machineId": "log_hongs_bus",
+       "x": 36,
+       "z": 26,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 6,
+       "machineId": "unloader_1",
+       "x": 37,
+       "z": 46,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_plant_moss_enr_powder_1"
+      },
+      {
+       "uid": 7,
+       "machineId": "furnance_1",
+       "x": 37,
+       "z": 40,
+       "rot": 0,
+       "recipeId": "furnance_carbon_enr_powder_1",
+       "binding": {
+        "in0": "item_plant_moss_enr_powder_1",
+        "in1": null,
+        "in2": null,
+        "in3": null,
+        "out0": "item_carbon_enr_powder",
+        "out1": "item_carbon_enr_powder",
+        "out2": "item_carbon_enr_powder",
+        "out3": null
+       },
+       "count": 1,
+       "mode": "A"
+      },
+      {
+       "uid": 8,
+       "machineId": "furnance_1",
+       "x": 37,
+       "z": 34,
+       "rot": 0,
+       "recipeId": "furnance_carbon_enr_1",
+       "binding": {
+        "in0": "item_carbon_enr_powder",
+        "in1": null,
+        "in2": null,
+        "in3": null,
+        "out0": "item_carbon_enr",
+        "out1": "item_carbon_enr",
+        "out2": "item_carbon_enr",
+        "out3": null
+       },
+       "count": 1,
+       "mode": "A"
+      },
+      {
+       "uid": 9,
+       "machineId": "loader_1",
+       "x": 37,
+       "z": 30,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": null
+      },
+      {
+       "uid": 13,
+       "machineId": "vaporizer_1",
+       "x": 14,
+       "z": 24,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 14,
+       "machineId": "udpipe_unloader_1",
+       "x": 22,
+       "z": 24,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "pairTarget": null,
+       "infinite": true,
+       "source": {
+        "itemId": "item_gas_inert",
+        "perMinute": 0
+       }
+      },
+      {
+       "uid": 16,
+       "machineId": "liquid_purifier_1",
+       "x": 9,
+       "z": 19,
+       "rot": 0,
+       "recipeId": "liquid_purifier_gas_xiranite_enr_2",
+       "binding": {
+        "in3": "item_filter_core",
+        "in4": null,
+        "in5": null,
+        "in6": null,
+        "in7": null,
+        "in0": "item_gas_xiranite",
+        "in1": null,
+        "in2": null,
+        "out0": "item_gas_xiranite_enr",
+        "out1": "item_gas_xiranite_enr"
+       },
+       "count": 1,
+       "mode": "B"
+      },
+      {
+       "uid": 17,
+       "machineId": "udpipe_unloader_1",
+       "x": 16,
+       "z": 14,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "pairTarget": null,
+       "infinite": true,
+       "source": {
+        "itemId": "item_gas_xiranite",
+        "perMinute": 0
+       }
+      },
+      {
+       "uid": 19,
+       "machineId": "log_hongs_bus",
+       "x": 10,
+       "z": 27,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 20,
+       "machineId": "unloader_1",
+       "x": 11,
+       "z": 26,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_filter_core"
+      },
+      {
+       "uid": 22,
+       "machineId": "gas_storager_1",
+       "x": 3,
+       "z": 18,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 24,
+       "machineId": "log_hongs_bus",
+       "x": 47,
+       "z": 41,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 25,
+       "machineId": "log_hongs_bus",
+       "x": 47,
+       "z": 30,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 26,
+       "machineId": "unloader_1",
+       "x": 48,
+       "z": 40,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_iron_powder"
+      },
+      {
+       "uid": 27,
+       "machineId": "loader_1",
+       "x": 48,
+       "z": 34,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": null
+      },
+      {
+       "uid": 29,
+       "machineId": "udpipe_unloader_1",
+       "x": 14,
+       "z": 6,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "pairTarget": null,
+       "infinite": true,
+       "source": {
+        "itemId": "item_gas_water",
+        "perMinute": 0
+       }
+      },
+      {
+       "uid": 30,
+       "machineId": "udpipe_loader_1",
+       "x": 8,
+       "z": 6,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "pairTarget": 32
+      },
+      {
+       "uid": 32,
+       "machineId": "udpipe_unloader_1",
+       "x": 46,
+       "z": 6,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "pairTarget": 30
+      },
+      {
+       "uid": 33,
+       "machineId": "gas_storager_1",
+       "x": 40,
+       "z": 6,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 35,
+       "machineId": "log_hongs_bus",
+       "x": 55,
+       "z": 27,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 36,
+       "machineId": "unloader_1",
+       "x": 56,
+       "z": 26,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_proc_battery_1"
+      },
+      {
+       "uid": 37,
+       "machineId": "power_station_1",
+       "x": 57,
+       "z": 22,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 39,
+       "machineId": "log_hongs_bus",
+       "x": 0,
+       "z": 66,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 40,
+       "machineId": "log_hongs_bus_source",
+       "x": 8,
+       "z": 66,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 41,
+       "machineId": "log_hongs_bus",
+       "x": 12,
+       "z": 66,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 42,
+       "machineId": "log_hongs_bus_source",
+       "x": 20,
+       "z": 66,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 43,
+       "machineId": "unloader_1",
+       "x": 6,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_xiranite_powder"
+      },
+      {
+       "uid": 44,
+       "machineId": "unloader_1",
+       "x": 9,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_xiranite_powder"
+      },
+      {
+       "uid": 45,
+       "machineId": "unloader_1",
+       "x": 12,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_copper_ore"
+      },
+      {
+       "uid": 46,
+       "machineId": "mix_pool_2",
+       "x": 6,
+       "z": 59,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {
+        "out0": "item_xiranite_powder",
+        "out1": "item_xiranite_powder",
+        "out2": "item_xiranite_powder",
+        "out3": "item_xiranite_powder",
+        "out5": "item_liquid_xiranite_lowpoly",
+        "out4": "item_liquid_xiranite_poly"
+       },
+       "count": 1,
+       "mode": "A"
+      },
+      {
+       "uid": 47,
+       "machineId": "mix_pool_2",
+       "x": 6,
+       "z": 53,
+       "rot": 0,
+       "recipeId": "pool_liquid_xiranite_poly_2",
+       "binding": {
+        "out0": "item_xiranite_poly",
+        "out1": "item_xiranite_poly",
+        "out2": "item_xiranite_poly",
+        "out3": "item_xiranite_poly",
+        "out5": "item_liquid_xiranite_lowpoly",
+        "out4": null,
+        "in0": "item_iron_powder",
+        "in1": "item_xiranite_powder",
+        "in2": null,
+        "in3": null,
+        "in4": "item_liquid_xiranite",
+        "in5": "item_liquid_sewage"
+       },
+       "count": 1,
+       "mode": "B",
+       "notedRecipes": [
+        "pool_xiranite_poly_2"
+       ]
+      },
+      {
+       "uid": 59,
+       "machineId": "furnance_1",
+       "x": 13,
+       "z": 61,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "mode": "B"
+      },
+      {
+       "uid": 63,
+       "machineId": "udpipe_unloader_1",
+       "x": 1,
+       "z": 61,
+       "rot": 180,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "pairTarget": null,
+       "source": {
+        "itemId": "item_liquid_water",
+        "perMinute": 0
+       },
+       "infinite": true
+      },
+      {
+       "uid": 70,
+       "machineId": "power_diffuser_1",
+       "x": 4,
+       "z": 54,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 72,
+       "machineId": "log_pipe_converger",
+       "x": 4,
+       "z": 59,
+       "rot": 270,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 77,
+       "machineId": "unloader_1",
+       "x": 15,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_iron_powder"
+      },
+      {
+       "uid": 78,
+       "machineId": "log_hongs_bus",
+       "x": 24,
+       "z": 66,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 79,
+       "machineId": "unloader_1",
+       "x": 18,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_originium_ore"
+      },
+      {
+       "uid": 80,
+       "machineId": "unloader_1",
+       "x": 21,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_originium_ore"
+      },
+      {
+       "uid": 81,
+       "machineId": "unloader_1",
+       "x": 24,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_originium_ore"
+      },
+      {
+       "uid": 82,
+       "machineId": "planter_1",
+       "x": 15,
+       "z": 43,
+       "rot": 180,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 83,
+       "machineId": "planter_1",
+       "x": 25,
+       "z": 43,
+       "rot": 180,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 84,
+       "machineId": "seedcollector_1",
+       "x": 20,
+       "z": 43,
+       "rot": 0,
+       "recipeId": "seedcollector_plant_moss_3_1",
+       "binding": {
+        "in0": "item_plant_moss_3",
+        "in1": null,
+        "in2": null,
+        "in3": null,
+        "in4": null,
+        "out0": "item_plant_moss_seed_3",
+        "out1": "item_plant_moss_seed_3",
+        "out2": "item_plant_moss_seed_3",
+        "out3": "item_plant_moss_seed_3",
+        "out4": "item_plant_moss_seed_3"
+       },
+       "count": 1
+      },
+      {
+       "uid": 91,
+       "machineId": "grinder_1",
+       "x": 23,
+       "z": 60,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 92,
+       "machineId": "grinder_1",
+       "x": 20,
+       "z": 60,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 100,
+       "machineId": "power_diffuser_1",
+       "x": 20,
+       "z": 63,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 101,
+       "machineId": "thickener_1",
+       "x": 18,
+       "z": 51,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 107,
+       "machineId": "grinder_1",
+       "x": 24,
+       "z": 52,
+       "rot": 180,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 112,
+       "machineId": "log_connector",
+       "x": 23,
+       "z": 55,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 117,
+       "machineId": "log_connector",
+       "x": 23,
+       "z": 56,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 122,
+       "machineId": "log_connector",
+       "x": 20,
+       "z": 55,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 125,
+       "machineId": "grinder_1",
+       "x": 14,
+       "z": 56,
+       "rot": 270,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 126,
+       "machineId": "thickener_1",
+       "x": 12,
+       "z": 50,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 131,
+       "machineId": "unloader_1",
+       "x": 3,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_originium_enr_powder"
+      },
+      {
+       "uid": 132,
+       "machineId": "unloader_1",
+       "x": 0,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_originium_enr_powder"
+      },
+      {
+       "uid": 139,
+       "machineId": "log_connector",
+       "x": 17,
+       "z": 55,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 141,
+       "machineId": "tools_assebling_mc_1",
+       "x": 8,
+       "z": 45,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 151,
+       "machineId": "power_diffuser_1",
+       "x": 20,
+       "z": 49,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 155,
+       "machineId": "power_diffuser_1",
+       "x": 5,
+       "z": 47,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 157,
+       "machineId": "log_connector",
+       "x": 9,
+       "z": 58,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 158,
+       "machineId": "log_connector",
+       "x": 5,
+       "z": 58,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 161,
+       "machineId": "log_connector",
+       "x": 2,
+       "z": 50,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 162,
+       "machineId": "power_station_1",
+       "x": 8,
+       "z": 42,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 164,
+       "machineId": "storager_1",
+       "x": 26,
+       "z": 49,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "mode": "A"
+      },
+      {
+       "uid": 171,
+       "machineId": "power_station_1",
+       "x": 59,
+       "z": 22,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 172,
+       "machineId": "unloader_1",
+       "x": 59,
+       "z": 26,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_proc_battery_1"
+      },
+      {
+       "uid": 181,
+       "machineId": "unloader_1",
+       "x": 27,
+       "z": 65,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1,
+       "depotItem": "item_originium_ore"
+      },
+      {
+       "uid": 182,
+       "machineId": "grinder_1",
+       "x": 27,
+       "z": 60,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 185,
+       "machineId": "log_connector",
+       "x": 23,
+       "z": 57,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 186,
+       "machineId": "log_connector",
+       "x": 20,
+       "z": 57,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 187,
+       "machineId": "log_pipe_splitter",
+       "x": 12,
+       "z": 64,
+       "rot": 90,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 190,
+       "machineId": "log_pipe_connector",
+       "x": 12,
+       "z": 62,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 191,
+       "machineId": "log_pipe_splitter",
+       "x": 12,
+       "z": 60,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 197,
+       "machineId": "power_diffuser_1",
+       "x": 26,
+       "z": 55,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 203,
+       "machineId": "log_connector",
+       "x": 16,
+       "z": 60,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 206,
+       "machineId": "log_connector",
+       "x": 19,
+       "z": 59,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 207,
+       "machineId": "log_connector",
+       "x": 20,
+       "z": 59,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 208,
+       "machineId": "log_connector",
+       "x": 23,
+       "z": 59,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 210,
+       "machineId": "log_connector",
+       "x": 27,
+       "z": 59,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 212,
+       "machineId": "power_station_1",
+       "x": 10,
+       "z": 42,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 213,
+       "machineId": "power_station_1",
+       "x": 12,
+       "z": 42,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 214,
+       "machineId": "power_station_1",
+       "x": 6,
+       "z": 44,
+       "rot": 270,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      },
+      {
+       "uid": 218,
+       "machineId": "dumper_1",
+       "x": 1,
+       "z": 58,
+       "rot": 0,
+       "recipeId": null,
+       "binding": {},
+       "count": 1
+      }
+     ],
+     "belts": [
+      {
+       "x": 21,
+       "z": 25,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 15
+      },
+      {
+       "x": 20,
+       "z": 25,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 15
+      },
+      {
+       "x": 19,
+       "z": 25,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 15
+      },
+      {
+       "x": 18,
+       "z": 25,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 15
+      },
+      {
+       "x": 17,
+       "z": 25,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 15
+      },
+      {
+       "x": 15,
+       "z": 15,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 18
+      },
+      {
+       "x": 14,
+       "z": 15,
+       "kind": "pipe",
+       "in": 3,
+       "out": 2,
+       "group": 18
+      },
+      {
+       "x": 14,
+       "z": 16,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 18
+      },
+      {
+       "x": 14,
+       "z": 17,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 18
+      },
+      {
+       "x": 14,
+       "z": 18,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 18
+      },
+      {
+       "x": 14,
+       "z": 19,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 18
+      },
+      {
+       "x": 14,
+       "z": 20,
+       "kind": "pipe",
+       "in": 2,
+       "out": 3,
+       "group": 18
+      },
+      {
+       "x": 12,
+       "z": 25,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 21
+      },
+      {
+       "x": 12,
+       "z": 24,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 21
+      },
+      {
+       "x": 13,
+       "z": 24,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 21
+      },
+      {
+       "x": 8,
+       "z": 20,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 23
+      },
+      {
+       "x": 7,
+       "z": 20,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 23
+      },
+      {
+       "x": 6,
+       "z": 20,
+       "kind": "pipe",
+       "in": 3,
+       "out": 0,
+       "group": 23
+      },
+      {
+       "x": 6,
+       "z": 19,
+       "kind": "pipe",
+       "in": 0,
+       "out": 3,
+       "group": 23
+      },
+      {
+       "x": 49,
+       "z": 39,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 28
+      },
+      {
+       "x": 49,
+       "z": 38,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 28
+      },
+      {
+       "x": 49,
+       "z": 37,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 28
+      },
+      {
+       "x": 49,
+       "z": 36,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 28
+      },
+      {
+       "x": 49,
+       "z": 35,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 28
+      },
+      {
+       "x": 13,
+       "z": 7,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 31
+      },
+      {
+       "x": 12,
+       "z": 7,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 31
+      },
+      {
+       "x": 11,
+       "z": 7,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 31
+      },
+      {
+       "x": 45,
+       "z": 7,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 34
+      },
+      {
+       "x": 44,
+       "z": 7,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 34
+      },
+      {
+       "x": 43,
+       "z": 7,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 34
+      },
+      {
+       "x": 57,
+       "z": 25,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 38
+      },
+      {
+       "x": 57,
+       "z": 24,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 38
+      },
+      {
+       "x": 10,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 54
+      },
+      {
+       "x": 7,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 55
+      },
+      {
+       "x": 5,
+       "z": 60,
+       "kind": "pipe",
+       "in": 3,
+       "out": 0,
+       "group": 57
+      },
+      {
+       "x": 5,
+       "z": 59,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 57
+      },
+      {
+       "x": 5,
+       "z": 58,
+       "kind": "pipe",
+       "in": 0,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 6,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 7,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 8,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 9,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 10,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 11,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 57
+      },
+      {
+       "x": 12,
+       "z": 58,
+       "kind": "pipe",
+       "in": 1,
+       "out": 0,
+       "group": 58
+      },
+      {
+       "x": 13,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 62
+      },
+      {
+       "x": 5,
+       "z": 56,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 74
+      },
+      {
+       "x": 4,
+       "z": 56,
+       "kind": "pipe",
+       "in": 3,
+       "out": 2,
+       "group": 74
+      },
+      {
+       "x": 4,
+       "z": 57,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 74
+      },
+      {
+       "x": 4,
+       "z": 58,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 74
+      },
+      {
+       "x": 6,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 76
+      },
+      {
+       "x": 7,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 76
+      },
+      {
+       "x": 8,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 76
+      },
+      {
+       "x": 9,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 76
+      },
+      {
+       "x": 10,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 76
+      },
+      {
+       "x": 11,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 76
+      },
+      {
+       "x": 22,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 96
+      },
+      {
+       "x": 22,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 96
+      },
+      {
+       "x": 23,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 102
+      },
+      {
+       "x": 22,
+       "z": 55,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 111
+      },
+      {
+       "x": 25,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 113
+      },
+      {
+       "x": 25,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 113
+      },
+      {
+       "x": 24,
+       "z": 55,
+       "kind": "belt",
+       "in": 2,
+       "out": 3,
+       "group": 115
+      },
+      {
+       "x": 25,
+       "z": 55,
+       "kind": "belt",
+       "in": 2,
+       "out": 2,
+       "group": 116
+      },
+      {
+       "x": 25,
+       "z": 56,
+       "kind": "belt",
+       "in": 2,
+       "out": 3,
+       "group": 116
+      },
+      {
+       "x": 24,
+       "z": 56,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 116
+      },
+      {
+       "x": 22,
+       "z": 56,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 116
+      },
+      {
+       "x": 20,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 118
+      },
+      {
+       "x": 21,
+       "z": 56,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 120
+      },
+      {
+       "x": 21,
+       "z": 55,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 121
+      },
+      {
+       "x": 20,
+       "z": 56,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 123
+      },
+      {
+       "x": 5,
+       "z": 62,
+       "kind": "pipe",
+       "in": 3,
+       "out": 0,
+       "group": 127
+      },
+      {
+       "x": 5,
+       "z": 61,
+       "kind": "pipe",
+       "in": 0,
+       "out": 3,
+       "group": 128
+      },
+      {
+       "x": 4,
+       "z": 61,
+       "kind": "pipe",
+       "in": 3,
+       "out": 0,
+       "group": 128
+      },
+      {
+       "x": 4,
+       "z": 60,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 128
+      },
+      {
+       "x": 4,
+       "z": 62,
+       "kind": "pipe",
+       "in": 1,
+       "out": 2,
+       "group": 129
+      },
+      {
+       "x": 4,
+       "z": 63,
+       "kind": "pipe",
+       "in": 2,
+       "out": 2,
+       "group": 130
+      },
+      {
+       "x": 4,
+       "z": 64,
+       "kind": "pipe",
+       "in": 2,
+       "out": 1,
+       "group": 130
+      },
+      {
+       "x": 5,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 130
+      },
+      {
+       "x": 1,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 64,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 62,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 61,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 60,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 59,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 57,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 56,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 55,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 54,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 0,
+       "z": 53,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 133
+      },
+      {
+       "x": 4,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 134
+      },
+      {
+       "x": 4,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 134
+      },
+      {
+       "x": 4,
+       "z": 62,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 134
+      },
+      {
+       "x": 4,
+       "z": 61,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 134
+      },
+      {
+       "x": 4,
+       "z": 60,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 134
+      },
+      {
+       "x": 5,
+       "z": 60,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 5,
+       "z": 59,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 5,
+       "z": 57,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 5,
+       "z": 56,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 135
+      },
+      {
+       "x": 4,
+       "z": 56,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 135
+      },
+      {
+       "x": 3,
+       "z": 56,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 3,
+       "z": 55,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 3,
+       "z": 54,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 3,
+       "z": 53,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 135
+      },
+      {
+       "x": 17,
+       "z": 54,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 136
+      },
+      {
+       "x": 19,
+       "z": 55,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 138
+      },
+      {
+       "x": 18,
+       "z": 55,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 138
+      },
+      {
+       "x": 16,
+       "z": 55,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 140
+      },
+      {
+       "x": 16,
+       "z": 54,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 140
+      },
+      {
+       "x": 19,
+       "z": 50,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 142
+      },
+      {
+       "x": 19,
+       "z": 49,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 142
+      },
+      {
+       "x": 18,
+       "z": 49,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 142
+      },
+      {
+       "x": 17,
+       "z": 49,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 142
+      },
+      {
+       "x": 16,
+       "z": 49,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 142
+      },
+      {
+       "x": 15,
+       "z": 49,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 142
+      },
+      {
+       "x": 14,
+       "z": 49,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 142
+      },
+      {
+       "x": 13,
+       "z": 49,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 143
+      },
+      {
+       "x": 12,
+       "z": 49,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 144
+      },
+      {
+       "x": 10,
+       "z": 52,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 145
+      },
+      {
+       "x": 10,
+       "z": 51,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 145
+      },
+      {
+       "x": 10,
+       "z": 50,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 145
+      },
+      {
+       "x": 10,
+       "z": 49,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 145
+      },
+      {
+       "x": 3,
+       "z": 52,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 146
+      },
+      {
+       "x": 3,
+       "z": 51,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 146
+      },
+      {
+       "x": 4,
+       "z": 51,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 146
+      },
+      {
+       "x": 5,
+       "z": 51,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 146
+      },
+      {
+       "x": 6,
+       "z": 51,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 146
+      },
+      {
+       "x": 7,
+       "z": 51,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 146
+      },
+      {
+       "x": 8,
+       "z": 51,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 146
+      },
+      {
+       "x": 9,
+       "z": 51,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 147
+      },
+      {
+       "x": 9,
+       "z": 50,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 147
+      },
+      {
+       "x": 9,
+       "z": 49,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 147
+      },
+      {
+       "x": 0,
+       "z": 52,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 148
+      },
+      {
+       "x": 0,
+       "z": 51,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 148
+      },
+      {
+       "x": 0,
+       "z": 50,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 1,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 3,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 4,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 5,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 6,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 7,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 149
+      },
+      {
+       "x": 8,
+       "z": 50,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 150
+      },
+      {
+       "x": 8,
+       "z": 49,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 150
+      },
+      {
+       "x": 19,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 152
+      },
+      {
+       "x": 19,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 152
+      },
+      {
+       "x": 19,
+       "z": 62,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 152
+      },
+      {
+       "x": 9,
+       "z": 44,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 163
+      },
+      {
+       "x": 38,
+       "z": 45,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 167
+      },
+      {
+       "x": 38,
+       "z": 44,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 167
+      },
+      {
+       "x": 38,
+       "z": 43,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 167
+      },
+      {
+       "x": 39,
+       "z": 43,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 167
+      },
+      {
+       "x": 39,
+       "z": 39,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 168
+      },
+      {
+       "x": 39,
+       "z": 38,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 168
+      },
+      {
+       "x": 39,
+       "z": 37,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 168
+      },
+      {
+       "x": 39,
+       "z": 33,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 169
+      },
+      {
+       "x": 39,
+       "z": 32,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 169
+      },
+      {
+       "x": 39,
+       "z": 31,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 169
+      },
+      {
+       "x": 38,
+       "z": 31,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 169
+      },
+      {
+       "x": 60,
+       "z": 25,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 173
+      },
+      {
+       "x": 60,
+       "z": 24,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 173
+      },
+      {
+       "x": 12,
+       "z": 57,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 174
+      },
+      {
+       "x": 12,
+       "z": 56,
+       "kind": "pipe",
+       "in": 0,
+       "out": 3,
+       "group": 174
+      },
+      {
+       "x": 24,
+       "z": 42,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 176
+      },
+      {
+       "x": 25,
+       "z": 42,
+       "kind": "belt",
+       "in": 1,
+       "out": 2,
+       "group": 176
+      },
+      {
+       "x": 20,
+       "z": 42,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 177
+      },
+      {
+       "x": 19,
+       "z": 42,
+       "kind": "belt",
+       "in": 3,
+       "out": 2,
+       "group": 177
+      },
+      {
+       "x": 19,
+       "z": 48,
+       "kind": "belt",
+       "in": 2,
+       "out": 1,
+       "group": 179
+      },
+      {
+       "x": 20,
+       "z": 48,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 179
+      },
+      {
+       "x": 25,
+       "z": 48,
+       "kind": "belt",
+       "in": 2,
+       "out": 2,
+       "group": 180
+      },
+      {
+       "x": 25,
+       "z": 49,
+       "kind": "belt",
+       "in": 2,
+       "out": 2,
+       "group": 180
+      },
+      {
+       "x": 25,
+       "z": 50,
+       "kind": "belt",
+       "in": 2,
+       "out": 2,
+       "group": 180
+      },
+      {
+       "x": 25,
+       "z": 51,
+       "kind": "belt",
+       "in": 2,
+       "out": 2,
+       "group": 180
+      },
+      {
+       "x": 28,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 183
+      },
+      {
+       "x": 28,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 183
+      },
+      {
+       "x": 27,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 184
+      },
+      {
+       "x": 27,
+       "z": 57,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 26,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 25,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 24,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 22,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 21,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 19,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 18,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 184
+      },
+      {
+       "x": 17,
+       "z": 57,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 184
+      },
+      {
+       "x": 17,
+       "z": 56,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 184
+      },
+      {
+       "x": 13,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 188
+      },
+      {
+       "x": 14,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 188
+      },
+      {
+       "x": 15,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 1,
+       "group": 188
+      },
+      {
+       "x": 16,
+       "z": 64,
+       "kind": "pipe",
+       "in": 1,
+       "out": 0,
+       "group": 188
+      },
+      {
+       "x": 16,
+       "z": 63,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 188
+      },
+      {
+       "x": 16,
+       "z": 62,
+       "kind": "pipe",
+       "in": 0,
+       "out": 3,
+       "group": 188
+      },
+      {
+       "x": 12,
+       "z": 63,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 189
+      },
+      {
+       "x": 12,
+       "z": 61,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 189
+      },
+      {
+       "x": 12,
+       "z": 59,
+       "kind": "pipe",
+       "in": 0,
+       "out": 1,
+       "group": 193
+      },
+      {
+       "x": 13,
+       "z": 59,
+       "kind": "pipe",
+       "in": 1,
+       "out": 0,
+       "group": 193
+      },
+      {
+       "x": 13,
+       "z": 58,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 193
+      },
+      {
+       "x": 13,
+       "z": 57,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 193
+      },
+      {
+       "x": 13,
+       "z": 56,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 193
+      },
+      {
+       "x": 13,
+       "z": 55,
+       "kind": "pipe",
+       "in": 0,
+       "out": 0,
+       "group": 193
+      },
+      {
+       "x": 13,
+       "z": 54,
+       "kind": "pipe",
+       "in": 0,
+       "out": 3,
+       "group": 193
+      },
+      {
+       "x": 12,
+       "z": 54,
+       "kind": "pipe",
+       "in": 3,
+       "out": 3,
+       "group": 193
+      },
+      {
+       "x": 16,
+       "z": 64,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 194
+      },
+      {
+       "x": 16,
+       "z": 63,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 194
+      },
+      {
+       "x": 16,
+       "z": 62,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 194
+      },
+      {
+       "x": 16,
+       "z": 61,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 194
+      },
+      {
+       "x": 16,
+       "z": 59,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 195
+      },
+      {
+       "x": 15,
+       "z": 59,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 195
+      },
+      {
+       "x": 14,
+       "z": 59,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 195
+      },
+      {
+       "x": 13,
+       "z": 59,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 195
+      },
+      {
+       "x": 12,
+       "z": 59,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 195
+      },
+      {
+       "x": 12,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 196
+      },
+      {
+       "x": 11,
+       "z": 58,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 196
+      },
+      {
+       "x": 10,
+       "z": 58,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 196
+      },
+      {
+       "x": 19,
+       "z": 61,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 199
+      },
+      {
+       "x": 19,
+       "z": 60,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 199
+      },
+      {
+       "x": 19,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 200
+      },
+      {
+       "x": 18,
+       "z": 58,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 200
+      },
+      {
+       "x": 17,
+       "z": 58,
+       "kind": "belt",
+       "in": 3,
+       "out": 3,
+       "group": 200
+      },
+      {
+       "x": 13,
+       "z": 56,
+       "kind": "belt",
+       "in": 3,
+       "out": 0,
+       "group": 201
+      },
+      {
+       "x": 13,
+       "z": 55,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 201
+      },
+      {
+       "x": 13,
+       "z": 54,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 201
+      },
+      {
+       "x": 15,
+       "z": 60,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 202
+      },
+      {
+       "x": 17,
+       "z": 60,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 202
+      },
+      {
+       "x": 18,
+       "z": 60,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 204
+      },
+      {
+       "x": 18,
+       "z": 59,
+       "kind": "belt",
+       "in": 0,
+       "out": 1,
+       "group": 205
+      },
+      {
+       "x": 21,
+       "z": 59,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 205
+      },
+      {
+       "x": 22,
+       "z": 59,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 205
+      },
+      {
+       "x": 24,
+       "z": 59,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 209
+      },
+      {
+       "x": 25,
+       "z": 59,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 209
+      },
+      {
+       "x": 26,
+       "z": 59,
+       "kind": "belt",
+       "in": 1,
+       "out": 1,
+       "group": 209
+      },
+      {
+       "x": 28,
+       "z": 59,
+       "kind": "belt",
+       "in": 1,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 58,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 57,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 56,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 55,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 54,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 53,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 28,
+       "z": 52,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 211
+      },
+      {
+       "x": 8,
+       "z": 44,
+       "kind": "belt",
+       "in": 0,
+       "out": 3,
+       "group": 215
+      },
+      {
+       "x": 10,
+       "z": 44,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 216
+      },
+      {
+       "x": 12,
+       "z": 44,
+       "kind": "belt",
+       "in": 0,
+       "out": 0,
+       "group": 217
+      }
+     ],
+     "nextUid": 219,
+     "enforcePower": false
+    },
+    "terrain": {}
+   }
+  }
+ ]
+}

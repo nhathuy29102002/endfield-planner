@@ -1,0 +1,11 @@
+{
+  "appId": "com.endfield.aicplanner",
+  "appName": "Endfield AIC Planner",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#12161c",
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}

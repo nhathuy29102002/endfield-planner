@@ -1,0 +1,51 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Endfield AIC Planner",
+  "mainBinaryName": "EndfieldAICPlanner",
+  "version": "0.1.0",
+  "identifier": "com.endfield.aicplanner",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5178",
+    "beforeDevCommand": "npm run dev -- --port 5178 --strictPort",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Endfield AIC Planner",
+        "width": 1600,
+        "height": 960,
+        "minWidth": 1100,
+        "minHeight": 680,
+        "center": true,
+        "maximized": true,
+        "resizable": true,
+        "fullscreen": false,
+        "zoomHotkeysEnabled": false,
+        "browserExtensionsEnabled": false,
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "shortDescription": "Trình quy hoạch nhà máy AIC cho Arknights: Endfield",
+    "windows": {
+      "webviewInstallMode": { "type": "embedBootstrapper" },
+      "nsis": { "installMode": "currentUser" }
+    }
+  }
+}

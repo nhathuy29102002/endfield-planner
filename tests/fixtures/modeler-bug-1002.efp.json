@@ -1,0 +1,795 @@
+{
+ "format": "efp-library",
+ "version": 1,
+ "blueprints": [
+  {
+   "id": "bp-muqb4jfg-u4gkj",
+   "name": "Bug",
+   "icon": null,
+   "kind": "modeler",
+   "created": 1790905888348,
+   "modeler": {
+    "version": 1,
+    "nodes": [
+     {
+      "id": "n-mumo4a50-4qta",
+      "x": 576,
+      "y": 629,
+      "limit": null,
+      "machineId": "furnance_1",
+      "recipeId": "furnance_carbon_material_6"
+     },
+     {
+      "id": "n-mumo4h6b-ieu3",
+      "x": 371,
+      "y": 453,
+      "limit": null,
+      "machineId": "seedcollector_1",
+      "recipeId": "seedcollector_plant_grass_2_1",
+      "sides": {
+       "out:item_plant_grass_seed_2": "left",
+       "in:item_plant_grass_2": "right"
+      }
+     },
+     {
+      "id": "n-mumo4m8f-jhjy",
+      "x": 373,
+      "y": 620,
+      "limit": null,
+      "machineId": "planter_1",
+      "recipeId": "planter_plant_grass_2_1"
+     },
+     {
+      "id": "n-mumo6a46-zh0u",
+      "x": 857,
+      "y": 826,
+      "limit": 2,
+      "machineId": "xiranite_oven_1",
+      "recipeId": "xiranite_oven_xiranite_powder_2"
+     },
+     {
+      "id": "n-mumo6n3j-w95k",
+      "x": 111,
+      "y": 1032,
+      "limit": null,
+      "machineId": "pump_2",
+      "recipeId": null,
+      "item": "item_liquid_water"
+     },
+     {
+      "id": "n-mump24i0-c0uu",
+      "x": 1265,
+      "y": 1267,
+      "limit": 1,
+      "machineId": "mix_pool_2",
+      "recipeId": "pool_liquid_liquid_xiranite_2",
+      "sides": {
+       "out:item_liquid_xiranite": "right",
+       "in:item_xiranite_powder": "left",
+       "out:item_xiranite_powder": "right"
+      },
+      "order": [
+       "in:item_xiranite_powder",
+       "in:item_liquid_water",
+       "in:item_liquid_sewage",
+       "out:item_liquid_xiranite_poly",
+       "out:item_xiranite_powder",
+       "out:item_liquid_xiranite_lowpoly",
+       "out:item_liquid_water",
+       "out:item_liquid_sewage",
+       "out:item_liquid_xiranite"
+      ],
+      "outs": {
+       "orange": "item_liquid_xiranite_lowpoly",
+       "black": "item_xiranite_powder",
+       "yellow": "item_liquid_xiranite_poly"
+      }
+     },
+     {
+      "id": "n-mump2kef-d5k4",
+      "x": 581,
+      "y": 2214,
+      "limit": 1,
+      "machineId": "furnance_1",
+      "recipeId": "furnance_copper_nugget_1",
+      "sides": {
+       "in:item_liquid_water": "top",
+       "out:item_copper_nugget": "right",
+       "out:item_liquid_sewage": "right"
+      },
+      "order": [
+       "in:item_copper_ore",
+       "in:item_liquid_water",
+       "out:item_liquid_sewage",
+       "out:item_copper_nugget"
+      ]
+     },
+     {
+      "id": "n-mump2ocj-emoh",
+      "x": 181,
+      "y": 2240,
+      "limit": null,
+      "machineId": "unloader_1",
+      "recipeId": null,
+      "item": "item_copper_ore"
+     },
+     {
+      "id": "n-mump9j3g-p4gk",
+      "machineId": "transmuter_2",
+      "recipeId": "liquid_transmuter_2_gas_gas_copper_1",
+      "x": 958,
+      "y": 2361,
+      "limit": null
+     },
+     {
+      "id": "n-mumrp5jq-j7uq",
+      "x": 793,
+      "y": 2875,
+      "limit": null,
+      "machineId": "udpipe_unloader_1",
+      "recipeId": null,
+      "item": "item_gas_xiranite"
+     },
+     {
+      "id": "n-mums13o3-bbjv",
+      "x": 1127,
+      "y": 617,
+      "limit": null,
+      "machineId": "vaporizer_1",
+      "recipeId": null,
+      "item": "item_gas_inert"
+     },
+     {
+      "id": "n-mums1l42-sihf",
+      "x": 895,
+      "y": 316,
+      "limit": null,
+      "machineId": "udpipe_unloader_1",
+      "recipeId": null,
+      "item": "item_gas_inert",
+      "sides": {
+       "out:item_gas_inert": "right"
+      },
+      "order": [
+       "out:item_gas_inert"
+      ]
+     },
+     {
+      "id": "n-mums38iw-6p5f",
+      "x": 1562,
+      "y": 1097,
+      "limit": null,
+      "machineId": "mix_pool_2",
+      "recipeId": null,
+      "sides": {
+       "in:item_liquid_water": "left",
+       "in:item_xiranite_powder": "left",
+       "in:item_iron_powder": "top",
+       "out:item_liquid_xiranite_lowpoly": "right",
+       "out:item_xiranite_poly": "right",
+       "in:item_liquid_xiranite_poly": "left"
+      },
+      "order": [
+       "in:item_liquid_water",
+       "in:item_liquid_xiranite_poly",
+       "in:item_xiranite_powder",
+       "out:item_liquid_xiranite_poly",
+       "out:item_liquid_water",
+       "out:item_xiranite_powder",
+       "out:item_liquid_xiranite",
+       "out:item_iron_powder",
+       "out:item_xiranite_poly",
+       "out:item_liquid_xiranite_lowpoly",
+       "out:item_liquid_sewage",
+       "in:item_iron_powder"
+      ]
+     },
+     {
+      "id": "n-mums3tvh-igrc",
+      "x": 1279,
+      "y": 820,
+      "limit": null,
+      "machineId": "pump_2",
+      "recipeId": null,
+      "item": "item_liquid_water"
+     },
+     {
+      "id": "n-mums4ixu-9rwm",
+      "machineId": "liquid_cleaner_1",
+      "recipeId": null,
+      "item": "item_liquid_xiranite_lowpoly",
+      "x": 1546,
+      "y": 1452,
+      "limit": null
+     },
+     {
+      "id": "n-mums5pyr-ltms",
+      "x": 1478,
+      "y": 742,
+      "limit": null,
+      "machineId": "unloader_1",
+      "recipeId": null,
+      "item": "item_iron_powder",
+      "sides": {
+       "out:item_iron_powder": "bottom"
+      },
+      "order": [
+       "out:item_iron_powder"
+      ]
+     },
+     {
+      "id": "n-mums6e3f-381x",
+      "machineId": "tools_assebling_mc_1",
+      "recipeId": "tools_proc_battery_5_1",
+      "x": 2065,
+      "y": 1418,
+      "limit": 1
+     },
+     {
+      "id": "n-mums6i1e-48pk",
+      "x": 1609,
+      "y": 1695,
+      "limit": null,
+      "machineId": "unloader_1",
+      "recipeId": null,
+      "item": "item_originium_enr_powder",
+      "order": [
+       "out:item_iron_powder"
+      ]
+     },
+     {
+      "id": "n-mums7day-te00",
+      "machineId": "liquid_cleaner_1",
+      "recipeId": null,
+      "item": "item_liquid_xiranite_lowpoly",
+      "x": 1694,
+      "y": 1445,
+      "limit": null,
+      "sides": {
+       "in:item_liquid_xiranite_lowpoly": "top"
+      },
+      "order": [
+       "in:item_liquid_xiranite_lowpoly"
+      ]
+     },
+     {
+      "id": "n-mums7wfy-3s0z",
+      "machineId": "storager_1",
+      "recipeId": null,
+      "item": "item_proc_battery_5",
+      "x": 2330,
+      "y": 1414,
+      "limit": null
+     },
+     {
+      "id": "n-mums97iq-fpf8",
+      "machineId": "gas_reactor_1",
+      "recipeId": "gas_reactor_activity_copper_poly_gas_1",
+      "x": 1183,
+      "y": 2484,
+      "limit": null,
+      "sides": {
+       "out:item_activity_copper_poly_gas": "bottom"
+      },
+      "order": [
+       "in:item_gas_copper",
+       "in:item_gas_xiranite",
+       "in:@env:Stable",
+       "out:item_activity_copper_poly_gas"
+      ]
+     },
+     {
+      "id": "n-mums9oa9-rz92",
+      "machineId": "transmuter_2",
+      "recipeId": "liquid_transmuter_2_activity_copper_poly_1",
+      "x": 1191,
+      "y": 2838,
+      "limit": 1,
+      "sides": {
+       "in:item_activity_copper_poly_gas": "top"
+      },
+      "order": [
+       "act:item_gas_xiranite",
+       "out:item_activity_copper_poly",
+       "in:item_activity_copper_poly_gas"
+      ]
+     },
+     {
+      "id": "n-muqaskh0-ip2n",
+      "x": 182,
+      "y": 2589,
+      "limit": null,
+      "machineId": "furnance_1",
+      "recipeId": "furnance_copper_nugget_1",
+      "sides": {
+       "in:item_liquid_water": "top",
+       "out:item_copper_nugget": "right",
+       "out:item_liquid_sewage": "right"
+      },
+      "order": [
+       "in:item_copper_ore",
+       "in:item_liquid_water",
+       "out:item_copper_nugget",
+       "out:item_liquid_sewage"
+      ]
+     },
+     {
+      "id": "n-muqaskh0-ht7x",
+      "x": -218,
+      "y": 2615,
+      "limit": null,
+      "machineId": "unloader_1",
+      "recipeId": null,
+      "item": "item_copper_ore"
+     },
+     {
+      "id": "n-muqat222-iiys",
+      "machineId": "transmuter_2",
+      "recipeId": "liquid_transmuter_2_gas_gas_copper_1",
+      "x": 582,
+      "y": 2579,
+      "limit": null,
+      "sides": {
+       "act:item_gas_xiranite": "bottom"
+      },
+      "order": [
+       "in:item_copper_nugget",
+       "out:item_gas_copper",
+       "act:item_gas_xiranite"
+      ]
+     },
+     {
+      "id": "n-muqav7kh-xnhu",
+      "machineId": "component_mc_1",
+      "recipeId": "component_activity_copper_poly_cmpt",
+      "x": 1531,
+      "y": 2863,
+      "limit": 1
+     },
+     {
+      "id": "n-muqawei6-zl4p",
+      "machineId": "liquid_storager_1",
+      "recipeId": null,
+      "item": "item_liquid_sewage",
+      "x": 469,
+      "y": 2970,
+      "limit": null
+     },
+     {
+      "id": "n-muqayrc8-j0s8",
+      "x": 411,
+      "y": 2417,
+      "limit": null,
+      "machineId": "unloader_1",
+      "recipeId": null,
+      "item": "item_copper_nugget"
+     }
+    ],
+    "edges": [
+     {
+      "id": "e-mumo4udv-oeh5",
+      "from": {
+       "node": "n-mumo4h6b-ieu3",
+       "item": "item_plant_grass_seed_2"
+      },
+      "to": {
+       "node": "n-mumo4m8f-jhjy",
+       "item": "item_plant_grass_seed_2"
+      },
+      "bend": {
+       "dx": -20.900883350055466,
+       "dy": 8.838165757271742
+      }
+     },
+     {
+      "id": "e-mumo506c-hw49",
+      "from": {
+       "node": "n-mumo4m8f-jhjy",
+       "item": "item_plant_grass_2"
+      },
+      "to": {
+       "node": "n-mumo4h6b-ieu3",
+       "item": "item_plant_grass_2"
+      }
+     },
+     {
+      "id": "e-mumo53ok-yi2v",
+      "from": {
+       "node": "n-mumo4m8f-jhjy",
+       "item": "item_plant_grass_2"
+      },
+      "to": {
+       "node": "n-mumo4a50-4qta",
+       "item": "item_plant_grass_2"
+      }
+     },
+     {
+      "id": "e-mumo6cz7-lc0j",
+      "from": {
+       "node": "n-mumo4a50-4qta",
+       "item": "item_carbon_mtl"
+      },
+      "to": {
+       "node": "n-mumo6a46-zh0u",
+       "item": "item_carbon_mtl"
+      }
+     },
+     {
+      "id": "e-mumo6qgz-64sv",
+      "from": {
+       "node": "n-mumo6n3j-w95k",
+       "item": "item_liquid_water"
+      },
+      "to": {
+       "node": "n-mumo4m8f-jhjy",
+       "item": "item_liquid_water"
+      }
+     },
+     {
+      "id": "e-mumo6rzr-zf83",
+      "from": {
+       "node": "n-mumo6n3j-w95k",
+       "item": "item_liquid_water"
+      },
+      "to": {
+       "node": "n-mumo6a46-zh0u",
+       "item": "item_liquid_water"
+      }
+     },
+     {
+      "id": "e-mump27gz-xmov",
+      "from": {
+       "node": "n-mumo6a46-zh0u",
+       "item": "item_xiranite_powder"
+      },
+      "to": {
+       "node": "n-mump24i0-c0uu",
+       "item": "item_xiranite_powder"
+      }
+     },
+     {
+      "id": "e-mump2br5-1hjt",
+      "from": {
+       "node": "n-mumo6n3j-w95k",
+       "item": "item_liquid_water"
+      },
+      "to": {
+       "node": "n-mump24i0-c0uu",
+       "item": "item_liquid_water"
+      }
+     },
+     {
+      "id": "e-mump3l61-3bvf",
+      "from": {
+       "node": "n-mump2ocj-emoh",
+       "item": "item_copper_ore"
+      },
+      "to": {
+       "node": "n-mump2kef-d5k4",
+       "item": "item_copper_ore"
+      }
+     },
+     {
+      "id": "e-mumpaa15-vd5d",
+      "from": {
+       "node": "n-mumo6n3j-w95k",
+       "item": "item_liquid_water"
+      },
+      "to": {
+       "node": "n-mump2kef-d5k4",
+       "item": "item_liquid_water"
+      }
+     },
+     {
+      "id": "e-mumqs0ff-km87",
+      "from": {
+       "node": "n-mump2kef-d5k4",
+       "item": "item_copper_nugget"
+      },
+      "to": {
+       "node": "n-mump9j3g-p4gk",
+       "item": "item_copper_nugget"
+      }
+     },
+     {
+      "id": "e-mumrpecp-l0c1",
+      "from": {
+       "node": "n-mumrp5jq-j7uq",
+       "item": "item_gas_xiranite"
+      },
+      "to": {
+       "node": "n-mump9j3g-p4gk",
+       "item": "item_gas_xiranite",
+       "slot": "act"
+      }
+     },
+     {
+      "id": "e-mums0b1w-osrl",
+      "from": {
+       "node": "n-mump2kef-d5k4",
+       "item": "item_liquid_sewage"
+      },
+      "to": {
+       "node": "n-mump24i0-c0uu",
+       "item": "item_liquid_sewage"
+      }
+     },
+     {
+      "id": "e-mums1uld-504o",
+      "from": {
+       "node": "n-mums1l42-sihf",
+       "item": "item_gas_inert"
+      },
+      "to": {
+       "node": "n-mums13o3-bbjv",
+       "item": "item_gas_inert",
+       "slot": "act"
+      }
+     },
+     {
+      "id": "e-mums297n-gt4x",
+      "from": {
+       "node": "n-mums13o3-bbjv",
+       "item": "@env:Stable"
+      },
+      "to": {
+       "node": "n-mumo6a46-zh0u",
+       "item": "@env:Stable"
+      }
+     },
+     {
+      "id": "e-mums40ps-3yop",
+      "from": {
+       "node": "n-mums3tvh-igrc",
+       "item": "item_liquid_water"
+      },
+      "to": {
+       "node": "n-mums38iw-6p5f",
+       "item": "item_liquid_water"
+      }
+     },
+     {
+      "id": "e-mums6079-uapg",
+      "from": {
+       "node": "n-mums5pyr-ltms",
+       "item": "item_iron_powder"
+      },
+      "to": {
+       "node": "n-mums38iw-6p5f",
+       "item": "item_iron_powder"
+      }
+     },
+     {
+      "id": "e-mums6e3f-4bcb",
+      "from": {
+       "node": "n-mums38iw-6p5f",
+       "item": "item_xiranite_poly"
+      },
+      "to": {
+       "node": "n-mums6e3f-381x",
+       "item": "item_xiranite_poly"
+      }
+     },
+     {
+      "id": "e-mums6q7c-8jns",
+      "from": {
+       "node": "n-mums6i1e-48pk",
+       "item": "item_originium_enr_powder"
+      },
+      "to": {
+       "node": "n-mums6e3f-381x",
+       "item": "item_originium_enr_powder"
+      }
+     },
+     {
+      "id": "e-mums7day-8z69",
+      "from": {
+       "node": "n-mums38iw-6p5f",
+       "item": "item_liquid_xiranite_lowpoly"
+      },
+      "to": {
+       "node": "n-mums7day-te00",
+       "item": "item_liquid_xiranite_lowpoly"
+      }
+     },
+     {
+      "id": "e-mums7wfy-fnhl",
+      "from": {
+       "node": "n-mums6e3f-381x",
+       "item": "item_proc_battery_5"
+      },
+      "to": {
+       "node": "n-mums7wfy-3s0z",
+       "item": "item_proc_battery_5"
+      }
+     },
+     {
+      "id": "e-mums97iq-e4v1",
+      "from": {
+       "node": "n-mump9j3g-p4gk",
+       "item": "item_gas_copper"
+      },
+      "to": {
+       "node": "n-mums97iq-fpf8",
+       "item": "item_gas_copper"
+      }
+     },
+     {
+      "id": "e-mums9e7a-a2vq",
+      "from": {
+       "node": "n-mums13o3-bbjv",
+       "item": "@env:Stable"
+      },
+      "to": {
+       "node": "n-mums97iq-fpf8",
+       "item": "@env:Stable"
+      }
+     },
+     {
+      "id": "e-mums9vnr-lp9u",
+      "from": {
+       "node": "n-mumrp5jq-j7uq",
+       "item": "item_gas_xiranite"
+      },
+      "to": {
+       "node": "n-mums9oa9-rz92",
+       "item": "item_gas_xiranite",
+       "slot": "act"
+      }
+     },
+     {
+      "id": "e-mumu7rsw-ckw0",
+      "from": {
+       "node": "n-mump24i0-c0uu",
+       "item": "item_liquid_xiranite_poly"
+      },
+      "to": {
+       "node": "n-mums38iw-6p5f",
+       "item": "item_liquid_xiranite_poly"
+      }
+     },
+     {
+      "id": "e-mumu7t9g-fuu3",
+      "from": {
+       "node": "n-mump24i0-c0uu",
+       "item": "item_liquid_xiranite_lowpoly"
+      },
+      "to": {
+       "node": "n-mums4ixu-9rwm",
+       "item": "item_liquid_xiranite_lowpoly"
+      }
+     },
+     {
+      "id": "e-mumvyuwp-fisx",
+      "from": {
+       "node": "n-mump24i0-c0uu",
+       "item": "item_xiranite_powder"
+      },
+      "to": {
+       "node": "n-mums38iw-6p5f",
+       "item": "item_xiranite_powder"
+      }
+     },
+     {
+      "id": "e-munlvz3l-5dbn",
+      "from": {
+       "node": "n-mums97iq-fpf8",
+       "item": "item_activity_copper_poly_gas"
+      },
+      "to": {
+       "node": "n-mums9oa9-rz92",
+       "item": "item_activity_copper_poly_gas"
+      }
+     },
+     {
+      "id": "e-muqaskh0-31qb",
+      "from": {
+       "node": "n-muqaskh0-ht7x",
+       "item": "item_copper_ore"
+      },
+      "to": {
+       "node": "n-muqaskh0-ip2n",
+       "item": "item_copper_ore"
+      }
+     },
+     {
+      "id": "e-muqat222-iro4",
+      "from": {
+       "node": "n-muqaskh0-ip2n",
+       "item": "item_copper_nugget"
+      },
+      "to": {
+       "node": "n-muqat222-iiys",
+       "item": "item_copper_nugget"
+      }
+     },
+     {
+      "id": "e-muqau4hl-ax36",
+      "from": {
+       "node": "n-muqat222-iiys",
+       "item": "item_gas_copper"
+      },
+      "to": {
+       "node": "n-mums97iq-fpf8",
+       "item": "item_gas_copper"
+      }
+     },
+     {
+      "id": "e-muqaulj3-okin",
+      "from": {
+       "node": "n-mumrp5jq-j7uq",
+       "item": "item_gas_xiranite"
+      },
+      "to": {
+       "node": "n-muqat222-iiys",
+       "item": "item_gas_xiranite",
+       "slot": "act"
+      },
+      "limit": 6
+     },
+     {
+      "id": "e-muqav7kh-eddy",
+      "from": {
+       "node": "n-mums9oa9-rz92",
+       "item": "item_activity_copper_poly"
+      },
+      "to": {
+       "node": "n-muqav7kh-xnhu",
+       "item": "item_activity_copper_poly"
+      }
+     },
+     {
+      "id": "e-muqavv4s-1y81",
+      "from": {
+       "node": "n-mumo6n3j-w95k",
+       "item": "item_liquid_water"
+      },
+      "to": {
+       "node": "n-muqaskh0-ip2n",
+       "item": "item_liquid_water"
+      },
+      "points": [
+       {
+        "x": 383,
+        "y": 1631
+       }
+      ]
+     },
+     {
+      "id": "e-muqawei6-qlt2",
+      "from": {
+       "node": "n-muqaskh0-ip2n",
+       "item": "item_liquid_sewage"
+      },
+      "to": {
+       "node": "n-muqawei6-zl4p",
+       "item": "item_liquid_sewage"
+      }
+     },
+     {
+      "id": "e-muqawpoq-gn9b",
+      "from": {
+       "node": "n-mumrp5jq-j7uq",
+       "item": "item_gas_xiranite"
+      },
+      "to": {
+       "node": "n-mums97iq-fpf8",
+       "item": "item_gas_xiranite"
+      }
+     },
+     {
+      "id": "e-muqb2uy4-16nj",
+      "from": {
+       "node": "n-muqayrc8-j0s8",
+       "item": "item_copper_nugget"
+      },
+      "to": {
+       "node": "n-muqat222-iiys",
+       "item": "item_copper_nugget"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

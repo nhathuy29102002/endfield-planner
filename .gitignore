@@ -1,0 +1,29 @@
+node_modules
+dist
+*.local
+
+# ghi chép làm việc / kế hoạch — KHÔNG đưa lên GitHub công khai (người dùng 2026-10-06: "không đưa md lên")
+*.md
+# …trừ README công khai (trang giới thiệu repo); README_DEV.md = ghi chú kỹ thuật cũ, chỉ để trên máy
+!README.md
+
+# nhạc game — không đưa lên (người dùng 2026-10-06: người dùng tự chọn file MP3 trong Cài đặt)
+public/audio/
+
+# bản build, file sinh lại được
+apk/
+src-tauri/target/
+src-tauri/gen/
+android/.gradle/
+android/build/
+android/app/build/
+android/app/src/main/assets/public/
+android/local.properties
+
+# khoá ký app (bản release) — tuyệt đối không đưa lên
+*.jks
+*.keystore
+*.p12
+
+# cấu hình riêng của Claude Code trên máy này
+.claude/

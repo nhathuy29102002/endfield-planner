@@ -1,0 +1,11 @@
+Endfield AIC Planner — fan-made tool, not affiliated with or endorsed by Hypergryph / Gryphline.
+
+The source code of this project is released under the MIT License (see LICENSE).
+
+The MIT License does NOT cover the game assets used by the app. All game names, item / machine icons and
+artwork, in-game screenshots (ground texture, logistics devices in public/img/sprites2d and tools/ground-src),
+game data (recipes, machines, items) and game music are the property of Hypergryph / Gryphline and their
+respective owners. They are used for a free, non-commercial fan tool only. Item images and descriptions taken
+from endfield.wiki.gg follow that wiki's licence (credit: endfield.wiki.gg contributors).
+
+If you are a rights holder and want something removed, please open an issue on the repository.

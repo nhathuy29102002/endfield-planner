@@ -1,0 +1,1095 @@
+{
+ "format": "efp-library",
+ "version": 1,
+ "blueprints": [
+  {
+   "id": "bp-muqc8cv7-sia4m",
+   "name": "Pyrrolite",
+   "icon": "item_equip_script_4_3",
+   "kind": "module",
+   "created": 1790907746083,
+   "module": {
+    "machines": [
+     {
+      "uid": 238,
+      "machineId": "transmuter_2",
+      "x": 6,
+      "z": 15,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "mode": "A"
+     },
+     {
+      "uid": 239,
+      "machineId": "transmuter_2",
+      "x": 12,
+      "z": 15,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "mode": "A"
+     },
+     {
+      "uid": 245,
+      "machineId": "transmuter_2",
+      "x": 6,
+      "z": 8,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "mode": "A"
+     },
+     {
+      "uid": 246,
+      "machineId": "transmuter_2",
+      "x": 6,
+      "z": 2,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "mode": "A"
+     },
+     {
+      "uid": 251,
+      "machineId": "log_hongs_bus_source",
+      "x": 0,
+      "z": 8,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 252,
+      "machineId": "log_hongs_bus",
+      "x": 0,
+      "z": 12,
+      "rot": 180,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 254,
+      "machineId": "log_hongs_bus",
+      "x": 0,
+      "z": 0,
+      "rot": 180,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 255,
+      "machineId": "unloader_1",
+      "x": 4,
+      "z": 17,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "depotItem": "item_xiranite_powder"
+     },
+     {
+      "uid": 259,
+      "machineId": "unloader_1",
+      "x": 4,
+      "z": 14,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "depotItem": "item_xiranite_powder"
+     },
+     {
+      "uid": 269,
+      "machineId": "unloader_1",
+      "x": 4,
+      "z": 8,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "depotItem": "item_copper_enr"
+     },
+     {
+      "uid": 271,
+      "machineId": "unloader_1",
+      "x": 4,
+      "z": 2,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "depotItem": "item_copper_enr"
+     },
+     {
+      "uid": 273,
+      "machineId": "log_pipe_splitter",
+      "x": 5,
+      "z": 13,
+      "rot": 270,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 275,
+      "machineId": "log_pipe_splitter",
+      "x": 11,
+      "z": 14,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 279,
+      "machineId": "log_pipe_conditioner",
+      "x": 11,
+      "z": 13,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "filterRate": 12
+     },
+     {
+      "uid": 280,
+      "machineId": "log_pipe_conditioner",
+      "x": 11,
+      "z": 15,
+      "rot": 180,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "filterRate": 6
+     },
+     {
+      "uid": 282,
+      "machineId": "gas_reactor_1",
+      "x": 13,
+      "z": 6,
+      "rot": 180,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 286,
+      "machineId": "log_pipe_connector",
+      "x": 9,
+      "z": 1,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 289,
+      "machineId": "log_pipe_connector",
+      "x": 11,
+      "z": 7,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 290,
+      "machineId": "log_pipe_converger",
+      "x": 12,
+      "z": 7,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 291,
+      "machineId": "vaporizer_1",
+      "x": 15,
+      "z": 3,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 292,
+      "machineId": "udpipe_unloader_1",
+      "x": 19,
+      "z": 3,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "pairTarget": null,
+      "infinite": true,
+      "source": {
+       "itemId": "item_gas_acid",
+       "perMinute": 0
+      }
+     },
+     {
+      "uid": 294,
+      "machineId": "power_diffuser_1",
+      "x": 14,
+      "z": 11,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 295,
+      "machineId": "log_pipe_splitter",
+      "x": 11,
+      "z": 12,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 298,
+      "machineId": "log_pipe_connector",
+      "x": 13,
+      "z": 13,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 299,
+      "machineId": "transmuter_2",
+      "x": 19,
+      "z": 11,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "mode": "B"
+     },
+     {
+      "uid": 301,
+      "machineId": "log_pipe_conditioner",
+      "x": 14,
+      "z": 13,
+      "rot": 90,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "filterRate": 6
+     },
+     {
+      "uid": 303,
+      "machineId": "log_pipe_connector",
+      "x": 18,
+      "z": 13,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1
+     },
+     {
+      "uid": 304,
+      "machineId": "storager_1",
+      "x": 17,
+      "z": 17,
+      "rot": 270,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "mode": "A"
+     },
+     {
+      "uid": 311,
+      "machineId": "log_pipe_conditioner",
+      "x": 5,
+      "z": 14,
+      "rot": 180,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "filterRate": 6
+     },
+     {
+      "uid": 312,
+      "machineId": "log_pipe_conditioner",
+      "x": 4,
+      "z": 12,
+      "rot": 0,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "filterRate": 6
+     },
+     {
+      "uid": 313,
+      "machineId": "unloader_1",
+      "x": 1,
+      "z": 20,
+      "rot": 180,
+      "recipeId": null,
+      "binding": {},
+      "count": 1,
+      "depotItem": "item_xiranite_powder"
+     }
+    ],
+    "tiles": [
+     {
+      "x": 9,
+      "z": 14,
+      "kind": "pipe",
+      "in": 0,
+      "out": 1,
+      "group": 247
+     },
+     {
+      "x": 5,
+      "z": 15,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 249
+     },
+     {
+      "x": 5,
+      "z": 16,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 250
+     },
+     {
+      "x": 5,
+      "z": 17,
+      "kind": "pipe",
+      "in": 2,
+      "out": 1,
+      "group": 250
+     },
+     {
+      "x": 5,
+      "z": 15,
+      "kind": "belt",
+      "in": 1,
+      "out": 2,
+      "group": 260
+     },
+     {
+      "x": 5,
+      "z": 16,
+      "kind": "belt",
+      "in": 2,
+      "out": 1,
+      "group": 260
+     },
+     {
+      "x": 5,
+      "z": 12,
+      "kind": "belt",
+      "in": 1,
+      "out": 0,
+      "group": 265
+     },
+     {
+      "x": 5,
+      "z": 11,
+      "kind": "belt",
+      "in": 0,
+      "out": 1,
+      "group": 265
+     },
+     {
+      "x": 5,
+      "z": 9,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 266
+     },
+     {
+      "x": 5,
+      "z": 3,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 268
+     },
+     {
+      "x": 10,
+      "z": 14,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 272
+     },
+     {
+      "x": 11,
+      "z": 16,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 272
+     },
+     {
+      "x": 11,
+      "z": 17,
+      "kind": "pipe",
+      "in": 2,
+      "out": 1,
+      "group": 272
+     },
+     {
+      "x": 11,
+      "z": 11,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 10,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 9,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 8,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 6,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 5,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 4,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 3,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 2,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 276
+     },
+     {
+      "x": 11,
+      "z": 1,
+      "kind": "pipe",
+      "in": 0,
+      "out": 3,
+      "group": 276
+     },
+     {
+      "x": 10,
+      "z": 1,
+      "kind": "pipe",
+      "in": 3,
+      "out": 3,
+      "group": 276
+     },
+     {
+      "x": 8,
+      "z": 1,
+      "kind": "pipe",
+      "in": 3,
+      "out": 3,
+      "group": 276
+     },
+     {
+      "x": 7,
+      "z": 1,
+      "kind": "pipe",
+      "in": 3,
+      "out": 3,
+      "group": 276
+     },
+     {
+      "x": 6,
+      "z": 1,
+      "kind": "pipe",
+      "in": 3,
+      "out": 3,
+      "group": 276
+     },
+     {
+      "x": 5,
+      "z": 1,
+      "kind": "pipe",
+      "in": 3,
+      "out": 2,
+      "group": 277
+     },
+     {
+      "x": 5,
+      "z": 2,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 277
+     },
+     {
+      "x": 5,
+      "z": 3,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 277
+     },
+     {
+      "x": 5,
+      "z": 4,
+      "kind": "pipe",
+      "in": 2,
+      "out": 1,
+      "group": 277
+     },
+     {
+      "x": 13,
+      "z": 14,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 283
+     },
+     {
+      "x": 13,
+      "z": 12,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 283
+     },
+     {
+      "x": 13,
+      "z": 11,
+      "kind": "pipe",
+      "in": 0,
+      "out": 3,
+      "group": 284
+     },
+     {
+      "x": 12,
+      "z": 11,
+      "kind": "pipe",
+      "in": 3,
+      "out": 0,
+      "group": 284
+     },
+     {
+      "x": 12,
+      "z": 10,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 284
+     },
+     {
+      "x": 12,
+      "z": 9,
+      "kind": "pipe",
+      "in": 0,
+      "out": 1,
+      "group": 284
+     },
+     {
+      "x": 9,
+      "z": 0,
+      "kind": "pipe",
+      "in": 0,
+      "out": 1,
+      "group": 285
+     },
+     {
+      "x": 10,
+      "z": 0,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 285
+     },
+     {
+      "x": 11,
+      "z": 0,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 285
+     },
+     {
+      "x": 12,
+      "z": 0,
+      "kind": "pipe",
+      "in": 1,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 12,
+      "z": 1,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 12,
+      "z": 2,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 12,
+      "z": 3,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 12,
+      "z": 4,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 12,
+      "z": 5,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 12,
+      "z": 6,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 287
+     },
+     {
+      "x": 9,
+      "z": 7,
+      "kind": "pipe",
+      "in": 0,
+      "out": 1,
+      "group": 288
+     },
+     {
+      "x": 10,
+      "z": 7,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 288
+     },
+     {
+      "x": 18,
+      "z": 4,
+      "kind": "pipe",
+      "in": 3,
+      "out": 3,
+      "group": 293
+     },
+     {
+      "x": 12,
+      "z": 12,
+      "kind": "pipe",
+      "in": 1,
+      "out": 2,
+      "group": 296
+     },
+     {
+      "x": 12,
+      "z": 13,
+      "kind": "pipe",
+      "in": 2,
+      "out": 1,
+      "group": 297
+     },
+     {
+      "x": 15,
+      "z": 13,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 297
+     },
+     {
+      "x": 16,
+      "z": 13,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 297
+     },
+     {
+      "x": 17,
+      "z": 13,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 300
+     },
+     {
+      "x": 18,
+      "z": 9,
+      "kind": "pipe",
+      "in": 1,
+      "out": 2,
+      "group": 302
+     },
+     {
+      "x": 18,
+      "z": 10,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 302
+     },
+     {
+      "x": 18,
+      "z": 11,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 302
+     },
+     {
+      "x": 18,
+      "z": 12,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 302
+     },
+     {
+      "x": 18,
+      "z": 14,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 302
+     },
+     {
+      "x": 18,
+      "z": 15,
+      "kind": "pipe",
+      "in": 2,
+      "out": 2,
+      "group": 302
+     },
+     {
+      "x": 18,
+      "z": 16,
+      "kind": "pipe",
+      "in": 2,
+      "out": 1,
+      "group": 302
+     },
+     {
+      "x": 19,
+      "z": 16,
+      "kind": "pipe",
+      "in": 1,
+      "out": 1,
+      "group": 302
+     },
+     {
+      "x": 20,
+      "z": 16,
+      "kind": "pipe",
+      "in": 1,
+      "out": 0,
+      "group": 302
+     },
+     {
+      "x": 24,
+      "z": 14,
+      "kind": "belt",
+      "in": 1,
+      "out": 2,
+      "group": 305
+     },
+     {
+      "x": 24,
+      "z": 15,
+      "kind": "belt",
+      "in": 2,
+      "out": 2,
+      "group": 305
+     },
+     {
+      "x": 24,
+      "z": 16,
+      "kind": "belt",
+      "in": 2,
+      "out": 2,
+      "group": 305
+     },
+     {
+      "x": 24,
+      "z": 17,
+      "kind": "belt",
+      "in": 2,
+      "out": 3,
+      "group": 305
+     },
+     {
+      "x": 23,
+      "z": 17,
+      "kind": "belt",
+      "in": 3,
+      "out": 3,
+      "group": 305
+     },
+     {
+      "x": 22,
+      "z": 17,
+      "kind": "belt",
+      "in": 3,
+      "out": 3,
+      "group": 305
+     },
+     {
+      "x": 21,
+      "z": 17,
+      "kind": "belt",
+      "in": 3,
+      "out": 3,
+      "group": 305
+     },
+     {
+      "x": 20,
+      "z": 17,
+      "kind": "belt",
+      "in": 3,
+      "out": 3,
+      "group": 305
+     },
+     {
+      "x": 7,
+      "z": 14,
+      "kind": "pipe",
+      "in": 0,
+      "out": 0,
+      "group": 306
+     },
+     {
+      "x": 7,
+      "z": 13,
+      "kind": "pipe",
+      "in": 0,
+      "out": 3,
+      "group": 306
+     },
+     {
+      "x": 6,
+      "z": 13,
+      "kind": "pipe",
+      "in": 3,
+      "out": 3,
+      "group": 306
+     },
+     {
+      "x": 4,
+      "z": 13,
+      "kind": "pipe",
+      "in": 3,
+      "out": 0,
+      "group": 308
+     },
+     {
+      "x": 4,
+      "z": 11,
+      "kind": "pipe",
+      "in": 0,
+      "out": 1,
+      "group": 309
+     },
+     {
+      "x": 5,
+      "z": 11,
+      "kind": "pipe",
+      "in": 1,
+      "out": 0,
+      "group": 310
+     },
+     {
+      "x": 5,
+      "z": 10,
+      "kind": "pipe",
+      "in": 0,
+      "out": 1,
+      "group": 310
+     },
+     {
+      "x": 5,
+      "z": 18,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 314
+     },
+     {
+      "x": 4,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 5,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 6,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 7,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 8,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 9,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 10,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 11,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 0,
+      "group": 315
+     },
+     {
+      "x": 11,
+      "z": 20,
+      "kind": "belt",
+      "in": 0,
+      "out": 0,
+      "group": 315
+     },
+     {
+      "x": 11,
+      "z": 19,
+      "kind": "belt",
+      "in": 0,
+      "out": 0,
+      "group": 315
+     },
+     {
+      "x": 11,
+      "z": 18,
+      "kind": "belt",
+      "in": 0,
+      "out": 1,
+      "group": 315
+     },
+     {
+      "x": 2,
+      "z": 21,
+      "kind": "belt",
+      "in": 2,
+      "out": 1,
+      "group": 316
+     },
+     {
+      "x": 3,
+      "z": 21,
+      "kind": "belt",
+      "in": 1,
+      "out": 1,
+      "group": 316
+     }
+    ]
+   }
+  }
+ ]
+}

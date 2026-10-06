@@ -1,0 +1,4067 @@
+{
+  "generatedAt": "2026-09-26T04:55:01.818Z",
+  "source": "EnKAD beta data bundle (beta.enka.network/endfield/aic)",
+  "machines": [
+    {
+      "id": "carrier_1",
+      "name": "Lưu Trữ Thuận Tiện",
+      "type": "DepositBeacon",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 5,
+      "quickBar": "extra_machine",
+      "icon": "item_port_carrier_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Lưu Trữ Thuận Tiện",
+      "nameEn": "Easy Stash"
+    },
+    {
+      "id": "component_mc_1",
+      "name": "Máy Lắp Ráp",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 20,
+      "quickBar": "basic_machine",
+      "icon": "item_port_cmpt_mc_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Lắp Ráp",
+      "nameEn": "Fitting Unit"
+    },
+    {
+      "id": "depot",
+      "name": "Depot",
+      "type": "Depot",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "hidden",
+      "icon": "item_depot",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": []
+    },
+    {
+      "id": "dismantler_1",
+      "name": "Máy Phân Tách",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 6,
+        "d": 4,
+        "h": 5
+      },
+      "power": 20,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_dismantler_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 6,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 5,
+          "z": 2,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Máy Phân Tách",
+      "nameEn": "Separating Unit"
+    },
+    {
+      "id": "dumper_1",
+      "name": "Bộ Cấp Nước",
+      "type": "FluidPumpOut",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 10,
+      "quickBar": "extra_machine",
+      "icon": "item_port_dumper_1",
+      "router": false,
+      "placement": "PumpReachLiquid",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Bộ Cấp Nước",
+      "nameEn": "Fluid Supply Unit"
+    },
+    {
+      "id": "enemy_10157_mnggyl",
+      "name": "Lưu Trữ Thuận Tiện",
+      "type": "FluidPumpOut",
+      "size": {
+        "w": 2,
+        "d": 1,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "hidden",
+      "icon": "enemy_10157_mnggyl",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Lưu Trữ Thuận Tiện",
+      "nameEn": "Easy Stash"
+    },
+    {
+      "id": "filling_powder_mc_1",
+      "name": "Máy Chiết Rót",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 6,
+        "d": 4,
+        "h": 4
+      },
+      "power": 20,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_filling_pd_mc_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Normal"
+        },
+        {
+          "id": "B",
+          "label": "Fluid & Gas"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 6,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 2,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "modeAffectsRecipes": true,
+      "nameVi": "Máy Chiết Rót",
+      "nameEn": "Filling Unit"
+    },
+    {
+      "id": "furnance_1",
+      "name": "Lò Tinh Luyện",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 5,
+      "quickBar": "basic_machine",
+      "icon": "item_port_furnance_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Normal"
+        },
+        {
+          "id": "B",
+          "label": "Liquid"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "modeAffectsRecipes": true,
+      "nameVi": "Lò Tinh Luyện",
+      "nameEn": "Refining Unit"
+    },
+    {
+      "id": "gas_pump_1",
+      "name": "Máy Tách Khí",
+      "type": "GasMiner",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 6
+      },
+      "power": 0,
+      "quickBar": "source_machine",
+      "icon": "item_port_gas_pump_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 1,
+          "z": 1,
+          "level": 3,
+          "facing": 90,
+          "virtual": true
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Máy Tách Khí",
+      "nameEn": "Gas Extractor"
+    },
+    {
+      "id": "gas_reactor_1",
+      "name": "Quả Cầu Phản Ứng Khí",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_gas_reactor_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Quả Cầu Phản Ứng Khí",
+      "nameEn": "Gas Reactor Globe"
+    },
+    {
+      "id": "gas_storager_1",
+      "name": "Bể Chứa Khí",
+      "type": "FluidContainer",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_gas_storager_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Bể Chứa Khí",
+      "nameEn": "Gas Tank"
+    },
+    {
+      "id": "grinder_1",
+      "name": "Máy Nghiền Vụn",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 5,
+      "quickBar": "basic_machine",
+      "icon": "item_port_grinder_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Nghiền Vụn",
+      "nameEn": "Shredding Unit"
+    },
+    {
+      "id": "liquid_clean_gate_1",
+      "name": "Cửa Nạp Nước Thải",
+      "type": "SewageTreatPlantImport",
+      "size": {
+        "w": 10,
+        "d": 3,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "source_machine",
+      "icon": "item_port_liquid_clean_gate_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Cửa Nạp Nước Thải",
+      "nameEn": "Sewage Inlet"
+    },
+    {
+      "id": "liquid_cleaner_1",
+      "name": "Bộ Xử Lý Nước Thải",
+      "type": "FluidConsume",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "basic_machine",
+      "icon": "item_port_liquid_cleaner_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Bộ Xử Lý Nước Thải",
+      "nameEn": "Water Treatment Unit"
+    },
+    {
+      "id": "liquid_purifier_1",
+      "name": "Máy Tinh Chế",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_liquid_purifier_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Liquid"
+        },
+        {
+          "id": "B",
+          "label": "Gas & Liquid"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 2,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 6,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 7,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "modeAffectsRecipes": true,
+      "nameVi": "Máy Tinh Chế",
+      "nameEn": "Purification Unit"
+    },
+    {
+      "id": "liquid_recycle_gate_1",
+      "name": "Cửa Xả Phụ Phẩm",
+      "type": "SewageTreatPlantExport",
+      "size": {
+        "w": 10,
+        "d": 3,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "source_machine",
+      "icon": "item_port_liquid_recycle_gate_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Cửa Xả Phụ Phẩm",
+      "nameEn": "Byproduct Outlet"
+    },
+    {
+      "id": "liquid_storager_1",
+      "name": "Bể Chứa Chất Lỏng",
+      "type": "FluidContainer",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_liquid_storager_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Bể Chứa Chất Lỏng",
+      "nameEn": "Fluid Tank"
+    },
+    {
+      "id": "loader_1",
+      "name": "Máy Nâng Hàng Kho",
+      "type": "Loader",
+      "size": {
+        "w": 3,
+        "d": 1,
+        "h": 3
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_loader_1",
+      "router": false,
+      "placement": "RoadAttach",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Nâng Hàng Kho",
+      "nameEn": "Depot Loader"
+    },
+    {
+      "id": "log_conditioner",
+      "name": "Cảng Kiểm Soát Vật Phẩm",
+      "type": "LogConditioner",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_conditioner",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Cảng Kiểm Soát Vật Phẩm",
+      "nameEn": "Item Control Port"
+    },
+    {
+      "id": "log_connector",
+      "name": "Mối Nối Băng Tải",
+      "type": "LogConnector",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_connector",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 270
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Mối Nối Băng Tải",
+      "nameEn": "Belt Bridge"
+    },
+    {
+      "id": "log_converger",
+      "name": "Van Gộp",
+      "type": "LogConverger",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_converger",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 270
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Van Gộp",
+      "nameEn": "Converger"
+    },
+    {
+      "id": "log_hongs_bus",
+      "name": "Khu Tổng Tuyến Kho Hàng",
+      "type": "BusFree",
+      "size": {
+        "w": 4,
+        "d": 8,
+        "h": 2
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_log_hongs_bus",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [
+        "domain_2"
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Khu Tổng Tuyến Kho Hàng",
+      "nameEn": "Depot Bus Section"
+    },
+    {
+      "id": "log_hongs_bus_source",
+      "name": "Cổng Tổng Tuyến Kho Hàng",
+      "type": "BusStart",
+      "size": {
+        "w": 4,
+        "d": 4,
+        "h": 2
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_log_hongs_bus_source",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [
+        "domain_2"
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Cổng Tổng Tuyến Kho Hàng",
+      "nameEn": "Depot Bus Port"
+    },
+    {
+      "id": "log_pipe_conditioner",
+      "name": "Cảng Kiểm Soát Ống",
+      "type": "LogPipeConditioner",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_pipe_conditioner",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Cảng Kiểm Soát Ống",
+      "nameEn": "Pipe Control Port"
+    },
+    {
+      "id": "log_pipe_connector",
+      "name": "Cầu Nối Ống",
+      "type": "LogPipeConnector",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_pipe_connector",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 0
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 270
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 0
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Cầu Nối Ống",
+      "nameEn": "Pipe Bridge"
+    },
+    {
+      "id": "log_pipe_converger",
+      "name": "Van Gộp Ống",
+      "type": "LogPipeConverger",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_pipe_converger",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 270
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Van Gộp Ống",
+      "nameEn": "Pipe Converger"
+    },
+    {
+      "id": "log_pipe_splitter",
+      "name": "Van Tách Ống",
+      "type": "LogPipeSplitter",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_pipe_splitter",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 0,
+          "z": 0,
+          "level": 3,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Van Tách Ống",
+      "nameEn": "Pipe Splitter"
+    },
+    {
+      "id": "log_splitter",
+      "name": "Van Tách",
+      "type": "LogSplitter",
+      "size": {
+        "w": 1,
+        "d": 1,
+        "h": 1
+      },
+      "power": 0,
+      "quickBar": "",
+      "icon": "item_log_splitter",
+      "router": true,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Van Tách",
+      "nameEn": "Splitter"
+    },
+    {
+      "id": "miner_1",
+      "name": "Giàn Originium Di Động",
+      "type": "Miner",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 3
+      },
+      "power": 0,
+      "quickBar": "source_machine",
+      "icon": "item_port_miner_1",
+      "router": false,
+      "placement": "OnMineOnly",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Low purity"
+        },
+        {
+          "id": "B",
+          "label": "High purity"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 1,
+          "level": 0,
+          "facing": 180,
+          "virtual": true
+        }
+      ],
+      "modeAffectsRecipes": false,
+      "nameVi": "Giàn Originium Di Động",
+      "nameEn": "Portable Originium Rig"
+    },
+    {
+      "id": "miner_2",
+      "name": "Giàn Khai Thác Điện",
+      "type": "Miner",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 5,
+      "quickBar": "source_machine",
+      "icon": "item_port_miner_2",
+      "router": false,
+      "placement": "OnMineOnly",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Low purity"
+        },
+        {
+          "id": "B",
+          "label": "High purity"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 1,
+          "level": 0,
+          "facing": 180,
+          "virtual": true
+        }
+      ],
+      "modeAffectsRecipes": false,
+      "nameVi": "Giàn Khai Thác Điện",
+      "nameEn": "Electric Mining Rig"
+    },
+    {
+      "id": "miner_3",
+      "name": "Giàn Khai Thác Điện Mk II",
+      "type": "Miner",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 10,
+      "quickBar": "source_machine",
+      "icon": "item_port_miner_3",
+      "router": false,
+      "placement": "OnMineOnly",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Low purity"
+        },
+        {
+          "id": "B",
+          "label": "High purity"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 1,
+          "level": 0,
+          "facing": 180,
+          "virtual": true
+        }
+      ],
+      "modeAffectsRecipes": false,
+      "nameVi": "Giàn Khai Thác Điện Mk II",
+      "nameEn": "Electric Mining Rig Mk II"
+    },
+    {
+      "id": "miner_4",
+      "name": "Giàn Khai Thác Thủy Lực",
+      "type": "Miner",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "source_machine",
+      "icon": "item_port_liquid_miner",
+      "router": false,
+      "placement": "OnMineOnly",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Low purity"
+        },
+        {
+          "id": "B",
+          "label": "High purity"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 1,
+          "level": 0,
+          "facing": 180,
+          "virtual": true
+        }
+      ],
+      "modeAffectsRecipes": false,
+      "nameVi": "Giàn Khai Thác Thủy Lực",
+      "nameEn": "Hydro Mining Rig"
+    },
+    {
+      "id": "mix_pool_1",
+      "name": "Lò Phản Ứng",
+      "type": "FluidReaction",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_mix_pool_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Lò Phản Ứng",
+      "nameEn": "Reactor Crucible"
+    },
+    {
+      "id": "mix_pool_2",
+      "name": "Lò Mở Rộng",
+      "type": "FluidReaction",
+      "size": {
+        "w": 6,
+        "d": 5,
+        "h": 5
+      },
+      "power": 100,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_mix_pool_2",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Allow clog"
+        },
+        {
+          "id": "B",
+          "label": "Clog prevention"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 5,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 5,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "modeAffectsRecipes": false,
+      "nameVi": "Lò Mở Rộng",
+      "nameEn": "Expanded Crucible"
+    },
+    {
+      "id": "planter_1",
+      "name": "Máy Gieo Trồng",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 4
+      },
+      "power": 20,
+      "quickBar": "basic_machine",
+      "icon": "item_port_planter_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 2,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Gieo Trồng",
+      "nameEn": "Planting Unit"
+    },
+    {
+      "id": "power_diffuser_1",
+      "name": "Cột Điện",
+      "type": "PowerDiffuser",
+      "size": {
+        "w": 2,
+        "d": 2,
+        "h": 7
+      },
+      "power": 0,
+      "quickBar": "electric_machine",
+      "icon": "item_port_power_diffuser_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "aura": {
+        "w": 12,
+        "d": 12,
+        "dx": -5,
+        "dz": -5,
+        "kind": "power"
+      },
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Cột Điện",
+      "nameEn": "Electric Pylon"
+    },
+    {
+      "id": "power_diffuser_2",
+      "name": "Cột Xiranite",
+      "type": "PowerDiffuser",
+      "size": {
+        "w": 2,
+        "d": 2,
+        "h": 7
+      },
+      "power": 0,
+      "quickBar": "electric_machine",
+      "icon": "item_port_power_diffuser_2",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [
+        "domain_2"
+      ],
+      "aura": {
+        "w": 12,
+        "d": 12,
+        "dx": -5,
+        "dz": -5,
+        "kind": "power"
+      },
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Cột Xiranite",
+      "nameEn": "Xiranite Pylon"
+    },
+    {
+      "id": "power_pole_2",
+      "name": "Tháp Tiếp Điện",
+      "type": "PowerPole",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 15
+      },
+      "power": 0,
+      "quickBar": "electric_machine",
+      "icon": "item_port_power_pole_2",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "aura": {
+        "w": 7,
+        "d": 7,
+        "dx": -2,
+        "dz": -2,
+        "kind": "power"
+      },
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Tháp Tiếp Điện",
+      "nameEn": "Relay Tower"
+    },
+    {
+      "id": "power_pole_3",
+      "name": "Tiếp Điện Xiranite",
+      "type": "PowerPole",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 15
+      },
+      "power": 0,
+      "quickBar": "electric_machine",
+      "icon": "item_port_power_pole_3",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [
+        "domain_2"
+      ],
+      "aura": {
+        "w": 7,
+        "d": 7,
+        "dx": -2,
+        "dz": -2,
+        "kind": "power"
+      },
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [],
+      "nameVi": "Tiếp Điện Xiranite",
+      "nameEn": "Xiranite Relay"
+    },
+    {
+      "id": "power_station_1",
+      "name": "Nguồn Nhiệt Năng",
+      "type": "PowerStation",
+      "size": {
+        "w": 2,
+        "d": 2,
+        "h": 4
+      },
+      "power": 0,
+      "quickBar": "electric_machine",
+      "icon": "item_port_power_sta_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 1,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 1,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Nguồn Nhiệt Năng",
+      "nameEn": "Thermal Bank"
+    },
+    {
+      "id": "pump_1",
+      "name": "Máy Bơm Chất Lỏng",
+      "type": "FluidPumpIn",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 10,
+      "quickBar": "source_machine",
+      "icon": "item_port_pump_1",
+      "router": false,
+      "placement": "PumpReachLiquid",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 1,
+          "z": 1,
+          "level": 3,
+          "facing": 90,
+          "virtual": true
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Máy Bơm Chất Lỏng",
+      "nameEn": "Fluid Pump"
+    },
+    {
+      "id": "pump_2",
+      "name": "Máy Bơm Chống Ăn Mòn Mk II",
+      "type": "FluidPumpIn",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 20,
+      "quickBar": "source_machine",
+      "icon": "item_port_pump_2",
+      "router": false,
+      "placement": "PumpReachLiquid",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 1,
+          "z": 1,
+          "level": 3,
+          "facing": 90,
+          "virtual": true
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Máy Bơm Chống Ăn Mòn Mk II",
+      "nameEn": "Acid Resistant Pump Mk II"
+    },
+    {
+      "id": "seedcollector_1",
+      "name": "Máy Thu Hoạch Hạt",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 4
+      },
+      "power": 10,
+      "quickBar": "basic_machine",
+      "icon": "item_port_seedcol_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Thu Hoạch Hạt",
+      "nameEn": "Seed-Picking Unit"
+    },
+    {
+      "id": "shaper_1",
+      "name": "Máy Đúc",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 10,
+      "quickBar": "basic_machine",
+      "icon": "item_port_shaper_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Normal"
+        },
+        {
+          "id": "B",
+          "label": "Gas"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "modeAffectsRecipes": true,
+      "nameVi": "Máy Đúc",
+      "nameEn": "Moulding Unit"
+    },
+    {
+      "id": "sp_hub_1",
+      "name": "Lõi Tự Động Hóa",
+      "type": "Hub",
+      "size": {
+        "w": 9,
+        "d": 9,
+        "h": 10
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_sp_hub_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 6,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 6,
+          "dir": "in",
+          "kind": "belt",
+          "x": 7,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 7,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 8,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 9,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 10,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 11,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 12,
+          "dir": "in",
+          "kind": "belt",
+          "x": 6,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 13,
+          "dir": "in",
+          "kind": "belt",
+          "x": 7,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 8,
+          "z": 1,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 8,
+          "z": 4,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 8,
+          "z": 7,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 1,
+          "level": 0,
+          "facing": 270
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 4,
+          "level": 0,
+          "facing": 270
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 7,
+          "level": 0,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Lõi Tự Động Hóa",
+      "nameEn": "Automation-Core"
+    },
+    {
+      "id": "sp_sub_hub_1",
+      "name": "Lõi Giao Thức-Phụ",
+      "type": "SubHub",
+      "size": {
+        "w": 9,
+        "d": 9,
+        "h": 10
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_sp_sub_hub_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 6,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 6,
+          "dir": "in",
+          "kind": "belt",
+          "x": 7,
+          "z": 8,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 7,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 8,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 9,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 10,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 11,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 12,
+          "dir": "in",
+          "kind": "belt",
+          "x": 6,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 13,
+          "dir": "in",
+          "kind": "belt",
+          "x": 7,
+          "z": 0,
+          "level": 0,
+          "facing": 0
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 8,
+          "z": 1,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 8,
+          "z": 4,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 8,
+          "z": 7,
+          "level": 0,
+          "facing": 90
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 1,
+          "level": 0,
+          "facing": 270
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 4,
+          "level": 0,
+          "facing": 270
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 7,
+          "level": 0,
+          "facing": 270
+        }
+      ],
+      "nameVi": "Lõi Giao Thức-Phụ",
+      "nameEn": "Sub-PAC"
+    },
+    {
+      "id": "squirter_1",
+      "name": "Máy Tưới",
+      "type": "FluidSpray",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 10,
+      "quickBar": "extra_machine",
+      "icon": "item_port_squirter_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Máy Tưới",
+      "nameEn": "Sprinkler"
+    },
+    {
+      "id": "storager_1",
+      "name": "Kho Lưu Trữ Giao Thức",
+      "type": "Storager",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 4
+      },
+      "power": 5,
+      "quickBar": "storage",
+      "icon": "item_port_storager_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Depot transfer"
+        },
+        {
+          "id": "B",
+          "label": "Storage mode"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 2,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "modeAffectsRecipes": false,
+      "nameVi": "Kho Lưu Trữ Giao Thức",
+      "nameEn": "Protocol Stash"
+    },
+    {
+      "id": "thickener_1",
+      "name": "Máy Nghiền Mịn",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 6,
+        "d": 4,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_thickener_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Nghiền Mịn",
+      "nameEn": "Grinding Unit"
+    },
+    {
+      "id": "tools_assebling_mc_1",
+      "name": "Máy Đóng Gói",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 6,
+        "d": 4,
+        "h": 4
+      },
+      "power": 20,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_tools_asm_mc_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Đóng Gói",
+      "nameEn": "Packaging Unit"
+    },
+    {
+      "id": "transmuter_1",
+      "name": "Máy Chuyển Hóa Khí Lỏng",
+      "type": "MachineWithActivator",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_transmuter_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Gasify"
+        },
+        {
+          "id": "B",
+          "label": "Fluidify"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": "in2",
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 2,
+          "z": 4,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "modeAffectsRecipes": true,
+      "nameVi": "Máy Chuyển Hóa Khí Lỏng",
+      "nameEn": "Fluid-Gas Transmuting Unit"
+    },
+    {
+      "id": "transmuter_2",
+      "name": "Máy Chuyển Hóa Khí Rắn",
+      "type": "MachineWithActivator",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_transmuter_2",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "modes": [
+        {
+          "id": "A",
+          "label": "Gasify"
+        },
+        {
+          "id": "B",
+          "label": "Solidify"
+        }
+      ],
+      "pairable": false,
+      "activatorPort": "in2",
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 2,
+          "z": 4,
+          "level": 3,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 4,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "modeAffectsRecipes": true,
+      "nameVi": "Máy Chuyển Hóa Khí Rắn",
+      "nameEn": "Solid-Gas Transmuting Unit"
+    },
+    {
+      "id": "udpipe_loader_1",
+      "name": "Cửa Nạp Ống Dẫn",
+      "type": "UdPipeLoader",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_pot_udpipe_loader_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": true,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Cửa Nạp Ống Dẫn",
+      "nameEn": "Conduit Inlet"
+    },
+    {
+      "id": "udpipe_loader_2",
+      "name": "Ống Dẫn Dòng Vào",
+      "type": "UdPipeLoader",
+      "size": {
+        "w": 3,
+        "d": 5,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_pot_udpipe_loader_2",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": true,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Ống Dẫn Dòng Vào",
+      "nameEn": "Conduit Inlet Manifold"
+    },
+    {
+      "id": "udpipe_unloader_1",
+      "name": "Cửa Xả Ống Dẫn",
+      "type": "UdPipeUnloader",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_pot_udpipe_unloader_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": true,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 1,
+          "z": 1,
+          "level": 3,
+          "facing": 90,
+          "virtual": true
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Cửa Xả Ống Dẫn",
+      "nameEn": "Conduit Outlet"
+    },
+    {
+      "id": "udpipe_unloader_2",
+      "name": "Ống Dẫn Dòng Ra",
+      "type": "UdPipeUnloader",
+      "size": {
+        "w": 3,
+        "d": 5,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_pot_udpipe_unloader_2",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": true,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 1,
+          "z": 2,
+          "level": 3,
+          "facing": 90,
+          "virtual": true
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "pipe",
+          "x": 2,
+          "z": 3,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Ống Dẫn Dòng Ra",
+      "nameEn": "Conduit Outlet Manifold"
+    },
+    {
+      "id": "unloader_1",
+      "name": "Máy Dỡ Hàng Kho",
+      "type": "Unloader",
+      "size": {
+        "w": 3,
+        "d": 1,
+        "h": 3
+      },
+      "power": 0,
+      "quickBar": "storage",
+      "icon": "item_port_unloader_1",
+      "router": false,
+      "placement": "RoadAttach",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy Dỡ Hàng Kho",
+      "nameEn": "Depot Unloader"
+    },
+    {
+      "id": "vaporizer_1",
+      "name": "Máy Khuếch Tán Khí",
+      "type": "EnvGenWithActivator",
+      "size": {
+        "w": 3,
+        "d": 3,
+        "h": 5
+      },
+      "power": 0,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_vaporizer_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "aura": {
+        "w": 13,
+        "d": 13,
+        "dx": -5,
+        "dz": -5,
+        "kind": "env"
+      },
+      "pairable": false,
+      "activatorPort": "in0",
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 1,
+          "level": 3,
+          "facing": 90
+        }
+      ],
+      "nameVi": "Máy Khuếch Tán Khí",
+      "nameEn": "Gas Dispersing Unit"
+    },
+    {
+      "id": "winder_1",
+      "name": "Máy SX Linh Kiện",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 6,
+        "d": 4,
+        "h": 4
+      },
+      "power": 10,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_winder_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "belt",
+          "x": 5,
+          "z": 3,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "out",
+          "kind": "belt",
+          "x": 5,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Máy SX Linh Kiện",
+      "nameEn": "Gearing Unit"
+    },
+    {
+      "id": "xiranite_oven_1",
+      "name": "Lò Rèn Bầu Trời",
+      "type": "MachineCrafter",
+      "size": {
+        "w": 5,
+        "d": 5,
+        "h": 5
+      },
+      "power": 50,
+      "quickBar": "assemble_machine",
+      "icon": "item_port_xiranite_oven_1",
+      "router": false,
+      "placement": "NoLimit",
+      "domains": [
+        "domain_2"
+      ],
+      "pairable": false,
+      "activatorPort": null,
+      "ports": [
+        {
+          "index": 0,
+          "dir": "in",
+          "kind": "belt",
+          "x": 0,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "in",
+          "kind": "belt",
+          "x": 1,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "in",
+          "kind": "belt",
+          "x": 2,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "in",
+          "kind": "belt",
+          "x": 3,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "in",
+          "kind": "belt",
+          "x": 4,
+          "z": 4,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 5,
+          "dir": "in",
+          "kind": "pipe",
+          "x": 0,
+          "z": 2,
+          "level": 3,
+          "facing": 90
+        },
+        {
+          "index": 0,
+          "dir": "out",
+          "kind": "belt",
+          "x": 0,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 1,
+          "dir": "out",
+          "kind": "belt",
+          "x": 1,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 2,
+          "dir": "out",
+          "kind": "belt",
+          "x": 2,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 3,
+          "dir": "out",
+          "kind": "belt",
+          "x": 3,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        },
+        {
+          "index": 4,
+          "dir": "out",
+          "kind": "belt",
+          "x": 4,
+          "z": 0,
+          "level": 0,
+          "facing": 180
+        }
+      ],
+      "nameVi": "Lò Rèn Bầu Trời",
+      "nameEn": "Forge of the Sky"
+    }
+  ]
+}

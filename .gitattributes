@@ -1,0 +1,9 @@
+# xuống dòng kiểu Linux cho mọi file văn bản (dự án chạy cả Windows lẫn Ubuntu; script .sh / gradlew hỏng nếu thành CRLF)
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.png binary
+*.webp binary
+*.jpg binary
+*.mp3 binary
+*.jar binary

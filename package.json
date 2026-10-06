@@ -1,0 +1,33 @@
+{
+  "name": "endfield-planner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Trình quy hoạch nhà máy AIC cho Arknights: Endfield - editor lưới 2D hai layer + solver thông lượng",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:public": "tsc --noEmit && vite build --mode public",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "extract": "node tools/extract-dataset.mjs",
+    "i18n": "node tools/i18n-keys.mjs",
+    "tauri": "tauri",
+    "app:dev": "tauri dev",
+    "app:build": "tauri build"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@tauri-apps/cli": "^2.12.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@tauri-apps/api": "^2.12.1"
+  }
+}
