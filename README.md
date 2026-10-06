@@ -57,11 +57,8 @@ cd android && ./gradlew assembleDebug
 
 ## Data and credits
 
-- Game data (machines, recipes, items, names) and item / machine icons come from the game, extracted
-  through [EnKAD](https://beta.enka.network/endfield/aic) — thanks to its authors.
 - High-resolution item images and descriptions in the recipe library: [endfield.wiki.gg](https://endfield.wiki.gg/)
   contributors.
-- Ground texture and the 2D logistics devices are cut from in-game screenshots.
 - All game assets © Hypergryph / Gryphline. The MIT licence of this repository covers the source code only —
   see [NOTICE](NOTICE).
 
