@@ -35,7 +35,7 @@ npm install
 npm run dev          # http://localhost:5173
 npm test             # unit tests (vitest)
 npm run build        # static site in dist/
-npm run build:public # public build (without the EnKAD blueprint-code import)
+npm run build:public # public build
 ```
 
 The app is a static site: `dist/` can be served by any static host.
