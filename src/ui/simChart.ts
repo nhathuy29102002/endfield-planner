@@ -169,9 +169,11 @@ export function createSimChart(ds: Dataset, hooks: SimChartHooks, collapsed = fa
   const ticks = el('div', { class: 'sim-axis-ticks' });
   const rail = el('div', { class: 'sim-axis-rail' }, computedBar, played, knob);
   const axis = el('div', { class: 'sim-axis', title: tr('Kéo hoặc bấm để tua (phần sáng = đã tính sẵn)') }, rail, ticks);
-  const nowLabel = el('span', { class: 'sim-axis-now' }, '00:00:00');
-  // chừa lề phải bằng lề phải vùng vẽ (thanh tua thẳng hàng trục ngang); không ghi số ở đây — mốc cuối nằm dưới thanh
-  const endLabel = el('span', { class: 'sim-axis-end' });
+  // hai bên thanh tua rộng **đúng bằng** lề trái / phải vùng vẽ (`PAD`) ⇒ nút kéo luôn thẳng cột với vạch thời gian trên
+  // biểu đồ (người dùng 2026-10-06: lề phải từng để cứng 112 px trong CSS, vùng vẽ đổi lề 56 px ⇒ lệch, thanh ngắn hơn)
+  const nowLabel = el('span', { class: 'sim-axis-now', style: `width:${PAD.l}px` }, '00:00:00');
+  // không ghi số ở đây — mốc cuối nằm dưới thanh
+  const endLabel = el('span', { class: 'sim-axis-end', style: `width:${PAD.r}px` });
   const axisRow = el('div', { class: 'sim-axis-row' }, nowLabel, axis, endLabel);
   /** Phần thu gọn được (đầu biểu đồ + vùng vẽ) — co / giãn có hiệu ứng (CSS grid 1fr ⇄ 0fr). */
   const body = el('div', { class: 'sim-chart-body' }, el('div', { class: 'sim-chart-inner' }, head, allBox, plot));

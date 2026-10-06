@@ -177,24 +177,37 @@ export function openRecipeLibrary(state: AppState): void {
       const grid = el('div', { class: 'rl-grid' });
       for (const id of g.ids)
         grid.append(el('button', { class: 'rl-entry', type: 'button', onclick: () => go({ kind: 'item', item: id }) }, tile(id, undefined, { open: false }), el('span', { class: 'rl-entry-name' }, itemName(ds, id))));
-      box.append(el('div', { class: 'rl-group-title' }, `${g.title} (${g.ids.length})`), grid);
+      // mỗi nhóm sản phẩm là một **cửa sổ con** như cửa sổ Máy (người dùng 2026-10-06)
+      box.append(
+        el(
+          'section',
+          { class: 'rl-win' },
+          el('div', { class: 'rl-win-head' }, el('span', { class: 'rl-win-title' }, g.title), el('span', { class: 'rl-win-count' }, String(g.ids.length))),
+          grid,
+        ),
+      );
     }
     return box;
   };
 
   // ---------------------------------------------------------------- 2. hồ sơ vật phẩm
-  /** Hàng công thức: [nguyên liệu + …] ⏩ thời gian [sản phẩm + …]. */
-  const recipeRow = (r: RecipeDef): HTMLElement => {
-    const plus = (): HTMLElement => el('span', { class: 'rl-plus' }, '+');
-    const list = (stacks: { itemId: string; count: number }[]): HTMLElement[] => stacks.flatMap((s, i) => (i ? [plus(), tile(s.itemId, s.count)] : [tile(s.itemId, s.count)]));
-    return el(
+  /**
+   * Mũi tên chuyển hoá **động** như thanh sản xuất của cửa sổ Máy (người dùng 2026-10-06): thanh xanh chạy hết một vòng
+   * đúng bằng thời gian công thức (`--dur`), lặp lại; nhãn thời gian phía trên.
+   */
+  const arrow = (label: string, seconds: number): HTMLElement =>
+    el(
       'div',
-      { class: 'rl-rrow' },
-      ...list(r.ingredients),
-      el('span', { class: 'rl-time' }, `${r.seconds}s`, el('span', { class: 'rl-ff' }, '⏩')),
-      ...list(r.outcomes),
+      { class: 'rl-arrow', style: `--dur: ${Math.max(0.3, seconds)}s` },
+      el('div', { class: 'rl-arrow-time' }, label),
+      el('div', { class: 'rl-arrow-bar' }, el('div', { class: 'rl-arrow-track' }), el('div', { class: 'rl-arrow-fill' }), el('div', { class: 'rl-arrow-head' })),
     );
-  };
+  const plus = (): HTMLElement => el('span', { class: 'rl-plus' }, '+');
+  /** Các ô vật phẩm, dấu **+** giữa hai ô (người dùng 2026-10-06). */
+  const slots = (stacks: { itemId: string; count: number }[]): HTMLElement =>
+    el('div', { class: 'rl-slots' }, ...stacks.flatMap((s, i) => (i ? [plus(), tile(s.itemId, s.count)] : [tile(s.itemId, s.count)])));
+  /** Hàng công thức: [nguyên liệu + …] ⇒ mũi tên động (thời gian) ⇒ [sản phẩm + …]. */
+  const recipeRow = (r: RecipeDef): HTMLElement => el('div', { class: 'rl-rrow' }, slots(r.ingredients), arrow(`${r.seconds}s`, r.seconds), slots(r.outcomes));
   const pinBtn = (machineId: string): HTMLElement => {
     const on = pinnedMachineIds(ds).includes(machineId);
     const b = el('button', { class: `rl-pin${on ? ' on' : ''}`, type: 'button', title: on ? tr('Bỏ ghim máy này khỏi bảng chọn máy') : tr('Ghim máy này lên bảng chọn máy') });
@@ -218,13 +231,16 @@ export function openRecipeLibrary(state: AppState): void {
         machineIcon(def),
         el('span', { class: 'rl-card-name' }, def?.name ?? '?'),
         env ? el('span', { class: `rl-env env-${env.toLowerCase()}` }, CATALYST_ENV_LABEL[env as keyof typeof CATALYST_ENV_LABEL] ?? env) : null,
-        el('span', { class: 'rl-chev' }, '»'),
+        def ? pinBtn(def.id) : null,
       ),
-      el('div', { class: 'rl-card-body' }, row, def ? pinBtn(def.id) : null),
+      el('div', { class: 'rl-card-body' }, row),
     );
   const wayCard = (item: string, w: Way): HTMLElement => {
     if (w.kind === 'recipe') return card(ds.machines.get(w.recipe.machineId), recipeRow(w.recipe), w.recipe.catalystEnv !== 'None' ? w.recipe.catalystEnv : undefined);
-    return card(ds.machines.get(w.machineId), el('div', { class: 'rl-rrow' }, tile(item, undefined, { raw: true, open: false }), el('span', { class: 'rl-time' }, tr('khai thác'), el('span', { class: 'rl-ff' }, '⏩')), tile(item, 1, { open: false })));
+    return card(
+      ds.machines.get(w.machineId),
+      el('div', { class: 'rl-rrow' }, el('div', { class: 'rl-slots' }, tile(item, undefined, { raw: true, open: false })), arrow(tr('khai thác'), 2), el('div', { class: 'rl-slots' }, tile(item, 1, { open: false }))),
+    );
   };
   const itemView = (item: string): HTMLElement => {
     const it = ds.items.get(item);

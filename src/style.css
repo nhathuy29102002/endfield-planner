@@ -2040,8 +2040,8 @@ html.touch-ui .bp-head > .tool, html.touch-ui .bp-head > .bp-close { flex: none;
 .sim-chart.collapsed { border-bottom: 0; padding-bottom: 0; }
 .sim-chart-plot[hidden], .sim-chart-head[hidden] { display: none; }
 .sim-axis-row { display: flex; align-items: flex-start; height: 30px; }
-.sim-axis-now { width: 66px; flex: none; padding-right: 6px; text-align: right; font: 600 12px ui-monospace, monospace; color: var(--text); line-height: 16px; }
-.sim-axis-end { width: 112px; flex: none; padding-left: 8px; font: 11px ui-monospace, monospace; color: var(--dim); line-height: 16px; }
+.sim-axis-now { box-sizing: border-box; flex: none; padding-right: 6px; text-align: right; font: 600 12px ui-monospace, monospace; color: var(--text); line-height: 16px; }
+.sim-axis-end { box-sizing: border-box; flex: none; padding-left: 8px; font: 11px ui-monospace, monospace; color: var(--dim); line-height: 16px; }
 .sim-axis { position: relative; flex: 1; min-width: 80px; height: 30px; cursor: pointer; touch-action: none; }
 .sim-axis-rail { position: absolute; left: 0; right: 0; top: 6px; height: 4px; border-radius: 2px; background: var(--chip); transition: height 0.12s, top 0.12s; }
 .sim-axis:hover .sim-axis-rail, .sim-axis.dragging .sim-axis-rail { top: 5px; height: 6px; }
@@ -2422,6 +2422,9 @@ html.ui-zoom .machine-window {
   width: min(476px, calc(100vw / var(--ui-k)));
   max-height: calc(min(66vh, calc(100vh - 120px)) / var(--ui-k));
 }
+/* thu gọn: co về đúng nút máy, sát góc phải dưới (người dùng 2026-10-06 — luật `width` ở trên mạnh hơn `.collapsed
+   { width: auto }` nên khung thu gọn vẫn rộng 476 px ⇒ nút bị đẩy sang trái, trông như bị bảng Tổng hợp xô) */
+html.ui-zoom .machine-window.collapsed { width: auto; max-height: none; right: calc(8px / var(--ui-k)); }
 
 /* ---- điện thoại, mô phỏng (người dùng 2026-10-06, lần 2): thanh điều khiển luôn **2 dòng** — thanh tua và một dòng nút —
    không co / xuống dòng khi mở cửa sổ Máy hay bảng Tổng hợp; các cửa sổ chồng lên nhau thành lớp: mặc định thanh mô
@@ -2658,4 +2661,64 @@ html.touch-ui .rl-entry-name { font-size: 10.5px; }
 .set-dl-group { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .set-dl-head { color: var(--dim); font-size: 12px; margin-right: 2px; }
 a.set-dl { text-decoration: none; color: var(--text); }
+
+/* ======================= Thư viện công thức — giao diện sáng / tối theo bảng màu của app, kiểu cửa sổ con như cửa sổ Máy
+   (người dùng 2026-10-06): mỗi nhóm sản phẩm là một cửa sổ con; thẻ công thức = đầu thẻ (máy) + khung tối với ô vật phẩm,
+   mũi tên động chạy đúng thời gian công thức, dấu + giữa hai ô. Đặt cuối file để thắng các luật cũ ở trên. */
+.rl-overlay, [data-theme='light'] .rl-overlay { background: var(--bg); background-image: none; }
+.rl-top { background: var(--panel); }
+.rl-chip { background: var(--chip); color: var(--text); }
+.rl-chip.last { background: none; }
+/* danh sách: cửa sổ con theo nhóm */
+.rl-list { display: flex; flex-direction: column; gap: 14px; }
+.rl-win { flex: none; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28); }
+[data-theme='light'] .rl-win { box-shadow: 0 4px 16px rgba(31, 35, 40, 0.1); }
+.rl-win-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
+.rl-win-title { font-size: 15px; font-weight: 700; }
+.rl-win-count { padding: 1px 9px; border-radius: 999px; background: var(--chip); color: var(--dim); font-size: 12px; font-weight: 600; }
+.rl-win .rl-grid { padding: 10px 12px 12px; }
+.rl-entry { border-radius: 10px; }
+.rl-entry:hover { background: var(--panel-2); border-color: #e8c547; }
+/* ô vật phẩm như ô của cửa sổ Máy */
+.rl-tile, .rl-xcard .rl-tile { border: 1px solid var(--line); border-radius: 8px; background: var(--well); box-shadow: none; }
+.rl-tile::after { display: none; }
+.rl-tile.raw { background: repeating-linear-gradient(45deg, var(--chip) 0 6px, var(--well) 6px 12px); }
+.rl-tile:hover { border-color: #e8c547; }
+.rl-count { left: auto; right: 4px; bottom: 1px; font: 700 12px ui-monospace, monospace; color: #fff; text-shadow: 0 0 3px #000, 0 0 3px #000; }
+/* hồ sơ vật phẩm: hai cửa sổ con */
+.rl-info { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.rl-side { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.rl-hero-mark { border-color: var(--line); background: var(--panel-2); }
+[data-theme='light'] .rl-hero img { filter: drop-shadow(0 10px 18px rgba(31, 35, 40, 0.25)); }
+/* thẻ công thức */
+.rl-card { border: 1px solid var(--line); border-radius: 12px; background: var(--panel-2); overflow: hidden; margin-bottom: 10px; }
+.rl-card-head { display: flex; align-items: center; gap: 10px; padding: 8px 10px 2px 12px; background: none; color: var(--text); font-size: 14px; font-weight: 700; }
+.rl-card-head .rl-micon { width: 28px; height: 28px; }
+.rl-card-head .rl-pin { width: 28px; height: 28px; padding: 5px; }
+.rl-card-body { display: block; margin: 6px 8px 8px; padding: 10px 12px; background: var(--well); border: 1px solid var(--line); border-radius: 10px; }
+.rl-rrow { flex-wrap: nowrap; gap: 8px; }
+.rl-slots { flex: none; display: flex; align-items: center; gap: 4px; }
+.rl-plus { color: var(--dim); font-size: 15px; font-weight: 700; padding: 0 1px; }
+/* mũi tên động: thanh xanh chạy hết một vòng trong đúng thời gian công thức */
+.rl-arrow { flex: 1; min-width: 56px; display: flex; flex-direction: column; align-items: stretch; gap: 3px; }
+.rl-arrow-time { text-align: center; font-size: 11px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.rl-arrow-bar { position: relative; height: 12px; margin-right: 8px; }
+.rl-arrow-track { position: absolute; left: 0; right: 0; top: 4px; height: 4px; border-radius: 2px; background: rgba(88, 166, 255, 0.22); }
+.rl-arrow-fill {
+  position: absolute; left: 0; top: 4px; height: 4px; width: 0; border-radius: 2px; background: #58a6ff;
+  box-shadow: 0 0 6px rgba(88, 166, 255, 0.7); animation: rl-fill var(--dur, 2s) linear infinite;
+}
+.rl-arrow-head {
+  position: absolute; right: -8px; top: 0; width: 0; height: 0;
+  border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid rgba(88, 166, 255, 0.45);
+}
+@keyframes rl-fill { from { width: 0; } to { width: 100%; } }
+[data-theme='light'] .rl-arrow-fill { background: #0969da; box-shadow: 0 0 6px rgba(9, 105, 218, 0.45); }
+[data-theme='light'] .rl-arrow-track { background: rgba(9, 105, 218, 0.18); }
+[data-theme='light'] .rl-arrow-head { border-left-color: rgba(9, 105, 218, 0.4); }
+@media (prefers-reduced-motion: reduce) { .rl-arrow-fill { animation: none; width: 100%; } }
+html.touch-ui .rl-card-body .rl-tile { width: 42px; height: 42px; }
+html.touch-ui .rl-arrow { min-width: 40px; }
+/* chuỗi sản xuất: đường nối theo màu chữ phụ của giao diện */
+[data-theme='light'] .rl-lines path { stroke: #8c959f; }
 
