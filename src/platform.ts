@@ -24,7 +24,10 @@ export const nativePlugin = <T>(name: string): T | undefined => (isNativeApp() ?
  */
 export const isTouchUI = (): boolean =>
   isNativeApp() ||
-  (typeof window !== 'undefined' && !!window.matchMedia?.('(pointer: coarse)').matches && !window.matchMedia?.('(any-pointer: fine)').matches);
+  // con trỏ **chính** là ngón tay và không rê chuột được (người dùng 2026-10-06: Chrome trên điện thoại vivo báo thêm
+  // `any-pointer: fine` — có bút cảm ứng — nên luật cũ "không có con trỏ chính xác nào" ra giao diện máy tính trên điện
+  // thoại). Laptop màn cảm ứng: con trỏ chính là chuột ⇒ vẫn giao diện máy tính.
+  (typeof window !== 'undefined' && !!window.matchMedia?.('(pointer: coarse)').matches && !!window.matchMedia?.('(hover: none)').matches);
 
 /**
  * Đặt con trỏ vào ô tìm kiếm khi mở hộp — **trừ trên điện thoại**: ở đó việc này bật bàn phím ảo che nửa màn hình
