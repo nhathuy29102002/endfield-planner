@@ -889,6 +889,9 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
     if (key) held.delete(key);
     held.delete(e.key.toLowerCase());
   });
+  // nút đổi chế độ trên thanh thao tác của điện thoại (`touchActions.ts`) — trước đây nó gửi phím Tab, mà Tab nay là
+  // bật / tắt máy ⇒ bấm đổi chế độ lại tắt máy (lỗi người dùng báo 2026-10-07). Gọi thẳng, không qua phím nào.
+  window.addEventListener('efp:switch-mode', () => switchMode());
   // chuyển cửa sổ khi đang giữ phím thì keyup không bao giờ tới — xoá hết cho khỏi trôi mãi
   window.addEventListener('blur', () => {
     held.clear();
@@ -896,7 +899,7 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
   });
 
   /**
-   * Tab: đổi sang chế độ kế tiếp — của máy đang chọn, hoặc của máy đang nhấc lên để di chuyển /
+   * Space (bấm nhả) / nút chế độ trên điện thoại: đổi sang chế độ kế tiếp — của máy đang chọn, hoặc của máy đang nhấc lên để di chuyển /
    * sao chép (chế độ mới áp vào máy lúc đặt xuống; sao chép thì chỉ bản sao đổi).
    */
   const switchMode = (): void => {
@@ -906,7 +909,7 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
       // chỉ đổi khi cầm **đúng một máy** (người dùng 2026-09-30: không đổi cả nhóm bằng Tab); cổng trên preview
       // đổi theo, áp vào lúc đặt xuống
       if (state.sel.machines.size !== 1) {
-        state.notify(tr('Tab chỉ đổi chế độ khi đang cầm một máy — nhóm nhiều máy thì đổi từng máy sau khi đặt'));
+        state.notify(tr('Space chỉ đổi chế độ khi đang cầm một máy — nhóm nhiều máy thì đổi từng máy sau khi đặt'));
         return;
       }
       const modes = { ...(t.modes ?? {}) };

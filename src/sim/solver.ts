@@ -1280,6 +1280,8 @@ function solveOnce(bp: Blueprint, ds: Dataset, blackout: boolean, freeOutputs: b
         accept.set(ins[k]!.id, capRate(ins[k]!, Math.min(ins[k]!.capacity, v))),
       );
     }
+    // máy người dùng đã tắt (mọi loại máy trừ tổng tuyến — người dùng 2026-10-07): không nhận gì, tuyến vào ứ lại
+    for (const e of edges) if (e.dst.off) accept.set(e.id, 0);
 
     // 3. chuỗi băng chở **lẫn nhiều món**: các món chia nhau sức chở của chuỗi, theo lượng mỗi
     //    món đang có
@@ -1319,7 +1321,8 @@ function solveOnce(bp: Blueprint, ds: Dataset, blackout: boolean, freeOutputs: b
     for (const e of edges) {
       const a = acceptOf.get(e.id) ?? 0;
       let offer: number;
-      if (e.src.passthrough) offer = chanShare.get(e.id) ?? 0;
+      if (e.src.off) offer = 0; // máy đã tắt không đẩy gì ra (van, kho, cửa xả… — người dùng 2026-10-07)
+      else if (e.src.passthrough) offer = chanShare.get(e.id) ?? 0;
       else {
         // Máy đẩy một món qua **nhiều cổng** thì sản lượng chia cho các tuyến theo sức nhận của
         // từng tuyến — không phải mỗi tuyến được trọn sản lượng.

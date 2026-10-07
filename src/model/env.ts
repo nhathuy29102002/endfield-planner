@@ -1,5 +1,6 @@
 import { footprintCells } from './geometry';
 import { roleOf } from './roles';
+import { isOff } from './switchOff';
 import type { Blueprint, CatalystEnv, Cell, Dataset, MachineDef, PlacedMachine } from './types';
 
 /** Hình chữ nhật vùng phủ của một máy đã đặt, tính ra toạ độ thế giới. */
@@ -52,7 +53,7 @@ export function computeEnv(
   const zones: EnvField['zones'] = [];
   for (const m of bp.machines) {
     const def = ds.machines.get(m.machineId);
-    if (!def || roleOf(def) !== 'envgen') continue;
+    if (!def || roleOf(def) !== 'envgen' || isOff(m, def)) continue; // máy tạo môi trường đã tắt ⇒ không có vùng
     const rect = auraRect(m, def);
     if (!rect) continue;
     const gas = activatorItem.get(m.uid);
@@ -66,7 +67,7 @@ export function computeEnv(
   const powerZones: EnvField['powerZones'] = [];
   for (const m of bp.machines) {
     const def = ds.machines.get(m.machineId);
-    if (def?.aura?.kind !== 'power') continue;
+    if (def?.aura?.kind !== 'power' || isOff(m, def)) continue; // cột / trụ điện đã tắt ⇒ không cấp điện
     const rect = auraRect(m, def);
     if (rect) powerZones.push({ uid: m.uid, rect });
   }

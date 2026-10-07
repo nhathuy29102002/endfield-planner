@@ -1,4 +1,4 @@
-import { canSwitchOff } from '../model/switchOff';
+import { isOff } from '../model/switchOff';
 import { GRASS_BASE, grassLayers, grassLevel, type GrassLayer } from './grassTex';
 import type { TerrainKind } from '../grid/grid';
 import { BUILD_MARGIN, envZonesOf, ghostCells, validatePlacement } from '../grid/grid';
@@ -908,8 +908,8 @@ export class Renderer {
       ctx.fillRect(sx + inset, sy + h - inset - barH, (w - inset * 2) * u, barH);
     }
 
-    // máy người dùng đã tắt (Tab — 2026-10-06): phủ tối + biểu tượng nút nguồn, không coi là lỗi (không viền đỏ / icon)
-    const off = m.off === true && canSwitchOff(def);
+    // máy người dùng đã tắt (Tab / nút nguồn — 2026-10-06): phủ tối + biểu tượng nút nguồn, không coi là lỗi (không viền đỏ / icon)
+    const off = isOff(m, def);
     // viền: tấm đế luôn có viền tối; sprite chỉ có viền khi máy có vấn đề (viền đỏ)
     if (!sprite || (flow?.bottleneck && !off)) {
       ctx.lineWidth = 1;
@@ -2020,28 +2020,43 @@ export class Renderer {
 
   /** Khung chọn vùng: viền xanh nét đứt, nền xanh rất nhạt. */
   /** Máy đã tắt: phủ tối + vòng nút nguồn xám + chữ OFF (khi ô đủ lớn). */
+  /**
+   * Máy đã tắt (người dùng 2026-10-07): **icon nút nguồn màu xám sáng** nằm trên máy, chữ **"Off" nhỏ** ngay dưới (viền
+   * tối mảnh để nổi trên nền cỏ / sprite); thân máy hơi tối đi.
+   */
   private drawOffOverlay(x: number, y: number, w: number, h: number): void {
     const { ctx, camera } = this;
     ctx.save();
-    ctx.fillStyle = 'rgba(8, 10, 14, 0.55)';
+    ctx.fillStyle = 'rgba(8, 10, 14, 0.4)';
     ctx.fillRect(x, y, w, h);
-    const r = Math.max(4, Math.min(w, h) * 0.18);
+    const r = Math.max(4, Math.min(w, h) * 0.17);
+    const text = camera.cell >= 10;
     const cx = x + w / 2;
-    const cy = y + h / 2 - (camera.cell >= 14 ? r * 0.35 : 0);
-    ctx.strokeStyle = '#c9d1d9';
-    ctx.lineWidth = Math.max(1.5, r * 0.22);
+    const cy = y + h / 2 - (text ? r * 0.45 : 0);
+    const icon = (): void => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, -Math.PI * 0.32, Math.PI * 1.32);
+      ctx.moveTo(cx, cy - r * 1.15);
+      ctx.lineTo(cx, cy - r * 0.2);
+      ctx.stroke();
+    };
+    const lw = Math.max(1.5, r * 0.24);
     ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, -Math.PI * 0.32, Math.PI * 1.32);
-    ctx.moveTo(cx, cy - r * 1.15);
-    ctx.lineTo(cx, cy - r * 0.2);
-    ctx.stroke();
-    if (camera.cell >= 14) {
-      ctx.fillStyle = '#c9d1d9';
-      ctx.font = `700 ${Math.max(9, Math.round(r * 0.75))}px system-ui, sans-serif`;
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.6)';
+    ctx.lineWidth = lw + 2;
+    icon();
+    ctx.strokeStyle = '#d9dee4';
+    ctx.lineWidth = lw;
+    icon();
+    if (text) {
+      ctx.font = `600 ${Math.max(8, Math.round(r * 0.62))}px system-ui, sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText('OFF', cx, cy + r * 1.35);
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.6)';
+      ctx.strokeText('Off', cx, cy + r * 1.3);
+      ctx.fillStyle = '#d9dee4';
+      ctx.fillText('Off', cx, cy + r * 1.3);
     }
     ctx.restore();
   }

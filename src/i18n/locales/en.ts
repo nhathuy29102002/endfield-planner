@@ -143,8 +143,8 @@ export const en: Locale = {
       'Can\'t rotate: {0}',
     'Chưa ghim máy thứ {0} — bấm ghim ở bảng chọn máy bên trái':
       'Pinned machine #{0} not set — pin one in the machine list on the left',
-    'Tab chỉ đổi chế độ khi đang cầm một máy — nhóm nhiều máy thì đổi từng máy sau khi đặt':
-      'Tab only switches mode while holding a single machine — for a group, switch each machine after placing',
+    'Space chỉ đổi chế độ khi đang cầm một máy — nhóm nhiều máy thì đổi từng máy sau khi đặt':
+      'Space only switches mode while holding a single machine — for a group, switch each machine after placing',
     'Không máy nào trong nhóm có chế độ để đổi':
       'No machine in the group has a mode to switch',
     'Máy này không có chế độ để đổi':
@@ -231,10 +231,10 @@ export const en: Locale = {
       'Viewing ground level (belts)',
     'Đang xem trên cao (ống)':
       'Viewing upper level (pipes)',
-    'Di chuyển: chuột trái đặt · giữ chuột phải + rê để xoay · Tab đổi chế độ · Esc trả về chỗ cũ':
-      'Move: left-click to place · hold right button + drag to rotate · Tab switches mode · Esc puts it back',
-    'Sao chép: chuột trái đặt bản sao · giữ chuột phải + rê để xoay · Tab đổi chế độ · Esc để tắt':
-      'Copy: left-click to place a copy · hold right button + drag to rotate · Tab switches mode · Esc to stop',
+    'Di chuyển: chuột trái đặt · giữ chuột phải + rê để xoay · Space đổi chế độ · Esc trả về chỗ cũ':
+      'Move: left-click to place · hold right button + drag to rotate · Space switches mode · Esc puts it back',
+    'Sao chép: chuột trái đặt bản sao · giữ chuột phải + rê để xoay · Space đổi chế độ · Esc để tắt':
+      'Copy: left-click to place a copy · hold right button + drag to rotate · Space switches mode · Esc to stop',
     'Xoá {0}':
       'Delete {0}',
     '{0} máy':
@@ -923,8 +923,8 @@ export const en: Locale = {
       'Warning: {0}',
     'Thu gọn (nhớ cho mọi máy)':
       'Collapse (remembered for all machines)',
-    'Đổi chế độ  (Tab)':
-      'Switch mode  (Tab)',
+    'Đổi chế độ  (Space)':
+      'Switch mode  (Space)',
     'Chế độ':
       'Mode',
     'Chế độ này chỉ đổi cách máy vận hành, không đổi bộ công thức.':
@@ -1848,8 +1848,8 @@ export const en: Locale = {
       "Batch selection — click to select / deselect, drag a box to add, right-drag a box to remove; X / Esc / right-click to exit",
     "Chọn máy trước rồi bấm Tab để tắt / bật":
       "Select machines first, then press Tab to turn them off / on",
-    "Không có máy nào dùng điện trong vùng chọn để tắt / bật":
-      "No powered machine in the selection to turn off / on",
+    "Vùng chọn chỉ có tổng tuyến kho hàng — không tắt / bật được":
+      "Only the depot bus is selected — it cannot be turned off / on",
     "Tắt {0} máy":
       "Turn off {0} machines",
     "Bật {0} máy":
@@ -1870,8 +1870,8 @@ export const en: Locale = {
       "Exit batch mode",
     "Chọn hàng loạt":
       "Batch select",
-    "Không có máy dùng điện nào đang chọn để bật / tắt":
-      "No powered machine selected to turn on / off",
+    "Không có máy nào tắt / bật được trong vùng chọn":
+      "No machine in the selection can be turned on / off",
     "Bật lại máy đang chọn":
       "Turn the selected machines back on",
     "Tắt máy đang chọn — không chạy, không tốn điện":
@@ -1884,5 +1884,9 @@ export const en: Locale = {
       "Delete selection / eraser",
     "Đóng / mở danh sách máy":
       "Hide / show the machine list",
+    "Máy đang tắt — bấm để bật lại  (Tab)":
+      "Machine is off — click to turn it back on  (Tab)",
+    "Tắt máy — không chạy, không nhận / đẩy hàng, không tốn điện  (Tab)":
+      "Turn off — no running, no items in or out, no power used  (Tab)",
   },
 };

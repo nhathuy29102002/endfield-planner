@@ -225,7 +225,7 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
       const allOff = ms.length > 0 && ms.every((m) => m.off);
       return button(
         {
-          title: ms.length === 0 ? tr('Không có máy dùng điện nào đang chọn để bật / tắt') : allOff ? tr('Bật lại máy đang chọn') : tr('Tắt máy đang chọn — không chạy, không tốn điện'),
+          title: ms.length === 0 ? tr('Không có máy nào tắt / bật được trong vùng chọn') : allOff ? tr('Bật lại máy đang chọn') : tr('Tắt máy đang chọn — không chạy, không tốn điện'),
           key: 'Tab',
           active: allOff,
           disabled: busy || ms.length === 0,

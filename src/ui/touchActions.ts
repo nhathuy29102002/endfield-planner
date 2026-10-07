@@ -1,7 +1,7 @@
 import type { AppState } from '../editor/state';
 import { selectionSize } from '../editor/group';
 import { el } from './dom';
-import { pressKey, touchModes } from './touch';
+import { touchModes } from './touch';
 import type { MapTouch } from './touchMap';
 import { MACHINE_MODE_ICONS, modeIconSvg } from './modeIcons';
 import { tr } from '../i18n';
@@ -301,7 +301,7 @@ export function mountTouchActions(
       const on = target.mode === o.id;
       return el(
         'button',
-        { class: `ms-opt${on ? ' on' : ''}`, type: 'button', onclick: () => modeTarget()?.mode !== o.id && pressKey('Tab', 'Tab') },
+        { class: `ms-opt${on ? ' on' : ''}`, type: 'button', onclick: () => modeTarget()?.mode !== o.id && window.dispatchEvent(new Event('efp:switch-mode')) },
         ...(side === 'A' ? [icon, label] : [label, icon]),
       );
     };

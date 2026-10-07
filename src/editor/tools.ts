@@ -55,7 +55,7 @@ export function startMove(state: AppState, renderer: Renderer, uid: number): voi
   if (!m) return;
   enterTool(state, renderer, { kind: 'place', machineId: m.machineId, rot: m.rot, mode: 'move', sourceUid: uid, machineMode: m.mode });
   liftTo(state, renderer, m.machineId, m.rot, { x: m.x, z: m.z });
-  state.notify(tr('Di chuyển: chuột trái đặt · giữ chuột phải + rê để xoay · Tab đổi chế độ · Esc trả về chỗ cũ'));
+  state.notify(tr('Di chuyển: chuột trái đặt · giữ chuột phải + rê để xoay · Space đổi chế độ · Esc trả về chỗ cũ'));
 }
 
 /** Sao chép máy đang chọn: máy gốc giữ nguyên, đặt bao nhiêu bản sao cũng được tới khi Esc. */
@@ -64,7 +64,7 @@ export function startCopy(state: AppState, renderer: Renderer, uid: number): voi
   if (!m) return;
   enterTool(state, renderer, { kind: 'place', machineId: m.machineId, rot: m.rot, mode: 'copy', sourceUid: uid, machineMode: m.mode });
   liftTo(state, renderer, m.machineId, m.rot, { x: m.x, z: m.z });
-  state.notify(tr('Sao chép: chuột trái đặt bản sao · giữ chuột phải + rê để xoay · Tab đổi chế độ · Esc để tắt'));
+  state.notify(tr('Sao chép: chuột trái đặt bản sao · giữ chuột phải + rê để xoay · Space đổi chế độ · Esc để tắt'));
 }
 
 /**
@@ -94,14 +94,14 @@ export function deleteSelected(state: AppState, renderer: Renderer): void {
 }
 
 /**
- * **Tab: bật / tắt các máy đang chọn** (người dùng 2026-10-06 — "tắt máy để tiết kiệm điện", như trong game). Chỉ máy
- * dùng điện và trạm điện (`canSwitchOff`); còn ít nhất một máy đang bật ⇒ tắt hết, tất cả đã tắt ⇒ bật lại hết. Một bước
+ * **Tab: bật / tắt các máy đang chọn** (người dùng 2026-10-06 — "tắt máy để tiết kiệm điện", như trong game). Mọi máy
+ * trừ tổng tuyến kho hàng (`canSwitchOff`, luật đổi 2026-10-07); còn ít nhất một máy đang bật ⇒ tắt hết, tất cả đã tắt ⇒ bật lại hết. Một bước
  * hoàn tác. Trả về số máy đã đổi.
  */
 export function toggleOffSelected(state: AppState): number {
   const ms = state.bp.machines.filter((m) => state.sel.machines.has(m.uid) && !m.fixed && canSwitchOff(state.ds.machines.get(m.machineId)));
   if (ms.length === 0) {
-    state.notify(selectionSize(state.sel) === 0 ? tr('Chọn máy trước rồi bấm Tab để tắt / bật') : tr('Không có máy nào dùng điện trong vùng chọn để tắt / bật'));
+    state.notify(selectionSize(state.sel) === 0 ? tr('Chọn máy trước rồi bấm Tab để tắt / bật') : tr('Vùng chọn chỉ có tổng tuyến kho hàng — không tắt / bật được'));
     return 0;
   }
   const turnOff = ms.some((m) => !m.off);

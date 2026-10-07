@@ -12,7 +12,7 @@
  * - Mọi lần chuyển hàng / bắt đầu / xong một mẻ đều mang mốc thời gian chính xác trong bước, nên bước lớn không làm
  *   sai sức chở.
  */
-import { canSwitchOff } from '../model/switchOff';
+import { isOff } from '../model/switchOff';
 import { buildNetwork, type Network } from '../model/network';
 import { kindOfItem } from '../model/dataset';
 import { recipesInMode } from '../model/binding';
@@ -118,6 +118,8 @@ interface NodeBase {
   /** Trong tầm cột / trụ điện (tĩnh). */
   inRange: boolean;
   needsPower: boolean;
+  /** Người dùng đã tắt máy (Tab / nút nguồn) — không nhận, không đẩy hàng (người dùng 2026-10-07). */
+  off: boolean;
   /** Kho của máy theo món — máy chế biến: **ô đầu vào** (nguyên liệu nhận từ tuyến). */
   store: Map<string, number>;
   /** Máy chế biến: **ô đầu ra** (sản phẩm chờ đẩy đi) — tách khỏi ô đầu vào, sản phẩm không bị dùng lại làm nguyên liệu. */
@@ -362,7 +364,7 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
     // (người dùng 2026-10-03: nguồn điện phải thật sự tiêu hao pin; thiếu điện ⇒ cả map / cả nhóm dừng)
     const needs = def.power > 0;
     // máy người dùng đã tắt (Tab, 2026-10-06) = như mất điện: không chạy, không nhận hàng (điện cần đã trừ trong bộ giải)
-    const off = canSwitchOff(def) && m.off === true;
+    const off = isOff(m, def);
     const inRange = !off && (!needs || bp.enforcePower === false || flow?.powered !== false || flow?.blackout === true);
     const powered = inRange;
     let kind: NodeKind = 'none';
@@ -386,6 +388,7 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
       powered,
       inRange,
       needsPower: (needs && bp.enforcePower !== false) || off,
+      off,
       store: new Map(),
       output: new Map(),
       outs: new Map(),
@@ -742,6 +745,7 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
 
   /** Đẩy món trong kho ra các tuyến ra, từ lúc `t` tới `limit`. */
   function emit(n: Node, t: number, limit: number): void {
+    if (n.off) return; // máy đã tắt giữ nguyên hàng trong kho
     const d = n.data;
     switch (n.kind) {
       case 'crafter': {
@@ -901,6 +905,7 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
 
   /** Máy `n` nhận món `item` ở cổng `key` lúc `t`? */
   function accept(n: Node, key: PortKey, item: string, t: number, limit: number): boolean {
+    if (n.off) return false; // máy đã tắt không nhận gì — tuyến vào ứ lại
     const d = n.data;
     switch (n.kind) {
       case 'crafter': {

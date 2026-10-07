@@ -16,10 +16,15 @@ const link = (s: Scene, a: number, ai: number, b: number, bi: number): ReturnTyp
 const machine = (s: Scene, uid: number) => s.bp.machines.find((m) => m.uid === uid)!;
 
 describe('tắt máy (Tab)', () => {
-  it('chỉ máy dùng điện và trạm điện tắt được', () => {
+  // Luật đổi 2026-10-07: mọi máy tắt được, trừ Cổng Tổng Tuyến / Khu Tổng Tuyến Kho Hàng (trước: chỉ máy dùng điện + trạm
+  // điện, van tách không tắt được)
+  it('mọi máy tắt được, trừ Cổng Tổng Tuyến và Khu Tổng Tuyến Kho Hàng', () => {
     expect(canSwitchOff(ds.machines.get('furnance_1'))).toBe(true);
     expect(canSwitchOff(ds.machines.get('power_station_1'))).toBe(true);
-    expect(canSwitchOff(ds.machines.get('log_splitter'))).toBe(false);
+    expect(canSwitchOff(ds.machines.get('log_splitter'))).toBe(true);
+    expect(canSwitchOff(ds.machines.get('unloader_1'))).toBe(true);
+    expect(canSwitchOff(ds.machines.get('log_hongs_bus'))).toBe(false);
+    expect(canSwitchOff(ds.machines.get('log_hongs_bus_source'))).toBe(false);
   });
 
   it('máy tắt không ăn điện, không chạy; bật lại thì như cũ', () => {

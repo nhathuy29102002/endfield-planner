@@ -15,6 +15,11 @@ import { clear, el, fmt, pct } from './dom';
 import { tr } from '../i18n';
 import { isTouchUI } from '../platform';
 import { MACHINE_MODE_ICONS, modeIconSvg } from './modeIcons';
+import { canSwitchOff } from '../model/switchOff';
+
+/** Biểu tượng nút nguồn (cùng hình với nút Bật / tắt ở cột công cụ). */
+const POWER_SVG =
+  '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8.2 6.8a7 7 0 1 0 7.6 0" stroke="currentColor" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M12 3.5v8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>';
 
 /** Chấm màu + ảnh biểu tượng của một vật tư. */
 export function itemChip(state: AppState, itemId: string): HTMLElement {
@@ -219,6 +224,7 @@ export function mountInspector(root: HTMLElement, state: AppState, onLayout: () 
         touch ? null : footprintGrid(def.size.w, def.size.d, { w: 48, h: 32 }),
         // góc phải trên: môi trường xúc tác / chất kích hoạt — máy nào dùng mới có
         touch ? null : envBox(state, m, def, flow),
+        powerBtn(),
         el(
           'button',
           {
@@ -248,6 +254,30 @@ export function mountInspector(root: HTMLElement, state: AppState, onLayout: () 
       ),
       body,
     );
+
+    /**
+     * Nút nguồn ở đầu cửa sổ (người dùng 2026-10-07): bật / tắt **máy này** như Tab — mọi máy trừ Cổng Tổng Tuyến / Khu
+     * Tổng Tuyến Kho Hàng (`canSwitchOff`) và công trình đặt sẵn của căn cứ. Đang tắt ⇒ nút đỏ.
+     */
+    function powerBtn(): HTMLElement | null {
+      const m = mN;
+      if (m.fixed || !canSwitchOff(defN)) return null;
+      const off = m.off === true;
+      const b = el('button', {
+        class: `mw-power${off ? ' off' : ''}`,
+        type: 'button',
+        title: off ? tr('Máy đang tắt — bấm để bật lại  (Tab)') : tr('Tắt máy — không chạy, không nhận / đẩy hàng, không tốn điện  (Tab)'),
+        'aria-pressed': String(off),
+        onclick: () =>
+          state.mutate(off ? tr('Bật {0} máy', 1) : tr('Tắt {0} máy', 1), () => {
+            if (off) delete m.off;
+            else m.off = true;
+            state.message = off ? tr('Đã bật lại {0} máy', 1) : tr('Đã tắt {0} máy — không chạy, không tốn điện (Tab để bật lại)', 1);
+          }),
+      });
+      b.innerHTML = POWER_SVG;
+      return b;
+    }
 
     // ---- chế độ máy
     if (def.modes && def.modes.length === 2 && !touch) {
@@ -287,7 +317,7 @@ export function mountInspector(root: HTMLElement, state: AppState, onLayout: () 
       };
       const sw = el(
         'div',
-        { class: `mode-switch${(prev ?? mode) === b.id ? ' right' : ''}`, role: 'radiogroup', title: tr('Đổi chế độ  (Tab)') },
+        { class: `mode-switch${(prev ?? mode) === b.id ? ' right' : ''}`, role: 'radiogroup', title: tr('Đổi chế độ  (Space)') },
         knob,
         opt(a, 'A'),
         opt(b, 'B'),

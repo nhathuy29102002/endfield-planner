@@ -1,6 +1,6 @@
 import { cellKey, footprintCells, opposite, step, worldPorts } from './geometry';
 import { roleOf } from './roles';
-import type { Blueprint, Dataset } from './types';
+import { isValley, type Blueprint, type Dataset } from './types';
 
 /**
  * Loader / Unloader nào đang gắn vào tổng tuyến kho hàng.
@@ -23,6 +23,8 @@ export function busAttached(bp: Blueprint, ds: Dataset): Set<number> {
  * Như `busAttached`, kèm luật **tổng tuyến phải nối về Cổng Tổng Tuyến** (người dùng 2026-10-02): các đoạn Khu
  * Tổng Tuyến chạm nhau (chung một cạnh ô, không cần đúng chiều) thành một dải; chỉ dải có chạm **Cổng Tổng Tuyến**
  * mới thông với kho tổng. Máy dỡ / nâng gắn vào dải không nối về cổng ⇒ `dangling` (không chạy).
+ * **Valley IV**: không tự đặt tổng tuyến được, bù lại **mọi đoạn tổng tuyến coi như đã thông** — không cần nối về cổng
+ * (người dùng 2026-10-07).
  */
 export function busStatus(bp: Blueprint, ds: Dataset): { attached: Set<number>; dangling: Set<number>; deadBus: Set<number> } {
   // các đoạn tổng tuyến + cổng: gom thành dải theo ô kề cạnh
@@ -33,7 +35,8 @@ export function busStatus(bp: Blueprint, ds: Dataset): { attached: Set<number>; 
   const owner = new Map<string, number>();
   parts.forEach((p, i) => p.cells.forEach((c) => owner.set(c, i)));
   const linked = new Set<number>(); // chỉ số đoạn thông về cổng
-  const queue = parts.flatMap((p, i) => (p.start ? [i] : []));
+  const valley = isValley(bp.base?.region);
+  const queue = parts.flatMap((p, i) => (p.start || valley ? [i] : []));
   for (const i of queue) linked.add(i);
   while (queue.length > 0) {
     const i = queue.pop()!;

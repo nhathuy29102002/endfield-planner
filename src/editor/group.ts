@@ -1,9 +1,9 @@
 import { Grid, envZonesOf, ghostCells, validatePlacement, type Terrain } from '../grid/grid';
 import { footprint, footprintCells } from '../model/geometry';
 import { buildNetwork } from '../model/network';
-import type { BeltTile, Blueprint, Cell, Dataset, Dir4, Facing, Layer, PlacedMachine, PortKind } from '../model/types';
+import { isValley, type BeltTile, type Blueprint, type Cell, type Dataset, type Dir4, type Facing, type Layer, type PlacedMachine, type PortKind } from '../model/types';
 import { removeMachine } from './ops';
-import { UNIQUE_MACHINES } from '../model/roles';
+import { UNIQUE_MACHINES, roleOf } from '../model/roles';
 import { tr } from '../i18n';
 
 /**
@@ -264,6 +264,13 @@ export function planPieces(
     // không trùng ô nào mà vẫn hỏng (vùng môi trường chồng nhau…) ⇒ đỏ cả máy
     for (const c of some.length > 0 ? some : cells) mark(c.cell);
   }
+  // Valley IV: không đặt (dán / sao chép / dời) Cổng Tổng Tuyến hay Khu Tổng Tuyến — như `addMachine` (người dùng 2026-10-07)
+  const isBus = (id: string): boolean => {
+    const d = ds.machines.get(id);
+    return !!d && roleOf(d) === 'bus';
+  };
+  if (isValley(rest.base?.region) && pieces.machines.some((m) => isBus(m.machineId)))
+    reason ??= tr('Valley IV không đặt được tổng tuyến kho hàng — kho tổng là dải đặt sẵn ở rìa căn cứ');
   // công trình chỉ được có một trên map (Cửa Xả Phụ Phẩm)
   for (const id of UNIQUE_MACHINES) {
     const n = rest.machines.filter((m) => m.machineId === id).length + pieces.machines.filter((m) => m.machineId === id).length;
