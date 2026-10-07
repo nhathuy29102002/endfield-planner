@@ -1,6 +1,6 @@
 {
   "name": "endfield-planner",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "type": "module",
   "description": "Trình quy hoạch nhà máy AIC cho Arknights: Endfield - editor lưới 2D hai layer + solver thông lượng",
