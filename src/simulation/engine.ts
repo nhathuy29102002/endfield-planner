@@ -12,6 +12,7 @@
  * - Mọi lần chuyển hàng / bắt đầu / xong một mẻ đều mang mốc thời gian chính xác trong bước, nên bước lớn không làm
  *   sai sức chở.
  */
+import { canSwitchOff } from '../model/switchOff';
 import { buildNetwork, type Network } from '../model/network';
 import { kindOfItem } from '../model/dataset';
 import { recipesInMode } from '../model/binding';
@@ -360,7 +361,9 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
     // từ bộ giải (máy "sụp điện" trong bộ giải vẫn là trong tầm); **sụp điện** tính lại mỗi bước theo pin đang cháy
     // (người dùng 2026-10-03: nguồn điện phải thật sự tiêu hao pin; thiếu điện ⇒ cả map / cả nhóm dừng)
     const needs = def.power > 0;
-    const inRange = !needs || bp.enforcePower === false || flow?.powered !== false || flow?.blackout === true;
+    // máy người dùng đã tắt (Tab, 2026-10-06) = như mất điện: không chạy, không nhận hàng (điện cần đã trừ trong bộ giải)
+    const off = canSwitchOff(def) && m.off === true;
+    const inRange = !off && (!needs || bp.enforcePower === false || flow?.powered !== false || flow?.blackout === true);
     const powered = inRange;
     let kind: NodeKind = 'none';
     if (role === 'crafter') kind = 'crafter';
@@ -382,7 +385,7 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
       flow,
       powered,
       inRange,
-      needsPower: needs && bp.enforcePower !== false,
+      needsPower: (needs && bp.enforcePower !== false) || off,
       store: new Map(),
       output: new Map(),
       outs: new Map(),
@@ -1001,7 +1004,8 @@ export function createSimulation(bp: Blueprint, ds: Dataset, opts: SimOptions = 
   const ignite = (n: Node, t: number): void => {
     const d = n.data;
     if ((d.burnEnd as number) > t + EPS) return;
-    const fuel = [...n.store.keys()].find((x) => held(n, x) >= 1 && ds.items.get(x)?.fuel);
+    // trạm điện đã tắt: không đốt thêm (nhiên liệu đang cháy dở cháy nốt)
+    const fuel = n.m.off ? undefined : [...n.store.keys()].find((x) => held(n, x) >= 1 && ds.items.get(x)?.fuel);
     if (!fuel) {
       d.burnItem = null;
       d.burnPower = 0;

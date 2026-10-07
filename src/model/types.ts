@@ -213,6 +213,11 @@ export interface PlacedMachine {
   /** Chế độ đang bật. Máy không có chế độ thì bỏ trống. */
   mode?: 'A' | 'B';
   /**
+   * **Đã tắt** (Tab — người dùng 2026-10-06, "tiết kiệm điện"): chỉ máy dùng điện và trạm điện. Máy tắt không chạy, không
+   * nhận hàng, không tính điện tiêu thụ; trạm điện tắt không đốt nhiên liệu, không phát điện. Không có = đang bật.
+   */
+  off?: boolean;
+  /**
    * Ống ngầm: uid của máy đầu kia.
    *
    * Khí và chất lỏng **không có kho tổng** — muốn chuyển xa thì đặt một

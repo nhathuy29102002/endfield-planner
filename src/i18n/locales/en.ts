@@ -1824,5 +1824,49 @@ export const en: Locale = {
       'Download the latest Android app (.apk)',
     'Trang các bản phát hành trên GitHub':
       'Releases page on GitHub',
+    "Đã thoát chế độ chọn hàng loạt":
+      "Left batch selection mode",
+    "Đổi chế độ máy đang cầm: bấm Space":
+      "To switch the held machine's mode, press Space",
+    "Chế độ chọn hàng loạt — bấm chọn / bỏ chọn, kéo hộp chọn thêm, chuột phải kéo hộp bỏ chọn; X / Esc / chuột phải để thoát":
+      "Batch selection — click to select / deselect, drag a box to add, right-drag a box to remove; X / Esc / right-click to exit",
+    "Chọn máy trước rồi bấm Tab để tắt / bật":
+      "Select machines first, then press Tab to turn them off / on",
+    "Không có máy nào dùng điện trong vùng chọn để tắt / bật":
+      "No powered machine in the selection to turn off / on",
+    "Tắt {0} máy":
+      "Turn off {0} machines",
+    "Bật {0} máy":
+      "Turn on {0} machines",
+    "Đã tắt {0} máy — không chạy, không tốn điện (Tab để bật lại)":
+      "Turned off {0} machines — they stop and use no power (Tab to turn back on)",
+    "Đã bật lại {0} máy":
+      "Turned {0} machines back on",
+    "Đã tắt — Tab để bật lại":
+      "Turned off — Tab to turn back on",
+    "Chọn / Bỏ chọn":
+      "Select / deselect",
+    "Kéo hộp: Chọn nhiều":
+      "Drag a box: select many",
+    "Kéo hộp: Bỏ chọn nhiều":
+      "Drag a box: deselect many",
+    "Thoát chế độ hàng loạt":
+      "Exit batch mode",
+    "Chọn hàng loạt":
+      "Batch select",
+    "Không có máy dùng điện nào đang chọn để bật / tắt":
+      "No powered machine selected to turn on / off",
+    "Bật lại máy đang chọn":
+      "Turn the selected machines back on",
+    "Tắt máy đang chọn — không chạy, không tốn điện":
+      "Turn the selected machines off — they stop and use no power",
+    "Lưu trữ (xoá) {0}":
+      "Store (delete) {0}",
+    "Bật / tắt máy đang chọn":
+      "Turn selected machines on / off",
+    "Xoá đang chọn / tẩy":
+      "Delete selection / eraser",
+    "Đóng / mở danh sách máy":
+      "Hide / show the machine list",
   },
 };

@@ -29,8 +29,9 @@ import {
   startMove,
   toggleLabels,
   toggleLayer,
+  toggleOffSelected,
 } from './tools';
-import { boxSelection, clickTile, emptySelection, selectionSize, toggleMachine, unionSelection } from './group';
+import { boxSelection, clickTile, emptySelection, selectionSize, subtractSelection, toggleMachine, unionSelection } from './group';
 import { beltAt } from '../model/network';
 import type { AppState, Tool } from './state';
 import type { Selection } from './group';
@@ -101,6 +102,14 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
   let painting = false;
   let last = { x: 0, y: 0 };
   let spaceDown = false;
+  /** Đang giữ Space mà đã kéo bản đồ ⇒ thả Space không tính là "bấm Space" (đổi chế độ máy — người dùng 2026-10-06). */
+  let spacePanned = false;
+  /**
+   * Chế độ hàng loạt (X): chuột phải vừa nhấn — chưa biết là **bấm** (thoát chế độ) hay **kéo hộp** (bỏ chọn nhiều).
+   * `rboxing` = đang kéo hộp bỏ chọn.
+   */
+  let rpress: { sx: number; sy: number; cell: Cell } | null = null;
+  let rboxing = false;
   /**
    * Giữ chuột phải lúc đang preview máy: preview đứng yên tại `center`, rê chuột để
    * xoay theo hướng rê. Thả ra thì preview lại bám con trỏ, giữ hướng mới.
@@ -246,6 +255,26 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
     state.emit('view');
   };
 
+  /** Thoát chế độ hàng loạt (X / Esc / bấm chuột phải): bỏ luôn vùng chọn — *suy luận*, như thoát chế độ này trong game. */
+  const exitBatch = (): void => {
+    rpress = null;
+    rboxing = false;
+    renderer.box = null;
+    renderer.boxMode = 'add';
+    state.sel = emptySelection();
+    state.setBatch(false);
+    state.notify(tr('Đã thoát chế độ chọn hàng loạt'));
+  };
+  /** Chế độ hàng loạt: **nhấn và giữ** chuột trái trên một máy ⇒ di chuyển cả vùng chọn (máy chưa chọn thì thêm vào). */
+  const batchHold = (cell: Cell): void => {
+    const m = machineAt(state.bp, state.ds, cell);
+    if (!m || m.fixed) return;
+    if (!state.sel.machines.has(m.uid)) state.setSelection(toggleMachine(state.sel, m.uid));
+    startGroup(state, renderer, 'move', cell);
+    updateGhost();
+    state.emit('view');
+  };
+
   /** Huỷ nhóm đang cầm: bản vẽ chưa đổi gì nên chỉ cần thoát chế độ. */
   const cancelGroup = (message: string): void => {
     lock = null;
@@ -278,6 +307,12 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
     // Chuột phải khi đang preview máy = khoá tại chỗ để xoay; ngoài ra vẫn là kéo bản vẽ.
     // Chuột giữa và Space+kéo luôn là kéo bản vẽ.
     const holding = state.tool.kind === 'place' || state.tool.kind === 'group' || state.tool.kind === 'stamp';
+    // chế độ hàng loạt: chuột phải = bấm để thoát / kéo hộp để bỏ chọn nhiều (kéo bản đồ: chuột giữa hoặc Space + kéo)
+    if (e.button === 2 && state.batch && state.tool.kind === 'select' && !spaceDown) {
+      updateHover(e);
+      if (renderer.hover.cell) rpress = { sx: p.x, sy: p.y, cell: renderer.hover.cell };
+      return;
+    }
     if (e.button === 2 && holding && !spaceDown) {
       updateHover(e);
       if (renderer.hover.cell) lock = { center: renderer.hover.cell, sx: p.x, sy: p.y };
@@ -287,6 +322,7 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
     }
     if (e.button === 1 || e.button === 2 || spaceDown) {
       panning = true;
+      if (spaceDown) spacePanned = true;
       return;
     }
     if (e.button !== 0) return;
@@ -297,6 +333,20 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
 
     switch (state.tool.kind) {
       case 'select': {
+        if (state.batch) {
+          // chế độ hàng loạt: bấm = chọn / bỏ chọn (như Ctrl+bấm), kéo = hộp chọn thêm, giữ trên máy = di chuyển
+          press = { sx: p.x, sy: p.y, cell, ctrl: true };
+          clearHold();
+          if (machineAt(state.bp, state.ds, cell))
+            holdTimer = setTimeout(() => {
+              holdTimer = null;
+              if (!press) return;
+              const at = press.cell;
+              press = null;
+              batchHold(at);
+            }, HOLD_MS);
+          break;
+        }
         // chưa làm gì cả: đợi xem là bấm hay kéo (xem `press`)
         press = { sx: p.x, sy: p.y, cell, ctrl: e.ctrlKey || e.metaKey };
         clearHold();
@@ -434,6 +484,16 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
       state.emit('view');
       return;
     }
+    if (rpress) {
+      updateHover(e);
+      if (!rboxing && Math.hypot(p.x - rpress.sx, p.y - rpress.sy) >= DRAG_PX) {
+        rboxing = true;
+        renderer.boxMode = 'remove';
+      }
+      if (rboxing && renderer.hover.cell) renderer.box = { a: rpress.cell, b: renderer.hover.cell };
+      state.emit('view');
+      return;
+    }
     updateHover(e);
     if (press && Math.hypot(p.x - press.sx, p.y - press.sy) >= DRAG_PX) {
       const start = press;
@@ -488,6 +548,19 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
         lock = null;
       }
       dragPlace = false;
+    }
+    if (e.button === 2 && rpress) {
+      if (rboxing && renderer.box) {
+        const picked = boxSelection(state.bp, state.ds, renderer.box.a, renderer.box.b);
+        renderer.box = null;
+        renderer.boxMode = 'add';
+        rboxing = false;
+        rpress = null;
+        state.setSelection(subtractSelection(state.sel, picked));
+      } else {
+        rpress = null;
+        exitBatch(); // bấm chuột phải (không kéo) = thoát chế độ hàng loạt
+      }
     }
     if (e.button === 2 && lock) {
       lock = null; // thả chuột phải: preview lại bám con trỏ, giữ hướng mới
@@ -586,7 +659,10 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
       // Space: giữ + kéo = kéo bản vẽ. (Đổi chế độ máy chuyển sang Tab — người dùng 2026-09-29.)
       // Chặn mặc định để Space không "bấm" hộ nút đang được focus.
       e.preventDefault();
-      if (!e.repeat) spaceDown = true;
+      if (!e.repeat) {
+        spaceDown = true;
+        spacePanned = false;
+      }
       return;
     }
 
@@ -648,6 +724,10 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
           press = null;
           renderer.box = null;
           state.notify(tr('Đã huỷ chọn vùng'));
+          break;
+        }
+        if (state.batch && state.tool.kind === 'select') {
+          exitBatch();
           break;
         }
         if (state.tool.kind === 'stamp') {
@@ -737,11 +817,13 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
       case 'delete':
         if (selectionSize(state.sel) > 0 && state.tool.kind === 'select') deleteSelected(state, renderer);
         break;
-      // Tab: đổi chế độ máy đang chọn / đang di chuyển / đang sao chép (người dùng 2026-09-29 —
-      // trước đây là Space); CapsLock: đổi độ cao mặt đất ⇄ trên cao (trước đây là Tab)
+      // Tab: **bật / tắt** các máy đang chọn (người dùng 2026-10-06, như trong game — tiết kiệm điện). Đổi chế độ máy đã
+      // chuyển về Space (bấm nhả nhanh). CapsLock: đổi độ cao mặt đất ⇄ trên cao.
       case 'tab':
         e.preventDefault();
-        if (!e.repeat) switchMode();
+        if (e.repeat) break;
+        if (state.tool.kind === 'select') toggleOffSelected(state);
+        else state.notify(tr('Đổi chế độ máy đang cầm: bấm Space'));
         break;
       case 'capslock':
         e.preventDefault();
@@ -771,8 +853,25 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
         updateGhost();
         break;
       }
+      // X: chế độ chọn hàng loạt (người dùng 2026-10-06 — trước đây X là công cụ Tẩy, nay là F)
       case 'x':
-        enterTool(state, renderer, { kind: 'erase' });
+        if (e.repeat) break;
+        if (state.batch) exitBatch();
+        else {
+          if (state.tool.kind !== 'select') enterTool(state, renderer, { kind: 'select' });
+          state.setBatch(true);
+          state.notify(tr('Chế độ chọn hàng loạt — bấm chọn / bỏ chọn, kéo hộp chọn thêm, chuột phải kéo hộp bỏ chọn; X / Esc / chuột phải để thoát'));
+        }
+        break;
+      // F: đang chọn ⇒ xoá (lưu trữ) những gì đang chọn; không chọn gì ⇒ công cụ Tẩy (người dùng 2026-10-06)
+      case 'f':
+        if (e.repeat) break;
+        if (state.tool.kind === 'select' && selectionSize(state.sel) > 0) deleteSelected(state, renderer);
+        else enterTool(state, renderer, { kind: 'erase' });
+        break;
+      // Z: đóng / mở bảng chọn máy bên trái (như F1)
+      case 'z':
+        if (!e.repeat) window.dispatchEvent(new Event('efp:toggle-palette'));
         break;
     }
   });
@@ -782,6 +881,8 @@ export function attachInput(canvas: HTMLCanvasElement, state: AppState, renderer
     if (isInjected(e)) return;
     const key = hotkeyOf(e);
     if (key === 'space') {
+      // bấm nhả Space mà không kéo bản đồ ⇒ đổi chế độ máy (người dùng 2026-10-06: chuyển từ Tab về Space)
+      if (spaceDown && !spacePanned && !isSimulating()) switchMode();
       spaceDown = false;
       return;
     }

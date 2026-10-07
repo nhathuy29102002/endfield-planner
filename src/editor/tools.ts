@@ -1,4 +1,5 @@
 import { removeMachine, setMode } from './ops';
+import { canSwitchOff } from '../model/switchOff';
 import {
   boundsCenter,
   commitGroup,
@@ -90,6 +91,28 @@ export function deleteSelected(state: AppState, renderer: Renderer): void {
   state.mutate(tr('Xoá {0}', describeSelection(state)), () => deleteSelection(state.bp, sel));
   enterTool(state, renderer, { kind: 'select' });
   state.setSelection(emptySelection());
+}
+
+/**
+ * **Tab: bật / tắt các máy đang chọn** (người dùng 2026-10-06 — "tắt máy để tiết kiệm điện", như trong game). Chỉ máy
+ * dùng điện và trạm điện (`canSwitchOff`); còn ít nhất một máy đang bật ⇒ tắt hết, tất cả đã tắt ⇒ bật lại hết. Một bước
+ * hoàn tác. Trả về số máy đã đổi.
+ */
+export function toggleOffSelected(state: AppState): number {
+  const ms = state.bp.machines.filter((m) => state.sel.machines.has(m.uid) && !m.fixed && canSwitchOff(state.ds.machines.get(m.machineId)));
+  if (ms.length === 0) {
+    state.notify(selectionSize(state.sel) === 0 ? tr('Chọn máy trước rồi bấm Tab để tắt / bật') : tr('Không có máy nào dùng điện trong vùng chọn để tắt / bật'));
+    return 0;
+  }
+  const turnOff = ms.some((m) => !m.off);
+  state.mutate(turnOff ? tr('Tắt {0} máy', ms.length) : tr('Bật {0} máy', ms.length), () => {
+    for (const m of ms) {
+      if (turnOff) m.off = true;
+      else delete m.off;
+    }
+    state.message = turnOff ? tr('Đã tắt {0} máy — không chạy, không tốn điện (Tab để bật lại)', ms.length) : tr('Đã bật lại {0} máy', ms.length);
+  });
+  return ms.length;
 }
 
 /** "3 máy, 12 ô băng, 4 ô ống" — dùng cho thông báo và nhãn nút. */

@@ -1,3 +1,4 @@
+import { canSwitchOff } from '../model/switchOff';
 import { choosesOutputs, combineRecipes, effectiveBinding, ingredientsInMode, recipesInMode, tickedRecipes } from '../model/binding';
 export { recipesInMode } from '../model/binding';
 import { itemName, kindOfItem } from '../model/dataset';
@@ -197,6 +198,8 @@ interface Prepared {
   pairTarget: number | null;
   infinite: boolean;
   needsPower: boolean;
+  /** Người dùng đã tắt máy (Tab) — xem `PlacedMachine.off`. */
+  off: boolean;
   mode: 'A' | 'B';
   /** Cầu: cổng ra ↔ cổng vào cùng hướng dòng chảy (mỗi trục một kênh riêng). */
   bridgeInOf: Map<PortKey, PortKey>;
@@ -291,7 +294,7 @@ function prepare(
         }
         const s = m.source && m.source.itemId ? m.source : undefined;
         if (s) {
-          make.set(s.itemId, s.perMinute * count);
+          make.set(s.itemId, canSwitchOff(def) && m.off ? 0 : s.perMinute * count);
           bindAll('out', s.itemId);
         }
         break;
@@ -454,6 +457,7 @@ function prepare(
       pairTarget: m.pairTarget ?? null,
       infinite: m.infinite === true,
       needsPower: def.power > 0,
+      off: canSwitchOff(def) && m.off === true,
       mode: m.mode ?? 'A',
       bridgeInOf,
       bridgeOutOf,
@@ -734,6 +738,12 @@ function settleGenerators(ds: Dataset, prepared: Map<number, Prepared>): void {
   for (const p of prepared.values()) {
     if (p.role !== 'generator') continue;
     for (const key of p.openInPorts) {
+      // trạm đã tắt: vẫn gắn cổng (tuyến không thành "treo") nhưng không đòi nhiên liệu
+      if (p.off) {
+        const itemId = p.binding[key];
+        if (itemId) pushTo(p.inPorts, itemId, key);
+        continue;
+      }
       const itemId = p.binding[key];
       const fuel = itemId ? ds.items.get(itemId)?.fuel : undefined;
       if (!itemId || !fuel) continue;
@@ -1242,7 +1252,7 @@ function solveOnce(bp: Blueprint, ds: Dataset, blackout: boolean, freeOutputs: b
     for (const list of disposalIn.values()) {
       const d = list[0]!.dst;
       // phải có điện mới xử lý (người dùng 2026-09-29) — mất điện thì không nhận gì, tuyến vào ứ lại
-      const off = (enforcePower && d.needsPower && !env.powered.has(d.uid)) || (blackout && d.needsPower);
+      const off = d.off || (enforcePower && d.needsPower && !env.powered.has(d.uid)) || (blackout && d.needsPower);
       fillWithSpare(off ? 0 : d.disposal!.rate, list.map(offerOf), list.map((e) => e.capacity)).forEach((v, k) =>
         accept.set(list[k]!.id, capRate(list[k]!, Math.min(list[k]!.capacity, v))),
       );
@@ -1375,6 +1385,7 @@ function solveOnce(bp: Blueprint, ds: Dataset, blackout: boolean, freeOutputs: b
       // và mất điện toàn nhà máy thì mọi máy cần điện đều dừng
       if (enforcePower && p.needsPower && !env.powered.has(p.uid)) common = 0;
       if (blackout && p.needsPower) common = 0;
+      if (p.off) common = 0; // người dùng đã tắt máy
       // cổng kích hoạt: đủ mức sàn thì 100%, dưới sàn thì chậm theo tỉ lệ
       if (p.activatorPort && activatorOn) common = Math.min(common, activatorFactor(supplyAt(p, [p.activatorPort])));
 
@@ -1504,7 +1515,8 @@ function solveOnce(bp: Blueprint, ds: Dataset, blackout: boolean, freeOutputs: b
   for (const p of prepared.values()) {
     const u = util.get(p.uid) ?? 0;
     // máy đã nối điện thì ăn điện kể cả khi đang ngủ — "hoang phí điện"
-    if (p.needsPower && env.powered.has(p.uid)) powerDraw += p.power;
+    // máy đã tắt thì không ăn điện (người dùng 2026-10-06: tắt máy để tiết kiệm điện)
+    if (p.needsPower && env.powered.has(p.uid) && !p.off) powerDraw += p.power;
 
     // trạm điện: phát theo tỉ lệ thời gian có nhiên liệu cháy, tối đa một đơn vị một lúc
     let generation = 0;
@@ -1717,6 +1729,7 @@ function diagnose(
   env: EnvField,
   enforcePower: boolean,
 ): string | null {
+  if (p.off) return tr('Đã tắt — Tab để bật lại');
   if ((p.role === 'depotOut' || p.role === 'depotIn') && !p.onBus)
     return danglingBus.has(p.uid)
       ? tr('Đoạn tổng tuyến này chưa nối về Cổng Tổng Tuyến Kho Hàng — nối các đoạn chạm nhau thành một dải tới cổng')

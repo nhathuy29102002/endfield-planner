@@ -1,3 +1,4 @@
+import { mountBatchHud } from './ui/batchHud';
 import './style.css';
 import { applyTheme, loadTheme } from './ui/theme';
 import { mountSettings, settingsCheck } from './ui/settings';
@@ -323,6 +324,8 @@ function redraw(mode: EmitMode = 'data'): void {
 
 state.subscribe(redraw);
 const input = attachInput(canvas, state, renderer);
+// chế độ chọn hàng loạt (X): khối phím tắt mảng trên + mảng dưới (người dùng 2026-10-06)
+mountBatchHud(app, state, machineWin);
 // cảm ứng (app Android): cơ chế đặt / chọn / di chuyển máy và vẽ ống riêng cho ngón tay (`touchMap.ts`), thanh thao
 // tác bên phải + thanh chế độ (`touchActions.ts`), kéo thả ở bảng chọn máy / thanh tab, chặn chạm ngoài khi mở bàn phím
 if (touch) {

@@ -35,6 +35,11 @@ export function unionSelection(a: Selection, b: Selection): Selection {
   return { machines: new Set([...a.machines, ...b.machines]), tiles: new Set([...a.tiles, ...b.tiles]) };
 }
 
+/** `a` bỏ đi mọi thứ có trong `b` (chế độ hàng loạt: chuột phải kéo hộp = bỏ chọn nhiều — người dùng 2026-10-06). */
+export function subtractSelection(a: Selection, b: Selection): Selection {
+  return { machines: new Set([...a.machines].filter((u) => !b.machines.has(u))), tiles: new Set([...a.tiles].filter((k) => !b.tiles.has(k))) };
+}
+
 /** Bỏ những gì không còn trên bản vẽ (sau hoàn tác, sau xoá). */
 export function pruneSelection(s: Selection, bp: Blueprint): Selection {
   const uids = new Set(bp.machines.map((m) => m.uid));

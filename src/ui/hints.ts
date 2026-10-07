@@ -39,9 +39,12 @@ export const MAP_HINTS: HintRow[] = [
   [KEY('E') + KEY('Q'), tr('Băng chuyền / ống')],
   [KEY('R'), tr('Xoay máy')],
   [KEY('M') + KEY('C'), tr('Di chuyển / sao chép')],
-  [KEY('Tab'), tr('Đổi chế độ máy')],
+  [KEY('Space'), tr('Đổi chế độ máy')],
+  [KEY('Tab'), tr('Bật / tắt máy đang chọn')],
   [KEY('Caps'), tr('Mặt đất ⇄ trên cao')],
-  [KEY('X') + KEY('Del'), tr('Tẩy / xoá')],
+  [KEY('X'), tr('Chọn hàng loạt')],
+  [KEY('F'), tr('Xoá đang chọn / tẩy')],
+  [KEY('Z'), tr('Đóng / mở danh sách máy')],
   [KEY('1') + '…' + KEY('0'), tr('Máy đã ghim')],
 ];
 

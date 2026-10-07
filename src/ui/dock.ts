@@ -9,7 +9,9 @@ import {
   startMove,
   toggleLabels,
   toggleLayer,
+  toggleOffSelected,
 } from '../editor/tools';
+import { canSwitchOff } from '../model/switchOff';
 import { selectionSize } from '../editor/group';
 import type { Renderer } from '../render/renderer';
 import { clear, el } from './dom';
@@ -40,6 +42,8 @@ const ICON = {
   labels: '<text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" font-family="system-ui, sans-serif" fill="currentColor">Aa</text>',
   more: '<circle cx="5" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="19" cy="12" r="1.8" fill="currentColor"/>',
   rotate: '<path d="M19 12a7 7 0 1 1-2.05-4.95" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M19.5 3.5v5h-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  // nút nguồn — bật / tắt máy đang chọn (Tab, người dùng 2026-10-06)
+  onoff: '<path d="M8.2 6.8a7 7 0 1 0 7.6 0" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M12 3.5v8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>',
   move: '<path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
   // mũi tên của tay kéo bảng Tổng hợp: ‹ = kéo bảng ra, › = đẩy bảng vào
   drawerOpen: '<path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -164,6 +168,21 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
       return b;
     };
     const group = (...buttons: Node[]): HTMLElement => el('div', { class: 'dock-group' }, ...buttons);
+    /** Bật / tắt các máy đang chọn (Tab). Sáng khi mọi máy tắt được trong vùng chọn đều đang tắt. */
+    const onOffButton = (busy: boolean): HTMLElement => {
+      const ms = state.bp.machines.filter((m) => state.sel.machines.has(m.uid) && !m.fixed && canSwitchOff(state.ds.machines.get(m.machineId)));
+      const allOff = ms.length > 0 && ms.every((m) => m.off);
+      return button(
+        {
+          title: ms.length === 0 ? tr('Không có máy dùng điện nào đang chọn để bật / tắt') : allOff ? tr('Bật lại máy đang chọn') : tr('Tắt máy đang chọn — không chạy, không tốn điện'),
+          key: 'Tab',
+          active: allOff,
+          disabled: busy || ms.length === 0,
+          onClick: () => toggleOffSelected(state),
+        },
+        svg(ICON.onoff),
+      );
+    };
     // Nút xoay (người dùng 2026-09-29): đúng như bấm phím R — quay máy / nhóm đang chọn tại chỗ, hoặc
     // quay preview khi đang di chuyển / sao chép. Gửi phím R để dùng chung một đường xử lý với bàn phím.
     const rotate = (): void => void window.dispatchEvent(new KeyboardEvent('keydown', { key: 'r', code: 'KeyR', bubbles: true }));
@@ -173,16 +192,13 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
     const selected = tool.kind === 'select' ? state.selection : acting ? (tool.sourceUid ?? null) : null;
     if (selected !== null && state.bp.machines.some((m) => m.uid === selected)) {
       const name = state.ds.machines.get(state.bp.machines.find((m) => m.uid === selected)!.machineId)?.name ?? '';
+      // thứ tự như khối phím tắt khi chọn trong game (người dùng 2026-10-06): Lưu bản vẽ · Sao chép · Di chuyển · Lưu trữ
+      // (xoá, F) · Bật / tắt (Tab); nút Xoay giữ lại ở cuối
       root.append(
         group(
           button(
-            {
-              title: tr('Di chuyển {0} — chuột trái đặt, giữ chuột phải + rê để xoay, Esc trả về chỗ cũ', name),
-              key: 'M',
-              active: acting && tool.kind === 'place' && tool.mode === 'move',
-              onClick: () => startMove(state, renderer, selected),
-            },
-            svg(ICON.move),
+            { title: tr('Lưu {0} thành bản vẽ (module)', name), key: 'Ctrl+S', disabled: acting, onClick: hooks.saveSelection },
+            svg(ICON.save),
           ),
           button(
             {
@@ -194,15 +210,21 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
             },
             copyIcon(),
           ),
-          button({ title: tr('Xoay {0} 90°', name), key: 'R', onClick: rotate }, svg(ICON.rotate)),
           button(
-            { title: tr('Lưu {0} thành bản vẽ (module)', name), key: 'Ctrl+S', disabled: acting, onClick: hooks.saveSelection },
-            svg(ICON.save),
+            {
+              title: tr('Di chuyển {0} — chuột trái đặt, giữ chuột phải + rê để xoay, Esc trả về chỗ cũ', name),
+              key: 'M',
+              active: acting && tool.kind === 'place' && tool.mode === 'move',
+              onClick: () => startMove(state, renderer, selected),
+            },
+            svg(ICON.move),
           ),
           button(
-            { title: tr('Xoá {0}', name), key: 'Del', onClick: () => deleteSelected(state, renderer) },
+            { title: tr('Lưu trữ (xoá) {0}', name), key: 'F', onClick: () => deleteSelected(state, renderer) },
             svg(ICON.erase),
           ),
+          onOffButton(acting),
+          button({ title: tr('Xoay {0} 90°', name), key: 'R', onClick: rotate }, svg(ICON.rotate)),
         ),
       );
       return;
@@ -215,13 +237,8 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
       root.append(
         group(
           button(
-            {
-              title: tr('Di chuyển {0} — chuột trái đặt, R hoặc giữ chuột phải + rê để xoay, Esc trả về chỗ cũ', what),
-              key: 'M',
-              active: holding && tool.mode === 'move',
-              onClick: () => startGroup(state, renderer, 'move'),
-            },
-            svg(ICON.move),
+            { title: tr('Lưu {0} thành bản vẽ (module)', what), key: 'Ctrl+S', disabled: holding, onClick: hooks.saveSelection },
+            svg(ICON.save),
           ),
           button(
             {
@@ -233,15 +250,21 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
             },
             copyIcon(),
           ),
-          button({ title: tr('Xoay {0} 90°', what), key: 'R', onClick: rotate }, svg(ICON.rotate)),
           button(
-            { title: tr('Lưu {0} thành bản vẽ (module)', what), key: 'Ctrl+S', disabled: holding, onClick: hooks.saveSelection },
-            svg(ICON.save),
+            {
+              title: tr('Di chuyển {0} — chuột trái đặt, R hoặc giữ chuột phải + rê để xoay, Esc trả về chỗ cũ', what),
+              key: 'M',
+              active: holding && tool.mode === 'move',
+              onClick: () => startGroup(state, renderer, 'move'),
+            },
+            svg(ICON.move),
           ),
           button(
-            { title: tr('Xoá {0}', what), key: 'Del', disabled: holding, onClick: () => deleteSelected(state, renderer) },
+            { title: tr('Lưu trữ (xoá) {0}', what), key: 'F', disabled: holding, onClick: () => deleteSelected(state, renderer) },
             svg(ICON.erase),
           ),
+          onOffButton(holding),
+          button({ title: tr('Xoay {0} 90°', what), key: 'R', onClick: rotate }, svg(ICON.rotate)),
         ),
       );
       return;
@@ -260,7 +283,7 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
         key: 'Q',
         icon: img('img/ui/item_log_pipe_01.png'),
       },
-      { tool: { kind: 'erase' }, title: tr('Xoá máy, hoặc một ô băng/ống ở tầng đang xem'), key: 'X', icon: svg(ICON.erase) },
+      { tool: { kind: 'erase' }, title: tr('Xoá máy, hoặc một ô băng/ống ở tầng đang xem'), key: 'F', icon: svg(ICON.erase) },
     ];
     // Nút xoay camera 90° ngay trên nút Xoá (người dùng 2026-09-30) — như Ctrl+R (quay mượt); Shift+bấm quay ngược.
     // Gửi phím để dùng chung đường xử lý với bàn phím.

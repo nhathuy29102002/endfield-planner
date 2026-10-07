@@ -99,6 +99,12 @@ export class AppState {
   tool: Tool = { kind: 'select' };
   /** Mọi thứ đang chọn: máy + ô băng/ống. */
   sel: Selection = emptySelection();
+  /**
+   * **Chế độ chọn hàng loạt** (phím X — người dùng 2026-10-06, như trong game): chuột trái bấm = chọn / bỏ chọn từng thứ,
+   * kéo hộp = chọn thêm, chuột phải kéo hộp = bỏ chọn; X / Esc / bấm chuột phải = thoát. Chỉ có nghĩa ở công cụ Chọn
+   * (nhấc nhóm đi di chuyển vẫn giữ chế độ); đổi sang công cụ khác ⇒ tự thoát.
+   */
+  batch = false;
   /** Thông báo ngắn hiện ở thanh dưới. */
   message = '';
   /**
@@ -216,6 +222,12 @@ export class AppState {
 
   setTool(tool: Tool): void {
     this.tool = tool;
+    if (tool.kind !== 'select' && tool.kind !== 'group') this.batch = false;
+    this.emit('ui');
+  }
+
+  setBatch(on: boolean): void {
+    this.batch = on;
     this.emit('ui');
   }
 

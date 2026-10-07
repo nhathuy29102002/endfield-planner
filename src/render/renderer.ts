@@ -1,3 +1,4 @@
+import { canSwitchOff } from '../model/switchOff';
 import { GRASS_BASE, grassLayers, grassLevel, type GrassLayer } from './grassTex';
 import type { TerrainKind } from '../grid/grid';
 import { BUILD_MARGIN, envZonesOf, ghostCells, validatePlacement } from '../grid/grid';
@@ -174,6 +175,8 @@ export class Renderer {
   groupTarget: Cell | null = null;
   /** Khung chọn vùng đang kéo, hai góc tính theo ô. */
   box: { a: Cell; b: Cell } | null = null;
+  /** Hộp đang kéo: chọn thêm / bỏ chọn (chế độ hàng loạt, chuột phải). */
+  boxMode: 'add' | 'remove' = 'add';
   /** Layer đang làm việc: tô đậm layer này, layer kia mờ đi. */
   activeLayer: 0 | 1 = 0;
 
@@ -905,14 +908,17 @@ export class Renderer {
       ctx.fillRect(sx + inset, sy + h - inset - barH, (w - inset * 2) * u, barH);
     }
 
+    // máy người dùng đã tắt (Tab — 2026-10-06): phủ tối + biểu tượng nút nguồn, không coi là lỗi (không viền đỏ / icon)
+    const off = m.off === true && canSwitchOff(def);
     // viền: tấm đế luôn có viền tối; sprite chỉ có viền khi máy có vấn đề (viền đỏ)
-    if (!sprite || flow?.bottleneck) {
+    if (!sprite || (flow?.bottleneck && !off)) {
       ctx.lineWidth = 1;
-      ctx.strokeStyle = flow?.bottleneck ? COLORS.stalled : 'rgba(0,0,0,0.55)';
+      ctx.strokeStyle = flow?.bottleneck && !off ? COLORS.stalled : 'rgba(0,0,0,0.55)';
       ctx.strokeRect(sx + inset + 0.5, sy + inset + 0.5, w - inset * 2 - 1, h - inset * 2 - 1);
     }
+    if (off) this.upright(sx + w / 2, sy + h / 2, () => this.drawOffOverlay(sx + inset, sy + inset, w - inset * 2, h - inset * 2));
 
-    if (!selected && this.showStatus)
+    if (!selected && this.showStatus && !off)
       this.upright(sx + w / 2, sy + h / 2, () => this.drawStatusIcon(machineStatus(flow), flow, sx, sy, w, h));
     // đoạn tổng tuyến chưa nối về Cổng Tổng Tuyến: icon dây xích đứt màu vàng (người dùng 2026-10-02)
     if (this.deadBus().has(m.uid) && camera.cell >= 5) this.upright(sx + w / 2, sy + h / 2, () => this.drawBrokenChain(sx + w / 2, sy + h / 2, Math.min(w, h)));
@@ -2013,6 +2019,33 @@ export class Renderer {
   }
 
   /** Khung chọn vùng: viền xanh nét đứt, nền xanh rất nhạt. */
+  /** Máy đã tắt: phủ tối + vòng nút nguồn xám + chữ OFF (khi ô đủ lớn). */
+  private drawOffOverlay(x: number, y: number, w: number, h: number): void {
+    const { ctx, camera } = this;
+    ctx.save();
+    ctx.fillStyle = 'rgba(8, 10, 14, 0.55)';
+    ctx.fillRect(x, y, w, h);
+    const r = Math.max(4, Math.min(w, h) * 0.18);
+    const cx = x + w / 2;
+    const cy = y + h / 2 - (camera.cell >= 14 ? r * 0.35 : 0);
+    ctx.strokeStyle = '#c9d1d9';
+    ctx.lineWidth = Math.max(1.5, r * 0.22);
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, -Math.PI * 0.32, Math.PI * 1.32);
+    ctx.moveTo(cx, cy - r * 1.15);
+    ctx.lineTo(cx, cy - r * 0.2);
+    ctx.stroke();
+    if (camera.cell >= 14) {
+      ctx.fillStyle = '#c9d1d9';
+      ctx.font = `700 ${Math.max(9, Math.round(r * 0.75))}px system-ui, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('OFF', cx, cy + r * 1.35);
+    }
+    ctx.restore();
+  }
+
   private drawBox(): void {
     if (!this.box) return;
     const { ctx, camera } = this;
@@ -2020,10 +2053,12 @@ export class Renderer {
     const p = camera.toScreen({ x: Math.min(a.x, b.x), z: Math.min(a.z, b.z) });
     const w = (Math.abs(a.x - b.x) + 1) * camera.cell;
     const h = (Math.abs(a.z - b.z) + 1) * camera.cell;
+    // chế độ hàng loạt: chuột phải kéo hộp = bỏ chọn ⇒ hộp đỏ (người dùng 2026-10-06)
+    const remove = this.boxMode === 'remove';
     ctx.save();
-    ctx.fillStyle = 'rgba(56,196,255,0.1)';
+    ctx.fillStyle = remove ? 'rgba(255,90,90,0.12)' : 'rgba(56,196,255,0.1)';
     ctx.fillRect(p.sx, p.sy, w, h);
-    ctx.strokeStyle = '#6fd6ff';
+    ctx.strokeStyle = remove ? '#ff8080' : '#6fd6ff';
     ctx.lineWidth = 1.5;
     ctx.setLineDash([6, 4]);
     ctx.strokeRect(p.sx + 0.5, p.sy + 0.5, w - 1, h - 1);
