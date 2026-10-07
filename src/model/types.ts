@@ -327,7 +327,8 @@ export const emptyBlueprint = (w = 70, d = 70): Blueprint => ({
   machines: [],
   belts: [],
   nextUid: 1,
-  enforcePower: true,
+  // mặc định **tắt** kiểm tra tầm điện (người dùng 2026-10-07: chế độ mặc định khi cài mới)
+  enforcePower: false,
 });
 
 /** Băng chở được vật rắn; lỏng và khí phải đi ống. */

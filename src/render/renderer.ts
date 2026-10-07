@@ -2145,9 +2145,10 @@ const LABEL_KEY = 'efp:labels';
 
 function readLabelSetting(): boolean {
   try {
-    return localStorage.getItem(LABEL_KEY) !== 'off';
+    // mặc định **tắt** tên máy (người dùng 2026-10-07: chế độ mặc định khi cài mới)
+    return localStorage.getItem(LABEL_KEY) === 'on';
   } catch {
-    return true;
+    return false;
   }
 }
 

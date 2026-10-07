@@ -67,6 +67,12 @@ const ICON = {
   pen: '<path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/><path d="M14 6.6l3.4 3.4" stroke="currentColor" stroke-width="1.7"/>',
   text: '<path d="M5 6V4h14v2M12 4v16M9 20h6" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round"/>',
   eraser: '<path d="M9 19h11M4.8 14.2l8.5-8.5a2 2 0 012.8 0l2.2 2.2a2 2 0 010 2.8L11.8 17.2 9.6 19H7.4l-2.6-2.6a1.6 1.6 0 010-2.2z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/><path d="M9 10l5 5" stroke="currentColor" stroke-width="1.7"/>',
+  /**
+   * Chế độ chọn nhiều (X — người dùng 2026-10-07): như Sao chép, tờ phía trước có dấu tích; tờ trước tô bằng **màu nền nút**
+   * (`--btn-fill`) nên che phần tờ sau chồng lên.
+   */
+  multi:
+    '<path d="M16 8V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h3" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8" fill="var(--btn-fill, #1a1f27)"/><path d="M10.8 14.2l2.2 2.2 4.2-4.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
   copy: '<rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M16 8V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h3" stroke="currentColor" stroke-width="1.8" fill="none"/>',
 } as const;
 
@@ -135,10 +141,55 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
     );
   };
 
+  /**
+   * Hai bộ nút: **xem** (băng, ống, xoay, chọn nhiều, xoá…) và **thao tác** (khi có máy được chọn hoặc đang ở chế độ chọn
+   * nhiều). Đổi bộ ⇒ bộ mới **trượt từ trên xuống** chồng lên bộ cũ (bộ cũ ở lớp sau, xong animation thì gỡ), tay kéo bảng
+   * Tổng hợp trượt theo chiều cao mới (người dùng 2026-10-07).
+   */
+  let actSet = false;
+  let lastSet: 'view' | 'act' | null = null;
+  const reduced = (): boolean => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  /** Lúc bắt đầu animation đổi bộ nút đang chạy (vẽ lại giữa chừng ⇒ bộ mới chạy tiếp từ đúng chỗ đó). */
+  let animStart = 0;
+  const ANIM = 280;
   const render = (): void => {
+    const oldGroups = [...root.children].filter((c) => !c.classList.contains('dock-drawer') && !c.classList.contains('dock-ghost'));
+    const oldDrawerTop = root.querySelector<HTMLElement>('.dock-drawer')?.getBoundingClientRect().top ?? null;
+    const keepGhost = root.querySelector<HTMLElement>('.dock-ghost');
     clear(root);
+    actSet = false;
     renderInner();
-    root.append(drawer());
+    const set = actSet ? 'act' : 'view';
+    const changed = lastSet !== null && lastSet !== set;
+    lastSet = set;
+    // điện thoại: dải kéo ở đáy cột (kéo lên thu cột lên mép trên, kéo xuống / chạm mở lại — `touchActions.ts`)
+    if (touch) root.append(el('div', { class: 'dock-group dock-grip' }, el('i', {}), el('i', {})));
+    const drawerEl = drawer();
+    root.append(drawerEl);
+    const fresh = [...root.children].filter((c) => !c.classList.contains('dock-drawer') && !c.classList.contains('dock-grip')) as HTMLElement[];
+    const slide = (delay: number): void => {
+      for (const g of fresh) g.animate([{ transform: 'translateY(-115%)', opacity: 0.4 }, { transform: 'none', opacity: 1 }], { duration: ANIM, delay, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)', fill: 'backwards' });
+    };
+    if (!changed || reduced() || oldGroups.length === 0) {
+      // vẽ lại giữa lúc đang trượt: giữ bộ cũ ở lớp sau và cho bộ mới chạy tiếp
+      const t = performance.now() - animStart;
+      if (keepGhost && t < ANIM) {
+        root.prepend(keepGhost);
+        slide(-t);
+      }
+      return;
+    }
+    // bộ cũ: lớp sau, đứng yên tại chỗ rồi mờ đi; bộ mới: trượt từ trên xuống phủ lên
+    animStart = performance.now();
+    const ghost = el('div', { class: 'dock-ghost' }, ...oldGroups);
+    root.prepend(ghost);
+    slide(0);
+    ghost.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ANIM, easing: 'ease-in', fill: 'forwards' }).onfinish = () => ghost.remove();
+    setTimeout(() => ghost.remove(), ANIM + 120); // dự phòng: animation bị huỷ / tab bị ẩn thì vẫn gỡ lớp sau
+    if (oldDrawerTop !== null) {
+      const dy = oldDrawerTop - drawerEl.getBoundingClientRect().top;
+      if (Math.abs(dy) > 1) drawerEl.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: ANIM, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' });
+    }
   };
 
   const renderInner = (): void => {
@@ -190,7 +241,8 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
     // với máy đó. Esc hoặc bấm ra chỗ trống để quay lại cột nút thường.
     const acting = tool.kind === 'place' && (tool.mode === 'move' || tool.mode === 'copy');
     const selected = tool.kind === 'select' ? state.selection : acting ? (tool.sourceUid ?? null) : null;
-    if (selected !== null && state.bp.machines.some((m) => m.uid === selected)) {
+    if (!touch && selected !== null && state.bp.machines.some((m) => m.uid === selected)) {
+      actSet = true;
       const name = state.ds.machines.get(state.bp.machines.find((m) => m.uid === selected)!.machineId)?.name ?? '';
       // thứ tự như khối phím tắt khi chọn trong game (người dùng 2026-10-06): Lưu bản vẽ · Sao chép · Di chuyển · Lưu trữ
       // (xoá, F) · Bật / tắt (Tab); nút Xoay giữ lại ở cuối
@@ -232,12 +284,15 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
 
     // Chọn nhiều (hoặc đang cầm nhóm): cũng 3 nút đó, nhưng làm với cả nhóm
     const holding = tool.kind === 'group';
-    if (holding || (tool.kind === 'select' && selectionSize(state.sel) > 0)) {
-      const what = describeSelection(state);
+    // chế độ chọn nhiều (X) chưa chọn gì: vẫn bộ nút thao tác, nút nào chưa dùng được thì mờ đi (người dùng 2026-10-07)
+    const none = tool.kind === 'select' && selectionSize(state.sel) === 0;
+    if (!touch && (holding || (tool.kind === 'select' && (selectionSize(state.sel) > 0 || state.batch)))) {
+      actSet = true;
+      const what = none ? '' : describeSelection(state);
       root.append(
         group(
           button(
-            { title: tr('Lưu {0} thành bản vẽ (module)', what), key: 'Ctrl+S', disabled: holding, onClick: hooks.saveSelection },
+            { title: tr('Lưu {0} thành bản vẽ (module)', what), key: 'Ctrl+S', disabled: holding || none, onClick: hooks.saveSelection },
             svg(ICON.save),
           ),
           button(
@@ -245,6 +300,7 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
               title: tr('Sao chép {0} — chuột trái đặt bản sao, R hoặc giữ chuột phải + rê để xoay, Esc để tắt. Ctrl+C: chép vào bộ nhớ tạm, Ctrl+V để dán', what),
               key: 'C',
               active: holding && tool.mode === 'copy',
+              disabled: none,
               extra: copiedClass(),
               onClick: () => startGroup(state, renderer, 'copy'),
             },
@@ -255,16 +311,17 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
               title: tr('Di chuyển {0} — chuột trái đặt, R hoặc giữ chuột phải + rê để xoay, Esc trả về chỗ cũ', what),
               key: 'M',
               active: holding && tool.mode === 'move',
+              disabled: none,
               onClick: () => startGroup(state, renderer, 'move'),
             },
             svg(ICON.move),
           ),
           button(
-            { title: tr('Lưu trữ (xoá) {0}', what), key: 'F', disabled: holding, onClick: () => deleteSelected(state, renderer) },
+            { title: tr('Lưu trữ (xoá) {0}', what), key: 'F', disabled: holding || none, onClick: () => deleteSelected(state, renderer) },
             svg(ICON.erase),
           ),
           onOffButton(holding),
-          button({ title: tr('Xoay {0} 90°', what), key: 'R', onClick: rotate }, svg(ICON.rotate)),
+          button({ title: tr('Xoay {0} 90°', what), key: 'R', disabled: none, onClick: rotate }, svg(ICON.rotate)),
         ),
       );
       return;
@@ -310,21 +367,40 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
                   };
                   return b;
                 })(),
+                // chế độ chọn nhiều (X), giữa Xoay map và thùng rác (người dùng 2026-10-07) — gửi phím X như bàn phím
+                (() => {
+                  const b = button(
+                    {
+                      title: tr('Chọn nhiều — bấm từng máy để chọn / bỏ chọn, rồi thao tác với cả nhóm'),
+                      key: 'X',
+                      active: state.batch,
+                      onClick: () => void window.dispatchEvent(new KeyboardEvent('keydown', { key: 'x', code: 'KeyX', bubbles: true })),
+                    },
+                    svg(ICON.multi),
+                  );
+                  b.classList.add('dock-batch');
+                  return b;
+                })(),
               ]
             : []),
-          button(
-            {
-              title: t.title,
-              key: t.key,
-              active: isTool(t.tool),
-              onClick: () => enterTool(state, renderer, isTool(t.tool) ? { kind: 'select' } : t.tool),
-            },
-            t.icon,
-          ),
+          (() => {
+            const b = button(
+              {
+                title: t.title,
+                key: t.key,
+                active: isTool(t.tool),
+                onClick: () => enterTool(state, renderer, isTool(t.tool) ? { kind: 'select' } : t.tool),
+              },
+              t.icon,
+            );
+            // điện thoại ngang: nút Xoá ẩn (CSS `.dock-erase`, người dùng 2026-10-07)
+            if (t.tool.kind === 'erase') b.classList.add('dock-erase');
+            return b;
+          })(),
         ]),
       ),
       group(
-        button(
+        withClass('dock-layer', button(
           {
             title:
               renderer.activeLayer === 0
@@ -335,11 +411,11 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
           },
           svg(renderer.activeLayer === 0 ? ICON.ground : ICON.upper),
           el('span', { class: 'dock-label' }, renderer.activeLayer === 0 ? tr('Đất') : 'Cao'),
-        ),
+        )),
         // điện thoại (người dùng 2026-10-05): hai nút này chuyển vào Cài đặt; chỗ của chúng là Bản vẽ + Mô phỏng
         ...(touch
           ? [
-              button({ title: tr('Bản vẽ — thư viện bản vẽ đã lưu, nhập / xuất'), onClick: hooks.openLibrary }, svg(ICON.library)),
+              withClass('dock-lib', button({ title: tr('Bản vẽ — thư viện bản vẽ đã lưu, nhập / xuất'), onClick: hooks.openLibrary }, svg(ICON.library))),
               (() => {
                 const on = isSimulating();
                 const b = button(
@@ -347,6 +423,7 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
                   svg(ICON.simulate),
                 );
                 b.classList.toggle('sim-on', on);
+                b.classList.add('dock-sim');
                 return b;
               })(),
             ]
@@ -383,8 +460,16 @@ export function mountDock(root: HTMLElement, state: AppState, renderer: Renderer
   return render;
 }
 
+/** Gắn thêm lớp CSS rồi trả lại chính phần tử. */
+const withClass = <T extends HTMLElement>(cls: string, e: T): T => {
+  e.classList.add(cls);
+  return e;
+};
+
 /**
  * Nút nổi góc trên-trái bản vẽ: Hoàn tác, Làm lại, Bản vẽ (mở thư viện bản vẽ).
+ * Điện thoại: Bản vẽ + Mô phỏng chỉ có icon (`top-lib` / `top-sim`) — chỉ hiện khi màn hình **ngang**; màn dọc dùng hai nút
+ * cùng tên ở cột công cụ bên phải (`dock-lib` / `dock-sim`) — người dùng 2026-10-07.
  */
 export function mountTopbar(root: HTMLElement, state: AppState, openLibrary: () => void): () => void {
   const render = (): void => {
@@ -413,19 +498,22 @@ export function mountTopbar(root: HTMLElement, state: AppState, openLibrary: () 
         btn(tr('Hoàn tác (Ctrl+Z)'), ICON.undo, !state.canUndo, () => state.undo()),
         btn(tr('Làm lại (Ctrl+Shift+Z)'), ICON.redo, !state.canRedo, () => state.redo()),
         // điện thoại: Bản vẽ + Mô phỏng nằm ở cột công cụ bên phải (người dùng 2026-10-05)
-        touch ? null : btn(tr('Bản vẽ — thư viện bản vẽ đã lưu, nhập / xuất'), ICON.library, false, openLibrary, tr('Bản vẽ')),
+        touch
+          ? withClass('top-lib', btn(tr('Bản vẽ — thư viện bản vẽ đã lưu, nhập / xuất'), ICON.library, false, openLibrary))
+          : btn(tr('Bản vẽ — thư viện bản vẽ đã lưu, nhập / xuất'), ICON.library, false, openLibrary, tr('Bản vẽ')),
         // Simulation (người dùng 2026-10-03): vào chế độ chạy như game — Map thường vẫn tĩnh. Đang mô phỏng ⇒ nút **vàng**,
         // bấm lần nữa = thoát (thay nút ✕ cũ trên thanh điều khiển)
-        touch ? null : (() => {
+        (() => {
           const on = isSimulating();
           const b = btn(
             on ? tr('Đang mô phỏng — bấm để thoát về bản vẽ tĩnh (mất tiến độ mô phỏng)') : tr('Mô phỏng — chạy nhà máy như trong game (hàng chạy trên băng, tiến độ máy, kho); vẫn chỉnh sửa được trong lúc chạy'),
             ICON.simulate,
             false,
             () => (isSimulating() ? exitSimMode() : enterSimMode()),
-            tr('Mô phỏng'),
+            touch ? undefined : tr('Mô phỏng'),
           );
           b.classList.toggle('sim-on', on);
+          if (touch) b.classList.add('top-sim');
           return b;
         })(),
       ),

@@ -14,7 +14,7 @@ import {
 import type { MachineDef, RecipeDef } from '../model/types';
 import { CATALYST_ENV_LABEL } from '../model/types';
 import { chainToModeler } from '../modeler/fromChain';
-import { ENV_GASES, MODELER_INSERT_EVENT, emptyModeler } from '../modeler/doc';
+import { ACTIVATOR, ENV_GASES, ENV_MACHINE, MODELER_INSERT_EVENT, emptyModeler } from '../modeler/doc';
 import { confirmDialog } from './dialog';
 import { tr } from '../i18n';
 import { autoFocus } from '../platform';
@@ -40,24 +40,88 @@ export function openRecipeLibrary(state: AppState): void {
   const crumbs = el('div', { class: 'rl-crumbs' });
   const search = el('input', { class: 'rl-search', type: 'search', placeholder: tr('Tìm vật phẩm… (không cần dấu)') });
   const back = el('button', { class: 'rl-back', type: 'button', title: tr('Quay lại (Esc)') });
-  back.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M13.5 7.5 9 12l4.5 4.5M9.5 12H17" fill="none" stroke="var(--panel)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  // hai hình: mũi tên quay lại / dấu X (điện thoại màn dọc: nút này **tắt thư viện** — người dùng 2026-10-07; thao tác
+  // quay lại của điện thoại vẫn lùi từng màn)
+  back.innerHTML =
+    '<svg class="ico-back" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M13.5 7.5 9 12l4.5 4.5M9.5 12H17" fill="none" stroke="var(--panel)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+    '<svg class="ico-close" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" fill="none" stroke="var(--panel)" stroke-width="2.4" stroke-linecap="round"/></svg>';
+  /** Điện thoại màn dọc: thanh đầu gọn — ô tìm ẩn sau nút kính lúp (bấm ⇒ ô nhập trượt xuống dưới thanh), nút X tắt. */
+  const compact = (): boolean => document.documentElement.classList.contains('touch-ui') && window.innerHeight > window.innerWidth;
+  const searchToggle = el('button', { class: 'rl-search-toggle', type: 'button', title: tr('Tìm vật phẩm') }, searchIcon());
   const body = el('div', { class: 'rl-body' });
-  overlay.append(el('div', { class: 'rl-top' }, crumbs, el('label', { class: 'rl-search-box' }, searchIcon(), search), back), body);
+  overlay.append(el('div', { class: 'rl-top' }, crumbs, el('label', { class: 'rl-search-box' }, searchIcon(), search), searchToggle, back), body);
+  searchToggle.addEventListener('click', () => {
+    const on = overlay.classList.toggle('rl-search-open');
+    if (on) search.focus();
+    else search.blur();
+  });
   document.body.append(overlay);
   document.body.classList.add('modal-open');
 
   type View = { kind: 'list' } | { kind: 'item'; item: string } | { kind: 'chain'; item: string };
   const stack: View[] = [{ kind: 'list' }];
-  const go = (v: View): void => {
-    stack.push(v);
-    render();
+  /**
+   * **Lịch sử trình duyệt** (người dùng 2026-10-07): mỗi màn của thư viện là một mục lịch sử ⇒ thao tác "quay lại" của điện
+   * thoại (vuốt / nút Back, cả web lẫn app) = nút quay lại góc trên: lùi một màn, ở danh sách thì đóng thư viện — không rời
+   * trang. `hist` = số mục đã đẩy (luôn bằng `stack.length` khi đồng bộ).
+   */
+  let hist = 0;
+  let ignorePops = 0;
+  const pushHist = (): void => {
+    try {
+      history.pushState({ efpRecipes: true }, '');
+      hist++;
+    } catch {
+      /* không có lịch sử (môi trường lạ) ⇒ chỉ dùng nút quay lại */
+    }
   };
-  const pop = (): void => {
-    if (stack.length <= 1) return close();
+  /** Bỏ `n` mục lịch sử của thư viện mà không lùi màn (màn đã đổi sẵn). */
+  const unwind = (n: number): void => {
+    const k = Math.min(n, hist);
+    if (k <= 0) return;
+    hist -= k;
+    ignorePops++;
+    history.go(-k);
+  };
+  /** Lùi một màn (không đụng lịch sử). */
+  const stepBack = (): void => {
+    if (stack.length <= 1) return finishClose();
     stack.pop();
     render();
   };
+  const onPop = (): void => {
+    if (ignorePops) {
+      ignorePops--;
+      return;
+    }
+    if (hist === 0) return;
+    hist--;
+    stepBack();
+  };
+  window.addEventListener('popstate', onPop);
+  const go = (v: View): void => {
+    stack.push(v);
+    pushHist();
+    render();
+  };
+  /** Về `n` màn trước (đường dẫn, ô tìm). */
+  const backTo = (len: number): void => {
+    const n = stack.length - len;
+    if (n <= 0) return;
+    stack.splice(len);
+    unwind(n);
+    render();
+  };
+  const pop = (): void => {
+    if (hist > 0) history.back();
+    else stepBack();
+  };
   const close = (): void => {
+    unwind(hist);
+    finishClose();
+  };
+  const finishClose = (): void => {
+    window.removeEventListener('popstate', onPop);
     window.removeEventListener('keydown', onKey, true);
     overlay.remove();
     if (!document.querySelector('.bp-overlay, .rl-overlay')) document.body.classList.remove('modal-open');
@@ -69,19 +133,21 @@ export function openRecipeLibrary(state: AppState): void {
     pop();
   };
   window.addEventListener('keydown', onKey, true);
-  back.addEventListener('click', pop);
+  back.addEventListener('click', () => (compact() ? close() : pop()));
+  // nút quay lại: nháy đổi màu khi bấm như Xem Chuỗi / Mô hình hoá (người dùng 2026-10-07)
+  flashOnPress(back);
   // mọi nút trong thư viện: viền vàng khi rê chuột (CSS) và **nháy sáng khi bấm** (người dùng 2026-10-06, lần 6) — nút lớn
   // Xem Chuỗi / Mô hình hoá có hiệu ứng riêng (`flashOnPress`)
   overlay.addEventListener('pointerdown', (e) => {
     const b = (e.target as HTMLElement).closest<HTMLElement>(PRESSABLE);
-    if (!b || b.classList.contains('rl-chain-btn') || b.classList.contains('rl-model-btn')) return;
+    if (!b || b.classList.contains('rl-chain-btn') || b.classList.contains('rl-model-btn') || b.classList.contains('rl-back')) return;
     b.classList.remove('rl-press');
     void b.offsetWidth;
     b.classList.add('rl-press');
   });
   overlay.addEventListener('animationend', (e) => (e.target as HTMLElement).classList?.remove('rl-press'));
   search.addEventListener('input', () => {
-    if (stack[stack.length - 1]!.kind !== 'list') stack.splice(1);
+    if (stack[stack.length - 1]!.kind !== 'list') backTo(1);
     render();
   });
   search.addEventListener('keydown', (e) => e.stopPropagation());
@@ -109,25 +175,27 @@ export function openRecipeLibrary(state: AppState): void {
   // ---------------------------------------------------------------- thanh đường dẫn
   const renderCrumbs = (v: View): void => {
     clear(crumbs);
-    const toList = (): void => {
-      stack.splice(1);
-      render();
-    };
+    const toList = (): void => backTo(1);
     const sep = (): HTMLElement => el('span', { class: 'rl-sep' }, '›');
     const chip = (text: string, onClick?: () => void): HTMLElement =>
       onClick ? el('button', { class: 'rl-chip', type: 'button', onclick: onClick }, text) : el('span', { class: 'rl-chip last' }, text);
     const folder = el('button', { class: 'rl-folder', type: 'button', title: tr('Thư viện công thức'), onclick: toList });
     folder.innerHTML = '<svg viewBox="0 0 24 24"><path d="M2 6.5a1.5 1.5 0 0 1 1.5-1.5h6l2 2.5h9A1.5 1.5 0 0 1 22 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5z" fill="currentColor"/></svg>';
-    crumbs.append(folder, sep(), chip(tr('Cơ Sở Dữ Liệu Endfield'), v.kind === 'list' ? undefined : toList));
+    // điện thoại màn dọc: "CSDL", bỏ mục "Hồ Sơ Vật Phẩm" (CSS `.rl-full` / `.rl-short`) để vừa với hai nút cuối
+    const dbChip = chip(tr('Cơ Sở Dữ Liệu Endfield'), v.kind === 'list' ? undefined : toList);
+    dbChip.classList.add('rl-chip-db');
+    dbChip.dataset.short = tr('CSDL');
+    crumbs.append(folder, sep(), dbChip);
     if (v.kind === 'list') return;
-    crumbs.append(sep(), chip(tr('Hồ Sơ Vật Phẩm'), toList), sep());
+    const recSep = sep();
+    recSep.classList.add('rl-crumb-rec');
+    const recChip = chip(tr('Hồ Sơ Vật Phẩm'), toList);
+    recChip.classList.add('rl-crumb-rec');
+    crumbs.append(recSep, recChip, sep());
     if (v.kind === 'item') crumbs.append(chip(itemName(ds, v.item)));
     else {
       crumbs.append(
-        chip(itemName(ds, v.item), () => {
-          stack.pop();
-          render();
-        }),
+        chip(itemName(ds, v.item), pop),
         sep(),
         chip(tr('Chuỗi Sản Xuất')),
       );
@@ -202,12 +270,26 @@ export function openRecipeLibrary(state: AppState): void {
       el('div', { class: 'rl-arrow-time' }, label),
       el('div', { class: 'rl-arrow-bar' }, el('div', { class: 'rl-arrow-track' }), el('div', { class: 'rl-arrow-fill' }), el('div', { class: 'rl-arrow-head' })),
     );
-  const plus = (): HTMLElement => el('span', { class: 'rl-plus' }, '+');
-  /** Các ô vật phẩm, dấu **+** giữa hai ô (người dùng 2026-10-06). */
-  const slots = (stacks: { itemId: string; count: number }[]): HTMLElement =>
-    el('div', { class: 'rl-slots' }, ...stacks.flatMap((s, i) => (i ? [plus(), tile(s.itemId, s.count)] : [tile(s.itemId, s.count)])));
+  const plus = (ghost = false): HTMLElement => el('span', { class: `rl-plus${ghost ? ' ghost' : ''}` }, '+');
+  /**
+   * Khối ô vật phẩm một bên mũi tên, dấu **+** giữa hai ô (người dùng 2026-10-06). Mỗi bên luôn **2 cột ô** (người dùng
+   * 2026-10-07): chỉ 1 món ⇒ ô sát mũi tên để trống (chỗ dành cho món thứ hai của công thức 2 vào → 2 ra) ⇒ mũi tên của
+   * mọi thẻ dài bằng nhau, thẳng cột với nhau.
+   */
+  const slotBox = (cells: HTMLElement[], side: 'in' | 'out'): HTMLElement => {
+    const all = [...cells];
+    if (all.length === 1) {
+      const gap = el('span', { class: 'rl-tile rl-slot-empty' });
+      if (side === 'in') all.push(gap);
+      else all.unshift(gap);
+    }
+    const single = cells.length === 1;
+    return el('div', { class: `rl-slots ${side}` }, ...all.flatMap((c, i) => (i ? [plus(single), c] : [c])));
+  };
+  const slots = (stacks: { itemId: string; count: number }[], side: 'in' | 'out'): HTMLElement =>
+    slotBox(stacks.map((s) => tile(s.itemId, s.count)), side);
   /** Hàng công thức: [nguyên liệu + …] ⇒ mũi tên động (thời gian) ⇒ [sản phẩm + …]. */
-  const recipeRow = (r: RecipeDef): HTMLElement => el('div', { class: 'rl-rrow' }, slots(r.ingredients), arrow(`${r.seconds}s`, r.seconds), slots(r.outcomes));
+  const recipeRow = (r: RecipeDef): HTMLElement => el('div', { class: 'rl-rrow' }, slots(r.ingredients, 'in'), arrow(`${r.seconds}s`, r.seconds), slots(r.outcomes, 'out'));
   const pinBtn = (machineId: string): HTMLElement => {
     const on = pinnedMachineIds(ds).includes(machineId);
     const b = el('button', { class: `rl-pin${on ? ' on' : ''}`, type: 'button', title: on ? tr('Bỏ ghim máy này khỏi bảng chọn máy') : tr('Ghim máy này lên bảng chọn máy') });
@@ -221,25 +303,39 @@ export function openRecipeLibrary(state: AppState): void {
     });
     return b;
   };
-  const card = (def: MachineDef | undefined, row: HTMLElement, env?: string): HTMLElement =>
-    el(
+  /**
+   * Thẻ công thức: đầu thẻ (máy + tên + chất kích hoạt + ghim) và hàng công thức. Cần môi trường ⇒ cả thẻ (máy lẫn công
+   * thức) có **viền màu môi trường**, tên môi trường trên đầu (người dùng 2026-10-07). Máy cần chất kích hoạt ⇒ ô nhỏ của
+   * chất đó cạnh nút ghim.
+   */
+  const card = (def: MachineDef | undefined, row: HTMLElement, env?: string): HTMLElement => {
+    const act = def && def.id !== ENV_MACHINE ? ACTIVATOR[def.id]?.[0] : undefined;
+    return el(
       'div',
-      { class: 'rl-card' },
+      { class: `rl-card${env ? ` env env-${env.toLowerCase()}` : ''}` },
+      env ? el('div', { class: 'rl-card-env' }, `${tr('MÔI TRƯỜNG')} ${ENV_SHORT[env] ?? (CATALYST_ENV_LABEL[env as keyof typeof CATALYST_ENV_LABEL] ?? env).toUpperCase()}`) : null,
       el(
         'div',
         { class: 'rl-card-head' },
         machineIcon(def),
         el('span', { class: 'rl-card-name' }, def?.name ?? '?'),
-        env ? el('span', { class: `rl-env env-${env.toLowerCase()}` }, CATALYST_ENV_LABEL[env as keyof typeof CATALYST_ENV_LABEL] ?? env) : null,
+        act
+          ? el(
+              'span',
+              { class: 'rl-act', title: tr('Chất kích hoạt: {0}', itemName(ds, act)) },
+              el('img', { src: icon(act), alt: '', draggable: 'false' }),
+            )
+          : null,
         def ? pinBtn(def.id) : null,
       ),
       el('div', { class: 'rl-card-body' }, row),
     );
+  };
   const wayCard = (item: string, w: Way): HTMLElement => {
     if (w.kind === 'recipe') return card(ds.machines.get(w.recipe.machineId), recipeRow(w.recipe), w.recipe.catalystEnv !== 'None' ? w.recipe.catalystEnv : undefined);
     return card(
       ds.machines.get(w.machineId),
-      el('div', { class: 'rl-rrow' }, el('div', { class: 'rl-slots' }, tile(item, undefined, { raw: true, open: false })), arrow(tr('khai thác'), 2), el('div', { class: 'rl-slots' }, tile(item, 1, { open: false }))),
+      el('div', { class: 'rl-rrow' }, slotBox([tile(item, undefined, { raw: true, open: false })], 'in'), arrow(tr('khai thác'), 2), slotBox([tile(item, 1, { open: false })], 'out')),
     );
   };
   const itemView = (item: string): HTMLElement => {
@@ -698,6 +794,7 @@ export function openRecipeLibrary(state: AppState): void {
     toast(tr('Đã mô hình hoá chuỗi {0} — các máy mới đang được chọn', itemName(ds, item)));
   };
 
+  pushHist();
   render();
   autoFocus(search);
 }

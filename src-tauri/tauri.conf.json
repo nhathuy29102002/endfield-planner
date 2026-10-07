@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Endfield AIC Planner",
   "mainBinaryName": "EndfieldAICPlanner",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "identifier": "com.endfield.aicplanner",
   "build": {
     "frontendDist": "../dist",
@@ -34,7 +34,9 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["nsis"],
+    "targets": [
+      "nsis"
+    ],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -44,8 +46,12 @@
     ],
     "shortDescription": "Trình quy hoạch nhà máy AIC cho Arknights: Endfield",
     "windows": {
-      "webviewInstallMode": { "type": "embedBootstrapper" },
-      "nsis": { "installMode": "currentUser" }
+      "webviewInstallMode": {
+        "type": "embedBootstrapper"
+      },
+      "nsis": {
+        "installMode": "currentUser"
+      }
     }
   }
 }

@@ -49,7 +49,7 @@ export const MAP_HINTS: HintRow[] = [
 ];
 
 /** Icon ngón tay cho hướng dẫn cảm ứng (app Android). */
-const FINGER = (n: 1 | 2): string => (n === 1 ? '☝' : '✌');
+export const FINGER = (n: 1 | 2): string => (n === 1 ? '☝' : '✌');
 
 /** Hướng dẫn **cảm ứng** của Map (app Android, người dùng 2026-10-05) — thay bảng chuột / phím khi `isTouchUI()`. */
 export const TOUCH_MAP_HINTS: HintRow[] = [
@@ -138,5 +138,47 @@ export function showHints(host: HTMLElement, rows: HintRow[], ms = HINT_MS): HTM
   });
   host.append(box);
   current = box;
+  // điện thoại: vuốt ngang để tắt (người dùng 2026-10-07)
+  swipeAway(box, () => box.remove());
   return box;
+}
+
+/**
+ * Điện thoại (người dùng 2026-10-07): hộp hướng dẫn **vuốt sang trái hoặc phải để tắt** — hộp đi theo ngón tay, thả quá
+ * 60 px thì trượt hẳn ra rồi `gone()`, không thì về chỗ cũ.
+ */
+export function swipeAway(box: HTMLElement, gone: () => void): void {
+  if (!document.documentElement.classList.contains('touch-ui')) return;
+  let s: { x: number; y: number; dx: number } | null = null;
+  box.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    s = t && e.touches.length === 1 ? { x: t.clientX, y: t.clientY, dx: 0 } : null;
+    box.style.transition = 'none';
+  }, { passive: true });
+  box.addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    if (!s || !t) return;
+    s.dx = t.clientX - s.x;
+    if (Math.abs(t.clientY - s.y) > Math.abs(s.dx) * 1.5) return;
+    e.stopPropagation();
+    box.style.transform = `translateX(${s.dx}px)`;
+    box.style.opacity = String(Math.max(0.2, 1 - Math.abs(s.dx) / 220));
+  }, { passive: true });
+  box.addEventListener('touchend', () => {
+    if (!s) return;
+    const dx = s.dx;
+    s = null;
+    box.style.transition = 'transform 0.2s ease, opacity 0.2s ease';
+    if (Math.abs(dx) > 60) {
+      box.style.transform = `translateX(${dx > 0 ? 120 : -120}%)`;
+      box.style.opacity = '0';
+      setTimeout(() => {
+        box.style.transition = box.style.transform = box.style.opacity = '';
+        gone();
+      }, 210);
+    } else {
+      box.style.transform = '';
+      box.style.opacity = '';
+    }
+  });
 }

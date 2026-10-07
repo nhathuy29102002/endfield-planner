@@ -1,4 +1,5 @@
 import { TOUCH_VIEW_EVENT, type TouchViewDetail } from './touchEvents';
+import { tr } from '../i18n';
 
 /**
  * **Điều khiển cảm ứng** cho app Android (người dùng 2026-10-05) — phần dùng chung + Modeler + kéo thả:
@@ -460,22 +461,63 @@ export function attachKeyboardGuard(): void {
  *  - tay kéo (mũi tên) mép phải — kể cả khi thanh thao tác đang che nó (bắt đầu kéo trên thanh thao tác cũng được) — và
  *    chính bảng Tổng hợp: kéo sang trái mở, sang phải đóng; các nút dính mép bảng (cột nút, thanh thao tác, cửa sổ Máy…)
  *    trượt theo;
- *  - bảng chọn máy bên trái: kéo sang phải mở rộng, sang trái thu gọn (cột giãn / co theo tay).
+ *  - bảng chọn máy bên trái: kéo sang phải mở rộng, sang trái thu gọn (cột giãn / co theo tay); đã thu gọn mà kéo sang
+ *    trái thêm lần nữa ⇒ **giấu hẳn** vào mép trái (`palette-hidden`, người dùng 2026-10-07), một nút mũi tên nhô ra ở mép
+ *    trái — bấm nó hoặc vuốt sang phải từ sát mép trái để hiện lại.
  * Kéo hết **2 cm** trên màn hình (≈ 126 px CSS — trên Android 1 px CSS = 1 dp = 1/160 inch) là mở / đóng hẳn; thả tay
  * giữa chừng ⇒ trượt nốt về phía đang gần hơn. Chỉ nhận cú kéo **ngang** (lệch ngang rõ hơn lệch dọc) ⇒ cuộn dọc danh
  * sách vẫn như cũ; kéo xong thì nuốt cú bấm (click) có thể tới ngay sau, để không bấm nhầm nút dưới ngón tay.
  */
 export function attachPanelSwipes(app: HTMLElement): void {
   type Zone = 'palette' | 'handle' | 'summary';
-  const SPAN = 126; // 2 cm
+  const SPAN_LAND = 126; // 2 cm
+  /**
+   * Màn **dọc** (người dùng 2026-10-07: "tầm nhận trượt quá bé"): vùng nhận vuốt của bảng chọn máy rộng **gấp rưỡi** bảng
+   * (thêm nửa bề ngang bảng thu gọn, ra cả phần bản đồ sát bảng), nhận cú vuốt sớm hơn và kéo ngắn hơn là đủ.
+   */
+  const portrait = (): boolean => window.innerHeight > window.innerWidth;
+  const span = (): number => (portrait() ? 84 : SPAN_LAND);
   const LEFT_MIN = 58;
   const LEFT_MAX = 260;
   const FOLLOW = '.dock, .touch-actions, .machine-window, .touch-modebar, .md-dock, .md-penbar';
-  let g: { id: number; x: number; y: number; zone: Zone; live: boolean; p0: number; p: number; w: number; panel: HTMLElement | null } | null = null;
+  let g: { id: number; x: number; y: number; zone: Zone; live: boolean; p0: number; p: number; w: number; panel: HTMLElement | null; outside: EventTarget | null } | null = null;
+  /** Vùng sát mép trái nhận cú vuốt mở lại bảng đã giấu (px CSS). */
+  // web điện thoại: nới rộng hơn (không chặn được cử chỉ hệ thống như trong app — người dùng 2026-10-07)
+  const EDGE = document.documentElement.classList.contains('native-app') ? 22 : 36;
+  const HIDDEN_KEY = 'efp:palette-hidden';
+  const setHidden = (on: boolean): void => {
+    app.classList.toggle('palette-hidden', on);
+    try {
+      localStorage.setItem(HIDDEN_KEY, on ? '1' : '0');
+    } catch {
+      /* không lưu được thì thôi */
+    }
+  };
+  try {
+    if (localStorage.getItem(HIDDEN_KEY) === '1') app.classList.add('palette-hidden');
+  } catch {
+    /* bỏ qua */
+  }
+  // nút mũi tên nhô ra ở mép trái khi bảng đang giấu: bấm ⇒ hiện lại (về dạng thu gọn)
+  const peek = document.createElement('button');
+  peek.className = 'palette-peek';
+  peek.type = 'button';
+  peek.title = tr('Hiện bảng chọn máy');
+  peek.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  peek.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setHidden(false);
+  });
+  app.append(peek);
+  const collapsed = (): boolean => app.classList.contains('palette-collapsed');
+  const setCollapsed = (on: boolean): void => {
+    if (collapsed() !== on) window.dispatchEvent(new Event('efp:toggle-palette'));
+  };
   let settling = false;
   const zoneOf = (t: EventTarget | null): Zone | null => {
     const e = t instanceof Element ? t : null;
     if (!e) return null;
+    if (e.closest('.palette-peek')) return 'palette';
     if (e.closest('.drawer-handle, .touch-actions')) return 'handle';
     if (e.closest('.panel.left')) return 'palette';
     if (e.closest('.panel.right') && !e.closest('input, select, textarea')) return 'summary';
@@ -496,7 +538,10 @@ export function attachPanelSwipes(app: HTMLElement): void {
   /** Vẽ trạng thái mở `p` (0 = đóng, 1 = mở) của bảng đang kéo. */
   const show = (d: NonNullable<typeof g>, p: number): void => {
     if (d.zone === 'palette') {
-      app.style.setProperty('--left-w', `${LEFT_MIN + p * (LEFT_MAX - LEFT_MIN)}px`);
+      // p ∈ [−1, 1]: −1 giấu hẳn (rộng 0), 0 thu gọn, 1 mở rộng; đang kéo về phía mở rộng thì dựng ngay danh sách đầy đủ,
+      // cột vẫn hẹp ⇒ kéo ra tới đâu lộ ra tới đó
+      if (p > 0) setCollapsed(false);
+      app.style.setProperty('--left-w', `${p >= 0 ? LEFT_MIN + p * (LEFT_MAX - LEFT_MIN) : LEFT_MIN * (1 + p)}px`);
       return;
     }
     if (d.panel) d.panel.style.transform = `translateX(${(1 - p) * (d.w + 16)}px)`;
@@ -505,11 +550,9 @@ export function attachPanelSwipes(app: HTMLElement): void {
   const begin = (d: NonNullable<typeof g>): void => {
     d.live = true;
     if (d.zone === 'palette') {
-      d.p0 = app.classList.contains('palette-collapsed') ? 0 : 1;
+      d.p0 = app.classList.contains('palette-hidden') ? -1 : collapsed() ? 0 : 1;
       app.style.transition = 'none';
-      // đang thu gọn: dựng ngay danh sách đầy đủ, cột vẫn hẹp ⇒ kéo ra tới đâu lộ ra tới đó
-      app.style.setProperty('--left-w', `${d.p0 ? LEFT_MAX : LEFT_MIN}px`);
-      if (!d.p0) window.dispatchEvent(new Event('efp:toggle-palette'));
+      app.style.setProperty('--left-w', `${d.p0 === 1 ? LEFT_MAX : d.p0 === 0 ? LEFT_MIN : 0}px`);
     } else {
       d.p0 = app.classList.contains('right-collapsed') ? 0 : 1;
       d.panel = summaryPanel();
@@ -522,7 +565,10 @@ export function attachPanelSwipes(app: HTMLElement): void {
   };
   /** Thả tay: trượt nốt về phía gần hơn rồi mới đổi trạng thái thật (class), bỏ hết kiểu tạm. */
   const finish = (d: NonNullable<typeof g>): void => {
-    const target = d.p >= 0.5 ? 1 : 0;
+    // màn dọc: kéo được hơn 1/3 quãng là đủ sang trạng thái kế tiếp theo hướng kéo
+    const bias = portrait() ? Math.sign(d.p - d.p0) * 0.17 : 0;
+    const q = d.p + bias;
+    const target = q >= 0.5 ? 1 : q <= -0.5 && d.zone === 'palette' ? -1 : 0;
     settling = true;
     const ms = 200;
     if (d.zone === 'palette') {
@@ -536,7 +582,8 @@ export function attachPanelSwipes(app: HTMLElement): void {
     }
     setTimeout(() => {
       if (d.zone === 'palette') {
-        if (target === 0 && !app.classList.contains('palette-collapsed')) window.dispatchEvent(new Event('efp:toggle-palette'));
+        setCollapsed(target <= 0);
+        setHidden(target === -1);
         app.style.transition = 'none';
         app.style.removeProperty('--left-w');
         void app.offsetWidth;
@@ -567,8 +614,18 @@ export function attachPanelSwipes(app: HTMLElement): void {
         return;
       }
       const t = e.touches[0]!;
-      const zone = zoneOf(e.target);
-      g = zone ? { id: t.identifier, x: t.clientX, y: t.clientY, zone, live: false, p0: 0, p: 0, w: 0, panel: null } : null;
+      // bảng chọn máy đang giấu: vuốt từ sát mép trái kéo nó ra lại
+      let zone: Zone | null = app.classList.contains('palette-hidden') && t.clientX <= EDGE ? 'palette' : zoneOf(e.target);
+      // màn dọc: vùng nhận vuốt của bảng chọn máy nới ra quá mép phải bảng thêm nửa bề ngang bảng thu gọn (gấp rưỡi)
+      let outside: EventTarget | null = null;
+      if (!zone && portrait() && !app.classList.contains('palette-hidden') && e.target instanceof Element && e.target.closest('.board-wrap canvas, .md-viewport')) {
+        const edge = (document.querySelector('.panel.left')?.getBoundingClientRect().right ?? 0) + LEFT_MIN / 2;
+        if (t.clientX <= edge) {
+          zone = 'palette';
+          outside = e.target;
+        }
+      }
+      g = zone ? { id: t.identifier, x: t.clientX, y: t.clientY, zone, live: false, p0: 0, p: 0, w: 0, panel: null, outside } : null;
       // nghe cả trên phần tử được chạm: mở bảng chọn máy làm danh sách dựng lại ⇒ phần tử dưới ngón tay bị gỡ khỏi trang,
       // sự kiện chạm sau đó không còn nổi lên `window` (bảng kẹt giữa chừng — thấy trên máy thật 2026-10-06)
       const target = e.target;
@@ -603,13 +660,24 @@ export function attachPanelSwipes(app: HTMLElement): void {
           g = null; // đang cuộn dọc
           return;
         }
-        if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+        const minDx = portrait() ? 6 : 10;
+        if (Math.abs(dx) < minDx || Math.abs(dx) < Math.abs(dy) * (portrait() ? 1 : 1.2)) return;
         begin(d);
+        // bắt đầu trên bản đồ: huỷ cú chạm của bản đồ (không thành chạm / giữ / kéo bản đồ)
+        if (d.outside) {
+          const cancel = new TouchEvent('touchcancel', { bubbles: true, cancelable: true, touches: [], targetTouches: [], changedTouches: [...e.changedTouches] });
+          seen.add(cancel); // chính bộ vuốt này không coi nó là nhấc tay
+          d.outside.dispatchEvent(cancel);
+        }
       }
       e.preventDefault();
       // bảng chọn máy mở sang phải; bảng Tổng hợp mở sang trái
       const dir = d.zone === 'palette' ? 1 : -1;
-      d.p = Math.max(0, Math.min(1, d.p0 + (dir * dx) / SPAN));
+      // giấu hẳn chỉ từ dạng thu gọn (kéo trái thêm một lần nữa), không đi thẳng từ dạng mở rộng
+      const lo = d.zone === 'palette' && d.p0 <= 0 ? -1 : 0;
+      d.p = Math.max(lo, Math.min(1, d.p0 + (dir * dx) / span()));
+      // vuốt bắt đầu trên bản đồ (vùng nới thêm cạnh bảng): bản đồ không nhận cú kéo này
+      if (d.outside) e.stopPropagation();
       show(d, d.p);
   }
   window.addEventListener('touchmove', move, { capture: true, passive: false });
@@ -621,6 +689,7 @@ export function attachPanelSwipes(app: HTMLElement): void {
     const d = g;
     g = null;
     if (!d?.live) return;
+    if (d.outside) e.stopPropagation();
     finish(d);
     swallowClick();
   }
@@ -639,6 +708,12 @@ export function attachPanelSwipes(app: HTMLElement): void {
       const r = h.getBoundingClientRect();
       if (r.width === 0 || r.right < window.innerWidth - 40) continue; // chỉ khi đứng sát mép (bảng đang đóng)
       rects.push([r.left - 16, r.top - 30, window.innerWidth - r.left + 16, r.height + 60].map((v) => Math.round(v)).join(','));
+    }
+    // bảng chọn máy đang giấu: dải sát mép trái quanh nút mũi tên — vuốt phải ở đó là kéo bảng ra, không phải "Quay lại"
+    // (Android chỉ cho loại tối đa 200 dp mỗi mép)
+    if (app.classList.contains('palette-hidden')) {
+      const r = peek.getBoundingClientRect();
+      rects.push([0, Math.max(0, r.top - 60), EDGE + 10, r.height + 120].map((v) => Math.round(v)).join(','));
     }
     const spec = rects.join(';');
     if (spec === last) return;

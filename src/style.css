@@ -2728,3 +2728,228 @@ html.touch-ui .rl-arrow { min-width: 40px; }
 .hint-box.batch-tip[hidden] { display: none; }
 .batch-tip-head { color: #e8c547; font-weight: 700; font-size: 11.5px; margin-bottom: 2px; }
 body.batch-on .hint-box:not(.batch-tip) { display: none; }
+
+/* ---- web điện thoại, màn **dọc** (người dùng 2026-10-07): thanh mô phỏng 2 hàng nút — hàng 1: mắt, chạy / dừng, tốc
+   độ, kho tự sinh; hàng 2 (theo thứ tự): tổng hợp theo giờ, chờ, làm lại. Gọn trong bề ngang màn hình. */
+@media (orientation: portrait) {
+  html.touch-ui .sim-controls-main { flex-wrap: wrap; row-gap: 6px; }
+  html.touch-ui .sim-controls-main::after { content: ''; order: 1; flex-basis: 100%; height: 0; }
+  html.touch-ui .sim-controls-main > .sim-hours,
+  html.touch-ui .sim-controls-main > .sim-wait,
+  html.touch-ui .sim-controls-main > .sim-reset { order: 2; }
+  html.touch-ui .sim-controls-main { column-gap: 5px; }
+  html.touch-ui .sim-controls-main .sim-speeds { gap: 1px; }
+  html.touch-ui .sim-controls-main .sim-btn, html.touch-ui .sim-controls-main .sim-speeds.sim-hours .sim-btn { min-width: 26px; padding: 0 5px; }
+  html.touch-ui .sim-controls-main .sim-btn.play { min-width: 34px; }
+  html.touch-ui .sim-bar { max-width: calc(100% - 20px); left: 10px; }
+}
+/* ---- điện thoại **ngang** (app + web, người dùng 2026-10-07): Bản vẽ + Mô phỏng thành hai nút icon cạnh Hoàn tác / Làm
+   lại; cột công cụ bỏ Xoá (thùng rác) và Đất / Cao. Màn **dọc** giữ cột công cụ đầy đủ như cũ. */
+@media (orientation: landscape) {
+  html.touch-ui .dock .dock-erase, html.touch-ui .dock .dock-layer, html.touch-ui .dock .dock-lib, html.touch-ui .dock .dock-sim { display: none; }
+}
+@media (orientation: portrait) {
+  html.touch-ui .topbar .top-lib, html.touch-ui .topbar .top-sim { display: none; }
+}
+/* bảng chọn máy **giấu hẳn** vào mép trái (vuốt trái lần nữa khi đã thu gọn — người dùng 2026-10-07): cột rộng 0, nút
+   mũi tên nhô ra ở mép trái; bấm hoặc vuốt phải từ sát mép để hiện lại (`attachPanelSwipes`) */
+html.touch-ui #app.palette-hidden { --left-w: 0px; }
+html.touch-ui #app.palette-hidden .panel.left { border-right: 0; }
+.palette-peek { display: none; }
+html.touch-ui .palette-peek {
+  display: grid; place-items: center; position: absolute; left: 0; top: 50%; z-index: 24; width: 22px; height: 58px; margin-top: -29px;
+  padding: 0; border: 1px solid var(--line); border-left: 0; border-radius: 0 10px 10px 0; background: var(--panel); color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transform: translateX(-110%); visibility: hidden; transition: transform 0.22s ease, visibility 0s linear 0.22s;
+}
+html.touch-ui #app.palette-hidden .palette-peek { transform: none; visibility: visible; transition: transform 0.24s ease 0.12s, visibility 0s; }
+.palette-peek svg { width: 16px; height: 16px; }
+@media (prefers-reduced-motion: reduce) { html.touch-ui .palette-peek { transition: none; } }
+
+/* ---- thư viện công thức (người dùng 2026-10-07) ---- */
+/* danh sách: viền vàng bao cả ô (ảnh + tên) khi rê chuột, không viền riêng ảnh */
+.rl-entry .rl-tile:hover, .rl-entry:hover .rl-tile { border-color: var(--line); }
+/* Xem Chuỗi / Mô hình hoá: lúc nháy đổi màu thì không có viền vàng; nút quay lại nháy đổi màu như vậy (đảo màu) */
+.rl-chain-btn.flash, .rl-model-btn.flash { box-shadow: none !important; }
+@keyframes rl-flash-back { 0% { filter: invert(1); } 100% { filter: none; } }
+.rl-back.flash { animation: rl-flash-back 0.32s ease-out; box-shadow: none !important; }
+@media (prefers-reduced-motion: reduce) { .rl-back.flash { animation-duration: 0.01s; } }
+/* hàng công thức: mỗi bên mũi tên luôn 2 cột ô — ô trống giữ chỗ, mũi tên mọi thẻ thẳng cột, dài bằng nhau */
+.rl-slots .rl-slot-empty { cursor: default; background: transparent; border-style: dashed; border-color: transparent; }
+.rl-slots .rl-slot-empty:hover { border-color: transparent; }
+.rl-plus.ghost { visibility: hidden; }
+.rl-plus { width: 10px; text-align: center; flex: none; }
+/* công thức cần môi trường: viền màu môi trường bao cả máy lẫn công thức, tên môi trường trên đầu thẻ */
+.rl-card.env { border-width: 2px; }
+.rl-card.env-stable { border-color: #3b8eea; }
+.rl-card.env-acid { border-color: #e8c547; }
+.rl-card-env { padding: 3px 12px; font-size: 11px; font-weight: 800; letter-spacing: 0.4px; white-space: nowrap; }
+.rl-card.env-stable .rl-card-env { background: #3b8eea; color: #fff; }
+.rl-card.env-acid .rl-card-env { background: #e8c547; color: #1a1300; }
+/* chất kích hoạt cạnh nút ghim */
+.rl-act { flex: none; width: 28px; height: 28px; padding: 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--well); display: grid; place-items: center; }
+.rl-act img { width: 100%; height: 100%; object-fit: contain; }
+/* điện thoại dọc: hồ sơ vật phẩm xếp dọc — mọi công thức nằm **dưới** ảnh sản phẩm */
+@media (orientation: portrait) {
+  html.touch-ui .rl-item { flex-direction: column; overflow-y: auto; }
+  html.touch-ui .rl-info { flex: none; }
+  html.touch-ui .rl-facts { max-height: none; }
+  html.touch-ui .rl-hero { flex: none; min-height: 160px; }
+  html.touch-ui .rl-side { flex: none; min-height: auto; }
+  html.touch-ui .rl-side-scroll { overflow: visible; }
+  /* nút Xem Chuỗi nổi ở góc phải dưới màn hình (người dùng 2026-10-07), không nằm cuối trang */
+  html.touch-ui .rl-side .rl-chain-btn {
+    position: fixed; right: 14px; bottom: 14px; z-index: 5; margin: 0; padding: 10px 16px 10px 46px; font-size: 15px;
+    border-radius: 999px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  }
+  html.touch-ui .rl-side .rl-chain-btn .rl-chain-ico { left: 16px; width: 18px; height: 18px; background-size: 7px 7px; }
+  html.touch-ui .rl-item { padding-bottom: 72px; }
+}
+/* ---- web điện thoại (người dùng 2026-10-07): vùng chạm **lớn hơn hình** cho nút mũi tên của bảng chọn máy đã giấu và tay
+   kéo mở bảng Tổng hợp — hình giữ nguyên, phần chạm nới ra bằng lớp giả trong suốt */
+html.touch-ui:not(.native-app) .palette-peek::before { content: ''; position: absolute; top: -34px; bottom: -34px; left: 0; right: -26px; }
+html.touch-ui:not(.native-app) .drawer-handle { position: relative; }
+html.touch-ui:not(.native-app) .drawer-handle::before { content: ''; position: absolute; top: 0; bottom: -26px; left: -26px; right: 0; }
+/* nút Thư viện công thức (người dùng 2026-10-07): máy tính ⇒ ở thanh tab cạnh Cài đặt (vẫn vàng); điện thoại ⇒ sát góc
+   trái trên của bảng chọn máy, chữ "AIC Builder" ở giữa nút này và nút thu gọn */
+.tabbar .tb-recipes { margin-left: 2px; width: 26px; height: 26px; padding: 3px; align-self: center; }
+.tabbar .tb-recipes svg { width: 18px; height: 18px; }
+html.touch-ui .palette-head .recipes-btn { margin-left: 0; }
+html.touch-ui .palette-head .brand { flex: 1; min-width: 0; text-align: center; overflow: hidden; text-overflow: ellipsis; }
+/* màn dọc (app + web): tay kéo mở bảng Tổng hợp to hơn và vùng chạm nới rộng (người dùng 2026-10-07: "quá bé") */
+@media (orientation: portrait) {
+  html.touch-ui .drawer-handle { position: relative; width: 34px; height: 76px; }
+  html.touch-ui .drawer-handle .dock-icon { width: 24px; height: 24px; }
+  /* không lấn lên trên: phía trên là dải kéo của thanh (bản ghi chạm 2026-10-07) */
+  html.touch-ui .drawer-handle::before { content: ''; position: absolute; top: 0; bottom: -30px; left: -34px; right: 0; }
+}
+/* ---- điện thoại **màn dọc** (người dùng 2026-10-07) ---- */
+@media (orientation: portrait) {
+  /* cửa sổ Máy = tấm trượt từ dưới lên, cao nửa màn hình, rộng hết màn; thanh tab thụt xuống khi tấm mở */
+  html.touch-ui .machine-window:not(.collapsed),
+  html.touch-ui #app:not(.right-collapsed) .machine-window:not(.collapsed) {
+    left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 50dvh; max-height: none; z-index: 32;
+    border: 1px solid var(--line); border-bottom: 0; border-radius: 14px 14px 0 0;
+  }
+  html.touch-ui #app:has(> .machine-window:not(.collapsed):not([hidden]):not(.mw-closing):not(.mw-shrink)) { --tabbar-row: 0px; }
+  html.touch-ui .machine-window.mw-opening, html.touch-ui .machine-window.mw-grow { animation: mw-sheet-up 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  html.touch-ui .machine-window.mw-closing, html.touch-ui .machine-window.mw-shrink { animation: mw-sheet-down 0.22s ease-in forwards; }
+  /* nút cửa sổ Máy thu gọn: sát đúng góc phải dưới; trồi lên từ dưới khi vừa thu gọn */
+  html.touch-ui .machine-window.collapsed,
+  html.touch-ui #app:not(.right-collapsed) .machine-window.collapsed { right: 6px; bottom: calc(var(--tabbar-h) + 6px); margin: 0; }
+  html.touch-ui .machine-window.collapsed.mw-pop { animation: mw-mini-up 0.24s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  /* ô vào / ra dẹt cạnh sơ đồ máy như máy tính */
+  .mw-sheet-row { display: flex; gap: 8px; align-items: flex-start; }
+  .mp-row.mw-sheet-row > :first-child:not(.mp-layout-box) { flex: none; width: max-content; min-width: 146px; max-width: 46%; box-sizing: border-box; }
+  .mw-sheet-row > :last-child { flex: 1 1 auto; min-width: 0; display: flex; justify-content: center; }
+  /* công thức: 2 cột mỗi dòng (người dùng 2026-10-07, lần 3) */
+  html.touch-ui .machine-window .recipe-grid { grid-template-columns: 1fr 1fr; }
+  /* thẻ công thức thu nhỏ vừa đủ: 2 vào + mũi tên + 2 ra + ô tick trên **một dòng** mỗi thẻ ⇒ 8 sản phẩm / dòng 2 thẻ
+     (người dùng 2026-10-07, lần 4) */
+  html.touch-ui .machine-window .recipe-grid { gap: 5px; }
+  html.touch-ui .machine-window .rg-card .rc-row { gap: 3px; padding: 2px 0 3px; }
+  html.touch-ui .machine-window .rg-card .rc-group { flex-wrap: nowrap; gap: 2px; }
+  html.touch-ui .machine-window .rg-card .rc-pic { width: 29px; height: 29px; }
+  html.touch-ui .machine-window .rg-card .rc-pic img { width: 21px; height: 21px; }
+  html.touch-ui .machine-window .rg-card .rc-rate { font-size: 8px; letter-spacing: -0.2px; }
+  html.touch-ui .machine-window .rg-card .rc-arrow { font-size: 11px; }
+  /* mở bảng Tổng hợp: ẩn các nút thao tác máy (thanh thao tác, thanh chế độ, nút cửa sổ Máy thu gọn) */
+  html.touch-ui #app:not(.right-collapsed) .touch-actions,
+  html.touch-ui #app:not(.right-collapsed) .touch-modebar,
+  html.touch-ui #app:not(.right-collapsed) .machine-window.collapsed {
+    opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.18s ease, visibility 0s linear 0.18s;
+  }
+}
+@keyframes mw-sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes mw-sheet-down { from { transform: none; } to { transform: translateY(100%); } }
+@keyframes mw-mini-up { from { transform: translateY(160%); opacity: 0; } to { transform: none; opacity: 1; } }
+/* thư viện, điện thoại **màn dọc** (người dùng 2026-10-07): thanh đường dẫn gọn ("CSDL", bỏ "Hồ Sơ Vật Phẩm") vừa với hai
+   nút cuối — kính lúp (bấm ⇒ ô nhập trượt xuống dưới thanh) và X (tắt thư viện) */
+.rl-search-toggle, .rl-back .ico-close { display: none; }
+@media (orientation: portrait) {
+  html.touch-ui .rl-top { position: relative; z-index: 6; gap: 6px; padding: 6px 8px; }
+  html.touch-ui .rl-crumbs { gap: 4px; padding: 3px 6px; }
+  html.touch-ui .rl-chip { padding: 2px 6px; font-size: 12px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  html.touch-ui .rl-chip-db { font-size: 0; flex: none; }
+  html.touch-ui .rl-chip-db::after { content: attr(data-short); font-size: 12px; }
+  html.touch-ui .rl-crumb-rec { display: none; }
+  html.touch-ui .rl-search-toggle {
+    display: grid; place-items: center; flex: none; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line);
+    border-radius: 50%; background: var(--panel-2); color: var(--text);
+  }
+  html.touch-ui .rl-search-toggle .rl-search-ico svg { width: 18px; height: 18px; }
+  html.touch-ui .rl-overlay.rl-search-open .rl-search-toggle { border-color: #e8c547; color: #e8c547; }
+  html.touch-ui .rl-back .ico-back { display: none; }
+  html.touch-ui .rl-back .ico-close { display: block; }
+  html.touch-ui .rl-back { width: 34px; height: 34px; }
+  html.touch-ui .rl-back svg { width: 32px; height: 32px; }
+  html.touch-ui .rl-search-box {
+    position: absolute; left: 8px; right: 8px; top: calc(100% + 6px); z-index: 5; padding: 8px 10px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45); border-radius: 10px;
+    transform: translateY(-14px); opacity: 0; visibility: hidden; pointer-events: none;
+    transition: transform 0.22s ease, opacity 0.18s ease, visibility 0s linear 0.22s;
+  }
+  html.touch-ui .rl-overlay.rl-search-open .rl-search-box {
+    transform: none; opacity: 1; visibility: visible; pointer-events: auto; transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease, visibility 0s;
+  }
+}
+html.touch-ui #app:not(.palette-collapsed) .palette-head { padding-left: 4px; }
+
+/* ---- bộ nút xem ⇄ bộ nút thao tác (người dùng 2026-10-07): bộ mới trượt từ trên xuống chồng lên bộ cũ; bộ cũ nằm lớp sau
+   (`.dock-ghost`) rồi bị gỡ khi animation xong */
+.dock-ghost { position: absolute; top: 0; right: 0; z-index: -1; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+.dock-ghost .dock-group { pointer-events: none; }
+/* màu nền nút cho tờ phía trước của icon "chọn nhiều" (che phần tờ sau) */
+.dock-btn { --btn-fill: #1a1f27; }
+.dock-btn.active { --btn-fill: #24486e; }
+[data-theme='light'] .dock-btn { --btn-fill: #ffffff; }
+[data-theme='light'] .dock-btn.active { --btn-fill: #dbe9f8; }
+/* điện thoại: thanh thao tác trượt **từ trên xuống**, áp sát góc phải trên; cột công cụ thường trượt lên khuất; kéo lên dọc
+   thanh ⇒ thu lên mép trên (còn dải kéo), kéo xuống / chạm dải ⇒ mở lại */
+html.touch-ui .touch-actions { top: 4px; right: 4px; }
+html.touch-ui .touch-actions.ta-out { transform: translateY(calc(-100% - 20px)); }
+html.touch-ui .touch-actions.ta-collapsed { transform: translateY(calc(-100% + 46px)); }
+html.touch-ui .touch-actions.ta-collapsed > :not(.ta-grip) { pointer-events: none; }
+.ta-grip { display: none; }
+html.touch-ui .ta-grip { display: grid; place-items: center; height: 42px; margin: 0 -4px -4px; touch-action: none; }
+html.touch-ui .ta-grip span, .dock-grip span { width: 28px; height: 5px; border-radius: 3px; background: var(--dim); opacity: 0.85; }
+html.touch-ui .dock > .dock-group:not(.dock-drawer) { transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease; }
+html.touch-ui #app.touch-acting .dock > .dock-group:not(.dock-drawer) { transform: translateY(calc(-100% - 24px)); opacity: 0; }
+/* tay kéo bảng Tổng hợp xuống dưới thanh thao tác / lên lại chỗ cũ (`--drawer-shift`, `touchActions.ts`) */
+html.touch-ui .dock .dock-drawer { transform: translateY(var(--drawer-shift, 0px)); transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@media (prefers-reduced-motion: reduce) {
+  html.touch-ui .dock > .dock-group:not(.dock-drawer), html.touch-ui .dock .dock-drawer { transition: none; }
+}
+/* hai loại hộp hướng dẫn (người dùng 2026-10-07): hộp khi mở tab (mặc định) và hộp của chế độ X / chọn máy (`batch-tip`) */
+html:not(.touch-ui) .hint-box.batch-tip { font-size: 13px; gap: 5px; padding: 10px 12px 12px; }
+html:not(.touch-ui) .hint-box.batch-tip .hint-ic { font-size: 14px; min-width: 56px; }
+html:not(.touch-ui) .hint-box.batch-tip .hint-ic kbd { font-size: 12px; padding: 1px 5px; }
+html:not(.touch-ui) .batch-tip-head { font-size: 14px; margin-bottom: 4px; }
+/* điện thoại: vuốt ngang để tắt (cần nhận chạm), hộp mặc định nhỏ đi 25 % */
+html.touch-ui .hint-box { pointer-events: auto; touch-action: pan-y; }
+html.touch-ui .hint-box:not(.batch-tip) { zoom: 0.75; }
+
+/* điện thoại: cột công cụ thường cũng kéo lên / xuống được (người dùng 2026-10-07) — dải kéo ở đáy cột; khi thu, cột dời lên
+   `--dock-hide` để chỉ còn dải kéo lòi ra (cao hơn mép trên một đoạn, tránh cú kéo thanh thông báo của hệ thống) */
+.dock-grip { display: none; }
+html.touch-ui .dock-grip {
+  display: grid; place-items: center; width: 40px; height: 42px; margin-top: -4px; border-radius: 0 0 10px 10px; touch-action: none;
+  background: rgba(20, 25, 32, 0.58); border: 1px solid rgba(255, 255, 255, 0.09); border-top: 0;
+}
+html.touch-ui[data-theme='light'] .dock-grip { background: rgba(255, 255, 255, 0.88); }
+html.touch-ui #app.dock-collapsed:not(.touch-acting) .dock > .dock-group:not(.dock-drawer) { transform: translateY(calc(-1 * var(--dock-hide, 0px))); }
+/* dải kéo của hai thanh: gạch ngang (hai nửa) ⇒ thanh đã thu lên đỉnh thì **chuyển thành mũi tên xuống** (người dùng
+   2026-10-07); cả diện tích thanh nhận cú kéo dọc — trình duyệt không được tự nhận cú kéo đó */
+html.touch-ui .dock > .dock-group, html.touch-ui .touch-actions { touch-action: none; }
+.ta-grip, .dock-grip { position: relative; }
+.ta-grip i, .dock-grip i {
+  position: absolute; left: 50%; top: 50%; width: 16px; height: 5px; margin: -2.5px 0 0 -8px; border-radius: 3px;
+  background: var(--dim); opacity: 0.9; transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ta-grip i:first-child, .dock-grip i:first-child { transform: translateX(-7px); }
+.ta-grip i:last-child, .dock-grip i:last-child { transform: translateX(7px); }
+html.touch-ui .touch-actions.ta-collapsed .ta-grip i:first-child,
+html.touch-ui #app.dock-collapsed .dock-grip i:first-child { transform: translateX(-5px) rotate(35deg); }
+html.touch-ui .touch-actions.ta-collapsed .ta-grip i:last-child,
+html.touch-ui #app.dock-collapsed .dock-grip i:last-child { transform: translateX(5px) rotate(-35deg); }
+@media (prefers-reduced-motion: reduce) { .ta-grip i, .dock-grip i { transition: none; } }

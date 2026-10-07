@@ -13,7 +13,7 @@ import { AppState, type EmitMode } from './editor/state';
 import { Renderer } from './render/renderer';
 import { el } from './ui/dom';
 import { mountInspector } from './ui/inspector';
-import { OPEN_RECIPES_EVENT, mountPalette } from './ui/palette';
+import { OPEN_RECIPES_EVENT, mountPalette, recipesButton } from './ui/palette';
 import { mountSummary } from './ui/summary';
 import { mountDock, mountTopbar } from './ui/dock';
 import { jsonFiles, openLibrary, useBlueprint } from './ui/library';
@@ -112,27 +112,21 @@ mountSettings(
           music.setVolume(Number(slider.value) / 100);
           pct.textContent = `${slider.value}%`;
         });
-        const musicBox = el('input', { type: 'checkbox' });
-        // hình loa trước thanh âm lượng: bấm để bật / tắt nhạc nền (người dùng 2026-10-05) — đồng bộ với ô "Nhạc nền"
+        // hình loa trước thanh âm lượng: bấm để bật / tắt nhạc nền (người dùng 2026-10-05); ô tick "Nhạc nền" đã bỏ — cái loa
+        // đã cho thấy bật / tắt (người dùng 2026-10-07)
         const speaker = el('button', { class: 'set-speaker', type: 'button' });
         const sync = (): void => {
-          musicBox.checked = music.isOn();
           speaker.innerHTML = music.isOn() ? SPEAKER_ON : SPEAKER_OFF;
           speaker.classList.toggle('on', music.isOn());
           const n = music.trackName();
           speaker.title = music.isOn() ? tr('Đang phát nhạc nền — bấm để tắt') : n ? tr('Bật nhạc nền ({0}, lặp lại)', n) : tr('Chưa có nhạc nền — chọn file MP3 trong Cài đặt');
         };
-        musicBox.addEventListener('change', () => {
-          if (musicBox.checked !== music.isOn()) music.toggle();
-          sync();
-        });
         speaker.addEventListener('click', () => {
           music.toggle();
           sync();
         });
         sync();
         return [
-          el('label', { class: 'set-row set-check-row' }, musicBox, el('span', {}, tr('Nhạc nền'))),
           musicFileRow(music),
           el('div', { class: 'set-row set-volume', title: tr('Âm lượng') }, speaker, slider, pct),
           settingsCheck(tr('Hiện tên máy'), tr('Biển tên trên thân máy'), renderer.showLabels, (v) => {
@@ -152,6 +146,8 @@ mountSettings(
     : // máy tính: chỉ thêm dòng chọn file nhạc (nút loa + âm lượng vẫn ở thanh tab)
       () => [musicFileRow(music)],
 );
+// máy tính: nút Thư viện công thức ở thanh tab, ngay trái nút Cài đặt (loa dạt sang trái nó — người dùng 2026-10-07)
+if (!touch) tabBar.insertBefore(recipesButton('tb-recipes'), tabBar.querySelector('.tb-settings'));
 // tuỳ chọn hiển thị trong Cài đặt (người dùng 2026-10-05): nền cỏ, con trỏ ô — chỉ renderer chính, ảnh xem trước giữ nền phẳng
 onPrefs((p) => {
   if (p.noTooltips) document.querySelector('.hint-box')?.remove();
@@ -197,8 +193,9 @@ const setRightOpen = (open: boolean): void => {
 setRightOpen((() => {
   try {
     const v = localStorage.getItem(RIGHT_KEY);
-    // điện thoại: lần đầu bảng Tổng hợp đóng sẵn (mở bằng mũi tên mép phải)
-    return v === null ? !touch : v !== 'closed';
+    // lần đầu bảng Tổng hợp **đóng sẵn** ở mọi phiên bản (người dùng 2026-10-07; trước đây chỉ điện thoại) — mở bằng mũi tên
+    // mép phải
+    return v === null ? false : v !== 'closed';
   } catch {
     return true;
   }
@@ -337,12 +334,35 @@ if (touch) {
   attachPanelSwipes(app);
   attachLayers();
   /**
+   * Điện thoại **màn dọc** (người dùng 2026-10-07): chỉ một trong ba cửa sổ chính — bảng chọn máy (mở rộng), bảng Tổng
+   * hợp, cửa sổ Máy (mở) — được mở cùng lúc. Cửa sổ nào vừa mở ⇒ hai cửa sổ kia đóng bằng animation sẵn có của chúng (bảng
+   * chọn máy thu gọn, Tổng hợp trượt ra mép phải, cửa sổ Máy thụt xuống thành nút thu gọn).
+   */
+  const mainOpen = (): Record<'palette' | 'summary' | 'machine', boolean> => ({
+    palette: !app.classList.contains('palette-collapsed') && !app.classList.contains('palette-hidden'),
+    summary: !app.classList.contains('right-collapsed'),
+    machine: !machineWin.hidden && !machineWin.classList.contains('collapsed') && !machineWin.classList.contains('mw-closing') && !machineWin.classList.contains('mw-shrink'),
+  });
+  let lastOpen = mainOpen();
+  const oneWindow = (): void => {
+    const cur = mainOpen();
+    const fresh = (['palette', 'summary', 'machine'] as const).find((k) => cur[k] && !lastOpen[k]);
+    lastOpen = cur;
+    if (!fresh || window.innerHeight <= window.innerWidth) return;
+    if (fresh !== 'palette' && cur.palette) window.dispatchEvent(new Event('efp:toggle-palette'));
+    if (fresh !== 'summary' && cur.summary) setRightOpen(false);
+    if (fresh !== 'machine' && cur.machine) machineWin.querySelector<HTMLElement>('.mw-collapse')?.click();
+  };
+  new MutationObserver(oneWindow).observe(app, { attributes: true, attributeFilter: ['class'] });
+  new MutationObserver(oneWindow).observe(machineWin, { attributes: true, attributeFilter: ['class', 'hidden'] });
+  /**
    * Nút **Quay lại** của Android (gọi từ `MainActivity`): còn gì để huỷ (hộp thoại, máy đang cầm, vùng chọn, cửa sổ máy)
    * ⇒ làm như phím Esc, trả `true`; không còn gì ⇒ `false` và app lui về nền (không đóng, giữ nguyên trạng thái).
    */
   (window as unknown as { efpBack: () => boolean }).efpBack = (): boolean => {
     const busy =
-      !!document.querySelector('.bp-overlay, .tb-menu, .set-menu') ||
+      // thư viện công thức đang mở: Esc = lùi một màn / đóng (người dùng 2026-10-07)
+      !!document.querySelector('.bp-overlay, .rl-overlay, .tb-menu, .set-menu') ||
       state.tool.kind !== 'select' ||
       state.selection !== null ||
       state.sel.machines.size > 0 ||

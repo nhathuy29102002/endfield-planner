@@ -42,8 +42,9 @@ function loadSettings(): PaletteSettings {
   } catch {
     /* dùng mặc định */
   }
-  // điện thoại (app Android): màn hình thấp ⇒ lần đầu bảng chọn máy thu gọn sẵn (người dùng 2026-10-05)
-  return { pinned: [], collapsed: isTouchUI(), closedGroups: [] };
+  // lần đầu: bảng chọn máy chỉ thu gọn sẵn trên **điện thoại màn dọc** (app / web — người dùng 2026-10-07); máy tính và
+  // điện thoại ngang mở sẵn
+  return { pinned: [], collapsed: isTouchUI() && window.innerHeight > window.innerWidth, closedGroups: [] };
 }
 function saveSettings(s: PaletteSettings): void {
   try {
@@ -82,7 +83,15 @@ export const PIN_MACHINE_EVENT = 'efp:pin-machine';
 export const OPEN_RECIPES_EVENT = 'efp:open-recipes';
 
 /** Ba cuốn sách chồng lên nhau — nút Thư viện công thức. */
-const BOOKS_SVG =
+/** Nút mở Thư viện công thức (ba cuốn sách, màu vàng). */
+export function recipesButton(extraClass = ''): HTMLElement {
+  const b = el('button', { class: `recipes-btn${extraClass ? ` ${extraClass}` : ''}`, type: 'button', title: tr('Thư viện công thức — hồ sơ vật phẩm, chuỗi sản xuất') });
+  b.innerHTML = BOOKS_SVG;
+  b.addEventListener('click', () => window.dispatchEvent(new Event(OPEN_RECIPES_EVENT)));
+  return b;
+}
+
+export const BOOKS_SVG =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="15.5" width="16" height="4.5" rx="1" fill="currentColor" fill-opacity="0.18"/><rect x="5" y="10.5" width="15" height="4.5" rx="1" transform="rotate(-4 12.5 12.75)" fill="currentColor" fill-opacity="0.18"/><rect x="4" y="5" width="14" height="4.5" rx="1" fill="currentColor" fill-opacity="0.18"/><path d="M6.5 15.5v4.5M8 5v4.5"/></svg>';
 
 /** Icon ghim (vàng) cho nhóm "Đã ghim" và thanh cuộn — ảnh nền CSS nên viết thành data URL. */
@@ -543,14 +552,10 @@ export function mountPalette(root: HTMLElement, state: AppState, onLayout: () =>
 
     search.hidden = false;
     head.append(
-      el('span', { class: 'brand' }, 'Endfield AIC Planner'),
-      // Thư viện công thức: hồ sơ vật phẩm, chuỗi sản xuất (người dùng 2026-10-06)
-      (() => {
-        const b = el('button', { class: 'recipes-btn', type: 'button', title: tr('Thư viện công thức — hồ sơ vật phẩm, chuỗi sản xuất') });
-        b.innerHTML = BOOKS_SVG;
-        b.addEventListener('click', () => window.dispatchEvent(new Event(OPEN_RECIPES_EVENT)));
-        return b;
-      })(),
+      // Thư viện công thức (người dùng 2026-10-06): điện thoại ⇒ sát góc trái trên của bảng, chữ "AIC Builder" ở giữa nút
+      // này và nút thu gọn; máy tính ⇒ nút nằm ở thanh tab cạnh Cài đặt (`main.ts`) — người dùng 2026-10-07
+      ...(touch ? [recipesButton()] : []),
+      el('span', { class: 'brand' }, 'AIC Builder'),
       chevronBtn(tr('Thu gọn bảng chọn máy  (F1)'), CHEVRON_LEFT, () => setCollapsed(true)),
     );
 

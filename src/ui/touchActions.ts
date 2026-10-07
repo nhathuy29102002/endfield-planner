@@ -64,15 +64,8 @@ export function mountTouchActions(
       touchModes.changed();
     } else map.copy();
   });
-  const move = btn('move', tr('Di chuyển'), () => map.move());
-  const add = btn('add', tr('Chọn thêm'), () => {
-    touchModes.add = !touchModes.add;
-    touchModes.changed();
-  });
-  const box = btn('box', tr('Chọn vùng'), () => {
-    touchModes.box = !touchModes.box;
-    touchModes.changed();
-  });
+  // Chọn thêm / Chọn vùng / Di chuyển đã bỏ (người dùng 2026-10-07): chọn nhiều là nút X ở cột công cụ; dời máy vẫn bằng
+  // giữ ngón 0,5 s trên máy rồi rê
   const remove = btn('remove', tr('Xoá'), () => map.remove());
   const save = btn('save', tr('Lưu'), () => hooks.saveSelection());
   commit.classList.add('primary');
@@ -106,8 +99,151 @@ export function mountTouchActions(
   };
   // 5 nút dưới (Di chuyển … Lưu) nằm trong một khối co / giãn được: chọn máy rồi bấm Sao chép / cầm máy mới ⇒ chỉ khối này
   // rụt lại, 4 nút trên (Đặt · Xoay · Huỷ · Sao chép/Đặt tiếp) đứng yên (người dùng 2026-10-06)
-  const more = el('div', { class: 'ta-more' }, el('div', { class: 'ta-more-inner' }, move, add, box, remove, save));
+  const more = el('div', { class: 'ta-more' }, el('div', { class: 'ta-more-inner' }, remove, save));
+  // thanh thao tác **không thu gọn được** (người dùng 2026-10-07, lần 3) — chỉ trượt xuống / lên khi bật / tắt
   bar.append(commit, rotate, cancel, logiBox, el('div', { class: 'ta-sep' }), copy, more);
+
+  /**
+   * **Cột công cụ thường kéo lên / xuống được** (người dùng 2026-10-07; thanh thao tác thì thôi — lần 3).
+   * Kéo lên dọc thanh ⇒ thanh trượt lên mép trên, chỉ còn **dải kéo** lòi ra (`FOLD_PEEK` — đủ thấp để không vướng cú kéo
+   * thanh thông báo từ mép trên màn hình); kéo xuống hoặc chạm dải ⇒ mở lại. Trạng thái nhớ trong `efp:fold`.
+   */
+  const FOLD_PEEK = 50; // px tính từ mép trên khung bản đồ tới đáy dải kéo khi thu
+  const FOLD_KEY = 'efp:fold';
+  const fold = ((): { dock: boolean } => {
+    try {
+      const v = JSON.parse(localStorage.getItem(FOLD_KEY) ?? '{}') as { dock?: boolean };
+      return { dock: v.dock === true };
+    } catch {
+      return { dock: false };
+    }
+  })();
+  const saveFold = (): void => {
+    try {
+      localStorage.setItem(FOLD_KEY, JSON.stringify(fold));
+    } catch {
+      /* không lưu được thì thôi */
+    }
+  };
+  const dockEl = (): HTMLElement | null => document.querySelector<HTMLElement>('.dock');
+  /** Cột công cụ dựng lại liên tục ⇒ gắn lại dải kéo của nó sau mỗi lần dựng. */
+  const ensureDockGrip = (): void => {
+    const d = dockEl();
+    if (!d || d.querySelector('.dock-grip')) return;
+    const g = el('div', { class: 'dock-group dock-grip' }, el('i', {}), el('i', {}));
+    const drawerG = d.querySelector('.dock-drawer');
+    d.insertBefore(g, drawerG);
+  };
+  const applyFold = (): void => {
+    app.classList.toggle('dock-collapsed', fold.dock);
+    layoutFold();
+  };
+  const eatClick = (): void => {
+    const eat = (ev: Event): void => {
+      ev.stopPropagation();
+      ev.preventDefault();
+    };
+    window.addEventListener('click', eat, true);
+    setTimeout(() => window.removeEventListener('click', eat, true), 350);
+  };
+  /**
+   * Nhận cú kéo dọc **trên cả diện tích thanh** (người dùng 2026-10-07). Nghe ở cả phần tử được chạm lẫn `window`: cột công
+   * cụ dựng lại nút thường xuyên — nút dưới ngón tay bị gỡ khỏi trang thì sự kiện chạm sau đó không còn nổi lên tới cột
+   * (trước đây vuốt cột công cụ trượt gần như mọi lần, thanh thao tác thì không).
+   */
+  const foldable = (root: HTMLElement, which: 'dock', gripSel: string): void => {
+    let st: { id: number; x: number; y: number } | null = null;
+    const seen = new WeakSet<Event>();
+    const move = (e: TouchEvent): void => {
+      if (seen.has(e)) return;
+      seen.add(e);
+      const t = st && [...e.touches].find((v) => v.identifier === st!.id);
+      if (!st || !t) return;
+      const dy = t.clientY - st.y;
+      const dx = t.clientX - st.x;
+      if (Math.abs(dy) < 14 || Math.abs(dy) < Math.abs(dx) * 1.2) return;
+      e.preventDefault();
+      st = null;
+      off();
+      const shut = dy < 0;
+      // tay kéo bảng Tổng hợp nằm ngay dưới cột: vuốt dọc trên nó cũng thu / mở cột (bản ghi chạm thật 2026-10-07: phần lớn
+      // cú vuốt lên ở đáy cột rơi trúng tay kéo — trước đây bị bỏ qua); đang hiện thanh thao tác thì cột đang ẩn ⇒ bỏ qua
+      if (app.classList.contains('touch-acting')) return;
+      if (shut === fold[which]) return;
+      fold[which] = shut;
+      saveFold();
+      applyFold();
+      eatClick();
+    };
+    const end = (e: Event): void => {
+      if (seen.has(e)) return;
+      seen.add(e);
+      st = null;
+      off();
+    };
+    let off = (): void => {};
+    root.addEventListener('touchstart', (e) => {
+      const t = e.touches[0];
+      const target = e.target as Element;
+      if (e.touches.length !== 1 || !t) return;
+      st = { id: t.identifier, x: t.clientX, y: t.clientY };
+      off();
+      const mv = move as EventListener;
+      target.addEventListener('touchmove', mv, { passive: false });
+      target.addEventListener('touchend', end);
+      target.addEventListener('touchcancel', end);
+      window.addEventListener('touchmove', move, { capture: true, passive: false });
+      window.addEventListener('touchend', end, true);
+      window.addEventListener('touchcancel', end, true);
+      off = (): void => {
+        target.removeEventListener('touchmove', mv);
+        target.removeEventListener('touchend', end);
+        target.removeEventListener('touchcancel', end);
+        window.removeEventListener('touchmove', move, true);
+        window.removeEventListener('touchend', end, true);
+        window.removeEventListener('touchcancel', end, true);
+        off = (): void => {};
+      };
+    }, { passive: true });
+    root.addEventListener('click', (e) => {
+      if (!fold[which] || !(e.target as Element).closest(gripSel)) return;
+      e.stopPropagation();
+      fold[which] = false;
+      saveFold();
+      applyFold();
+    });
+  };
+  /**
+   * Đặt chỗ khi thu (theo bố cục, không tính transform đang chạy): cột công cụ dời lên đúng một đoạn để đáy dải kéo nằm ở
+   * `FOLD_PEEK`; tay kéo bảng Tổng hợp (cuối cột) **trượt xuống dưới** thanh thao tác khi thanh hiện, **trượt lên** theo cột
+   * / thanh khi thu (biến `--dock-hide`, `--drawer-shift` trên `#app`).
+   */
+  const layoutFold = (): void => {
+    requestAnimationFrame(() => {
+      ensureDockGrip();
+      const d = dockEl();
+      const drawerEl = d?.querySelector<HTMLElement>('.dock-drawer');
+      const dgrip = d?.querySelector<HTMLElement>('.dock-grip');
+      if (!d || !drawerEl || !dgrip) return;
+      const top = bar.offsetTop; // mép trên của hai thanh
+      const dockHide = Math.max(0, d.offsetTop + dgrip.offsetTop + dgrip.offsetHeight - (top + FOLD_PEEK));
+      app.style.setProperty('--dock-hide', `${dockHide}px`);
+      const natural = d.offsetTop + drawerEl.offsetTop;
+      let shift = 0;
+      // thanh đã thu: tay kéo đứng cách dải kéo thêm một đoạn — vùng chạm nới rộng của nó không được che dải kéo
+      const GAP_FOLDED = 42;
+      if (!bar.classList.contains('ta-out')) shift = Math.max(0, bar.offsetTop + bar.offsetHeight + 10 - natural);
+      else if (fold.dock) shift = -dockHide + GAP_FOLDED - 6;
+      app.style.setProperty('--drawer-shift', `${shift}px`);
+    });
+  };
+  const placeDrawer = layoutFold;
+  const d0 = dockEl();
+  if (d0) {
+    foldable(d0, 'dock', '.dock-grip');
+    new MutationObserver(() => layoutFold()).observe(d0, { childList: true });
+  }
+  window.addEventListener('resize', () => layoutFold());
   bar.classList.add('ta-out');
   host.append(bar, modeBar);
 
@@ -117,7 +253,7 @@ export function mountTouchActions(
     if (t.kind === 'stamp') return 'place';
     if (t.kind === 'place') return (t.mode ?? 'new') === 'new' ? 'place' : 'moving';
     if (t.kind === 'group') return 'moving';
-    if (t.kind === 'select' && (state.selection !== null || selectionSize(state.sel) > 0)) return 'selected';
+    if (t.kind === 'select' && (state.selection !== null || selectionSize(state.sel) > 0 || state.batch)) return 'selected';
     return 'none';
   };
 
@@ -191,19 +327,25 @@ export function mountTouchActions(
     copy.hidden = ctx === 'link';
     bar.querySelector<HTMLElement>('.ta-sep')!.hidden = ctx === 'link';
     rotate.disabled = ctx === 'link';
-    for (const b of [move, add, box, remove, save]) b.disabled = holding;
+    // chế độ chọn nhiều chưa chọn gì: các nút cần máy được chọn **mờ đi** (không ẩn — người dùng 2026-10-07)
+    const none = ctx === 'selected' && state.selection === null && selectionSize(state.sel) === 0;
+    for (const b of [remove, save]) b.disabled = holding || none;
+    if (ctx === 'selected') copy.disabled = none;
+    else copy.disabled = false;
+    if (ctx === 'selected') rotate.disabled = none;
     const keepMode = ctx === 'place' || ctx === 'moving';
     copy.querySelector('.ta-label')!.textContent = keepMode ? tr('Đặt tiếp') : tr('Sao chép');
     copy.classList.toggle('on', keepMode && touchModes.keep);
     copy.classList.toggle('keep', keepMode && touchModes.keep);
-    add.classList.toggle('on', touchModes.add);
-    box.classList.toggle('on', touchModes.box);
-    cancel.querySelector('.ta-label')!.textContent = ctx === 'selected' ? tr('Huỷ chọn') : tr('Huỷ');
+    cancel.querySelector('.ta-label')!.textContent = ctx === 'selected' ? (state.batch ? tr('Thoát') : tr('Huỷ chọn')) : tr('Huỷ');
     commit.disabled = !map.canCommit();
     renderLogi();
     renderMode();
+    placeDrawer();
+    setTimeout(placeDrawer, 280); // khối nút dưới co / giãn xong
   };
   touchModes.listeners.add(render);
+  applyFold();
   // cửa sổ máy mở / thu gọn / đóng ⇒ hiện lại hoặc ẩn thanh chế độ
   const mw = document.querySelector<HTMLElement>('.machine-window');
   if (mw) new MutationObserver(() => renderMode()).observe(mw, { attributes: true, attributeFilter: ['class', 'hidden'] });

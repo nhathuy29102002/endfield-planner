@@ -61,6 +61,11 @@ const lastMode = new Map<number, 'A' | 'B'>();
 
 /** Giao diện cảm ứng (app Android). */
 const touch = isTouchUI();
+/**
+ * Điện thoại **màn dọc** (người dùng 2026-10-07): cửa sổ Máy là tấm trượt từ dưới lên, cao nửa màn hình, nội dung như
+ * máy tính — ô vào / ra dẹt cạnh sơ đồ máy, công thức bên dưới.
+ */
+const sheet = (): boolean => touch && window.innerHeight > window.innerWidth;
 
 /**
  * Chế độ Simulation (người dùng 2026-10-03) thay **ô INPUT / OUTPUT** của máy chế biến bằng thanh sản xuất động
@@ -79,6 +84,8 @@ export function mountInspector(root: HTMLElement, state: AppState, onLayout: () 
     renderBody();
     onLayout(); // bảng Tổng hợp co lại theo chiều cao mới
   };
+  // xoay máy (dọc ⇄ ngang): dựng lại theo bố cục của hướng mới
+  if (touch) window.matchMedia?.('(orientation: portrait)').addEventListener?.('change', () => render());
 
   /**
    * Animation đóng/mở (người dùng 2026-09-29): mở = trượt vào từ mép phải + hiện dần; đóng = trượt ra
@@ -327,7 +334,14 @@ export function mountInspector(root: HTMLElement, state: AppState, onLayout: () 
               : null;
     // điện thoại (người dùng 2026-10-05): chỉ một trong hai — INPUT / OUTPUT hoặc Layout (đổi bằng ô vuông ở đầu cửa sổ);
     // máy không có ô INPUT / OUTPUT thì luôn là Layout
-    if (touch) {
+    if (sheet()) {
+      // màn dọc: thanh chế độ dưới tên, rồi ô vào / ra dẹt cạnh sơ đồ máy như máy tính (máy không có ô vào / ra ⇒ thẻ máy)
+      const sw = modeSwitch();
+      if (sw) body.append(el('div', { class: 'mw-mode-row' }, sw));
+      // ô vào / ra chỉ rộng vừa đủ, sơ đồ máy lấy phần còn lại (người dùng 2026-10-07, lần 3)
+      const lay = Math.round(Math.max(140, Math.min(250, window.innerWidth - 215)));
+      body.append(ioPanel ? el('div', { class: 'mp-row mw-sheet-row' }, ioPanel, layoutPanel(state, m, def, { rates: true, size: lay })) : machineCard());
+    } else if (touch) {
       // thanh chế độ ngay dưới tên (cả chiều ngang cửa sổ)
       const sw = modeSwitch();
       if (sw) body.append(el('div', { class: 'mw-mode-row' }, sw));
